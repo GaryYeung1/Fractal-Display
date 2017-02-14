@@ -78,6 +78,7 @@ public class FractalTest {
 		assertTrue(-0.08 <yprime);
 		assertTrue(yprime < 0.025);
 	}
+	//throw away line//
 //	@Test
 //	public void checkIfPointIsNull(){
 //		
