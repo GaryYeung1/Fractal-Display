@@ -1,0 +1,24 @@
+Meeting Minutes for 2.19.17:
+
+Meeting Attendance:
+  *U - Florebencia Fils-Aime
+  *U - Genessy Munoz
+  *M - Yang Cai
+  *U - Gary Yeung
+
+Tasks completed since last meeting:
+  *We finished the Mandelbrot set.
+  *
+
+Tasks started, but not completed, since last meeting:
+  * We still working on the Main Class and JUnit tests.
+  *
+
+Tasks to be worked on (and by which team members) for the next meeting:
+  * Combine different sets - Florebencia Fils-Aime
+  * Working on the fourth set - Genessy Munoz
+  * Trying to figure out the first two rubrics - Yang and Gary.
+
+Schedule for the next week's set of pair programming meetings:
+  * 2.23.17 during the recitation.
+  *
