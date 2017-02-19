@@ -23,24 +23,13 @@ public class Main {
 	  Point retPoint = new Point(0,0);
 	  return retPoint;
   }
-}package edu.buffalo.cse116;
-
-import java.awt.Point;
-import java.awt.geom.*;
-
+}
 /**
  * 
  * @author yang
  *
  */
-
-public class Main {
-
-
-  public static void main(String[] args) {
-		}
-  
-  
+ 
   public Point original (int x, int y){
 	  Point original = new Point(x, y);
 	  x = 0;
