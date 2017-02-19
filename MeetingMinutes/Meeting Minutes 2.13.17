@@ -1,0 +1,27 @@
+Meeting Minutes for 2.13.17:
+
+Meeting Attendance:
+  * M - Florebencia Fils-Aime
+  * U - Genessy Munoz
+  * U - Yang Cai 
+  * U - Gary Yeung
+
+Tasks completed since last meeting:
+  * Some tests were made, however everyone in the group is confused
+  . We all don't understand how we go about testing the fractal.
+  * We are also confused about the escape time algorithm 
+
+Tasks started, but not completed, since last meeting:
+  * We reread the project information and came to the conclusion that 
+  we need a 2d array that is 512 by 512.
+  *
+
+Tasks to be worked on (and by which team members) for the next meeting:
+  * Genessy Munoz - Julia Set
+  * Yang Cai - Burning Ship Set 
+  * X coordinates - Flo and Genessy
+  * Y coordinates - Yang and Gary
+
+Schedule for the next week's set of pair programming meetings:
+  * 2.16.17 during recitation
+  *
