@@ -35,7 +35,6 @@ public class Main {
 	  x = 0;
 	  y = 0;
 	return original;
-	
   }
   
 //  public void getX(){
