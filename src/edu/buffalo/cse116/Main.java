@@ -23,6 +23,6 @@ public class Main {
 	  Point retPoint = new Point(0,0);
 	  return retPoint;
   }
-  //Please show up//
+  //please show up//
 }
 
