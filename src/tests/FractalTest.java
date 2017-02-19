@@ -1,4 +1,4 @@
-package edu.buffalo.cse116;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -18,12 +18,33 @@ public class FractalTest {
 	 * this sets the point system up for the coordinates.
 	 * @param x
 	 * @param y
-	 * @author Florebencia Fils-Aime
+	 * @author Yang Cai and Florebencia Fils-Aime 
 	 */
 	public Point original(int x, int y){
 		Point original = new Point(x,y);
+		 x = 0;
+		 y = 0;
 		return original;
 	}
+	/**
+	 * this creates the escape time algorithm
+	 * @author Gary Yaung
+	 * @param point
+	 * @return
+	 */
+	  public Point escapeTimeAlgorithm(Point point){
+		  float xCalc = point.x;
+		  float yCalc = point.y;
+		  double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
+		  int passes = 0;
+		  while(dist <= 2 && passes < 255){
+			  passes = passes + 1;
+			  dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
+		  }
+		  
+		  Point retPoint = new Point(0,0);
+		  return retPoint;
+	  }
 	/**
 	 * this is made to test the range of the mandelbrot set
 	 * @param x
@@ -32,8 +53,17 @@ public class FractalTest {
 	 */
 	@Test
 	public void mandelbrotTest(double x, double y){
+			Point point = original(0,0);
+			int xCalc = point.x;
+		  int yCalc = point.y;
+		  double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
+		  int passes = 0;
+		  while(dist <= 2 && passes < 255){
+			  passes = passes + 1;
+			  dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
 		double xprime, yprime;
-		Point start = original(1,1);
+		xprime = xCalc;
+		yprime = yCalc;
 		xprime = Math.pow(x,2) - Math.pow(y,2) + start.x;
 		yprime = 2 * x * y + start.y;
 		//sets the boundary for the x value
@@ -78,9 +108,5 @@ public class FractalTest {
 		assertTrue(-0.08 <yprime);
 		assertTrue(yprime < 0.025);
 	}
-	//throw away line//
-//	@Test
-//	public void checkIfPointIsNull(){
-//		
-//	}
+
 }
