@@ -13,11 +13,11 @@ public class Main {
   public Point escapeTimeAlgorithm(Point point){
 	  float xCalc = point.x;
 	  float yCalc = point.y;
-	  double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),-2);
+	  double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
 	  int passes = 0;
-	  while(dist <= 4 && passes < 255){
+	  while(dist <= 2 && passes < 255){
 		  passes = passes + 1;
-		  dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),-2);
+		  dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
 	  }
 	  
 	  Point retPoint = new Point(0,0);
