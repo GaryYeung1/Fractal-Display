@@ -9,6 +9,8 @@ public class Main {
   public static void main(String[] args) {
     // TODO Auto-generated method stub
 	 int [][] grid = new int[512][512];
+
+
   }
   public Point escapeTimeAlgorithm(Point point){
 	  float xCalc = point.x;
@@ -59,6 +61,7 @@ public class Main {
 		}
   }
 
+
   public void Julia(float x, float y){
 	  	Point ori = original(0, 0);
 //		double xCalc;
@@ -74,7 +77,8 @@ public class Main {
 			passes++;
 			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 		}
-}
+	}
+
   
   public void BurningShip(float x, float y){
 	  	Point ori = original(0, 0);
@@ -91,8 +95,8 @@ public class Main {
 			passes++;
 			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 		}
-}
-
+ 
+  }
 }
 
 
