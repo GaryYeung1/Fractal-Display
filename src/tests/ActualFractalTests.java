@@ -110,5 +110,6 @@ public class ActualFractalTests {
 		assertTrue(-0.08 <y);
 		assertTrue(y < 0.025);
 	}
+	//
 }
 

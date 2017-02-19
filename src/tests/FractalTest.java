@@ -107,6 +107,6 @@ public class FractalTest {
 		//sets the boundary for the y value
 		assertTrue(-0.08 <yprime);
 		assertTrue(yprime < 0.025);
-	}
+	}//
 
 }
