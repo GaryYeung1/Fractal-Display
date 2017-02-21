@@ -45,11 +45,13 @@ public class Main {
 
 	}
 
-
+	// public void getX(){
+	//
+	// }
 
 	public void Coordinate() {
 		double[][] Coordinate = new double[512][512];
-		
+
 	}
 
 	/**
@@ -61,6 +63,12 @@ public class Main {
 		double yCalc;
 		xCalc = (0.6 - (-2.15)) / 512;
 		yCalc = (1.3 - (-1.3)) / 512;
+		double[][] grid = new double[512][512];
+		for(int i = 0; i < grid.length; i++){
+			for(int k =0; k < grid[i].length;i++){
+				grid[i][k] = -2.15 + i*(xCalc) -1.3+(k*yCalc);
+			}
+		}
 		// Point ori = original(0, 0);
 
 		double xPrime;
@@ -88,7 +96,15 @@ public class Main {
 		double yCalc;
 		xCalc = (1.7 - (-1.7)) / 512;
 		yCalc = (1.0 - (-1.0)) / 512;
+		double[][] grid = new double[512][512];
+		for(int i = 0; i < grid.length; i++){
+			for(int k =0; k < grid[i].length;i++){
+				grid[i][k] = -1.7 + i*(xCalc) -1.0+(k*yCalc);
+			}
+		}
 		// Point ori = original(0, 0);
+		// double xCalc;
+		// double yCalc;
 		double xPrime;
 		double yPrime;
 		double dist = 0;
@@ -111,7 +127,15 @@ public class Main {
 		double yCalc;
 		xCalc = (-1.7 - (-1.8)) / 512;
 		yCalc = (0.025 - (-0.08)) / 512;
+		double[][] grid = new double[512][512];
+		for(int i = 0; i < grid.length; i++){
+			for(int k =0; k < grid[i].length;i++){
+				grid[i][k] = -1.8 + i*(xCalc) -0.08+(k*yCalc);
+			}
+		}
 		// Point ori = original(0, 0);
+		// double xCalc;
+		// double yCalc;
 		double xPrime;
 		double yPrime;
 		double dist = 0;
@@ -136,6 +160,12 @@ public class Main {
 		double yCalc;
 		xCalc = (0.6 - (-2.15)) / 512;
 		yCalc = (1.3 - (-1.3)) / 512;
+		double[][] grid = new double[512][512];
+		for(int i = 0; i < grid.length; i++){
+			for(int k =0; k < grid[i].length;i++){
+				grid[i][k] = -2.15 + i*(xCalc) -1.3+(k*yCalc);
+			}
+		}
 		// Point ori = original(0, 0);
 
 		double xPrime;
@@ -151,6 +181,7 @@ public class Main {
 
 		}
 	}
+}
 
 
 
