@@ -28,24 +28,24 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void mandelbrotTest(){
-//		Point ori = original(0,0);
-//		float escapeTime;
-//		int xCalc = ori.x;
-//		int yCalc = ori.y;
-//		double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
-//		int passes = 0;
-//		int x = xCalc;
-//		int y = yCalc;
-//		while(dist<=2 && passes< 255){
-//			int xPrime = x * x - y * y + ori.x;
-//			int yPrime = 2 * x * y + ori.y;
-//			passes++;
-//			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
-//			x = xPrime;
-//			y = yPrime;
-//		}
-//		escapeTime = passes;
-		//sets the x boundaries.
+		Point ori = original(0,0);
+		float escapeTime;
+		int xCalc = ori.x;
+		int yCalc = ori.y;
+		double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
+		int passes = 0;
+		int x = xCalc;
+		int y = yCalc;
+		while(dist<=2 && passes< 255){
+			int xPrime = x * x - y * y + ori.x;
+			int yPrime = 2 * x * y + ori.y;
+			passes++;
+			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+			x = xPrime;
+			y = yPrime;
+		}
+		escapeTime = passes;
+//		sets the x boundaries.
 		Sets sets = new Sets();
 		sets.mandelbrotSet(-1, 1);
 		assertTrue(-2.15<x);

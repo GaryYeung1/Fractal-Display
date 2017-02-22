@@ -3,6 +3,9 @@ package edu.buffalo.cse116;
 import java.awt.Point;
 
 public class Sets {
+	/**
+	 * This is to create the sets.
+	 */
 	public Sets(){}
 	/**
 	 * this sets the point system up for the coordinates.
