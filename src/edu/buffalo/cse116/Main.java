@@ -11,7 +11,7 @@ public class Main {
     // TODO Auto-generated method stub
 	  new Sets();
 //	 int [][] grid = new int[512][512];
-//
+// //
 //
 //  }
 //  public Point escapeTimeAlgorithm(Point point){

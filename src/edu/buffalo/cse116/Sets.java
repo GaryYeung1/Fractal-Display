@@ -66,8 +66,8 @@ public class Sets {
 	 */
 	public int[][] Julia_set()
   	{
-  		double w = (1.7 - (-1.7)) / 512;
-		double h = (1.0 - (-1.0)) / 512;
+  		double w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
+		double h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
  		int[][] grid = new int[512][512];
 
   		for(int i = 0; i < 512 ;i++)
@@ -76,7 +76,7 @@ public class Sets {
   			{
   				double x = w * j;
   				double y = h * i;
-  				grid[i][j] = this.juliaSet(x, y);
+  				grid[i][j] = this.juliaSet(x, y); //sets the points up
   			}
   		}
 
