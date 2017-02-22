@@ -45,9 +45,6 @@ public class Main {
 
 	}
 
-	// public void getX(){
-	//
-	// }
 
 	public void Coordinate() {
 		double[][] Coordinate = new double[512][512];
@@ -69,7 +66,6 @@ public class Main {
 				grid[i][k] = -2.15 + i*(xCalc) -1.3+(k*yCalc);
 			}
 		}
-		// Point ori = original(0, 0);
 
 		double xPrime;
 		double yPrime;
@@ -77,9 +73,7 @@ public class Main {
 		int passes = 0;
 
 		while (dist <= 2 && passes < 255) {
-			// xPrime = x * x - y * y + ori.getX();
 			xPrime = x * x - y * y + xCalc;
-			// yPrime = 2 * x * y + ori.getY();
 			yPrime = 2 * x * y + yCalc;
 			passes++;
 			dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
@@ -102,9 +96,7 @@ public class Main {
 				grid[i][k] = -1.7 + i*(xCalc) -1.0+(k*yCalc);
 			}
 		}
-		// Point ori = original(0, 0);
-		// double xCalc;
-		// double yCalc;
+
 		double xPrime;
 		double yPrime;
 		double dist = 0;
@@ -133,17 +125,13 @@ public class Main {
 				grid[i][k] = -1.8 + i*(xCalc) -0.08+(k*yCalc);
 			}
 		}
-		// Point ori = original(0, 0);
-		// double xCalc;
-		// double yCalc;
+
 		double xPrime;
 		double yPrime;
 		double dist = 0;
 		int passes = 0;
 
 		while (dist <= 2 && passes < 255) {
-			// xPrime = x * x - y * y + ori.getX();
-			// yPrime = Math.abs(2 * x * y) + ori.getY();
 			xPrime = x * x - y * y + xCalc;
 			yPrime = Math.abs(2 * x * y) + yCalc;
 			passes++;
@@ -166,7 +154,6 @@ public class Main {
 				grid[i][k] = -2.15 + i*(xCalc) -1.3+(k*yCalc);
 			}
 		}
-		// Point ori = original(0, 0);
 
 		double xPrime;
 		double yPrime;
