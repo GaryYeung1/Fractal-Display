@@ -113,8 +113,8 @@ public class Sets {
 	 */
 	public int[][] BurningShip_set()
   	{
-  		double w = (1.7 - (-1.8)) / 512;
-		double h = (0.025 - (-0.08)) / 512;
+  		double w = (1.7 - (-1.8)) / 512; // sets the x coordinates 
+		double h = (0.025 - (-0.08)) / 512; // sets the y coordinates
  		int[][] grid = new int[512][512];
 
   		for(int i = 0; i < 512 ;i++)
@@ -123,7 +123,7 @@ public class Sets {
   			{
   				double x = w * j;
   				double y = h * i;
-  				grid[i][j] = this.burningShipSet(x,y);
+  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
   			}
   		}
 
