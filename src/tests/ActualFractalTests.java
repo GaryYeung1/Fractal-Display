@@ -161,6 +161,20 @@ public class ActualFractalTests {
 		int escapeTime = sets.mandelbrotSet(x, y);
 		assertEquals(escapeTime, 254, 0.0);
 	}
+	/** Method checks if the burning ship set stays below the escape distance. 
+	 * @author genessy 
+	 */
+			@Test
+			
+			public void burningShipBelowEscapeDistance(){
+				Sets sets = new Sets();
+				//int escapeTime = sets.burningShipSet(x, y);
+				double x = 1.0492187499999897;
+				double y = -0.234375;
+				int escapeTime = sets.burningShipSet(x, y);
+				assertEquals(escapeTime, 254, 0);
+				
+			}
 	public void multibrotTest(int x, int y) {
 		double xCalc;
 		double yCalc;
