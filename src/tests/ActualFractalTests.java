@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.awt.Point;
 
@@ -123,7 +123,44 @@ public class ActualFractalTests {
 		int escapeTime = sets.burningShipSet(-1.75, 0);
 		assertTrue(escapeTime < 1);
 	}
-	
+	/**
+	 * 
+	 */
+	@Test
+	public void fractalReturn(){
+		Sets sets = new Sets();
+		int[][] grid = new int[512][512];
+		assertTrue(grid==sets.Mandelbrot_set());
+		assertTrue(grid==sets.BurningShip_set());
+		assertTrue(grid==sets.Julia_set());
+		assertTrue(grid==sets.Multibrot_set());
+	}
+	/**
+	 * This method checks if the mandelbrot set will exceed the escape distance. If it does it exceed the
+	 * distance then the escape time should be 1.
+	 * @author Florebencia Fils-Aime
+	 */
+	@Test
+	public void mandelbrotExceedsEscapeDistance(){
+		Sets sets = new Sets();
+		double x = 0.5946289062500001;
+		double y = 1.2949218750000122;
+		int escapeTime = sets.mandelbrotSet(x, y);
+		assertEquals(escapeTime, 1, 0.0);
+	}
+	/**
+	 * This method checks if the mandelbrot set will never exceed the escape distance. If it doesn't the sets
+	 * class method should stop the loop at 254 times and the escape time should be 254.
+	 * @author Florebencia Fils-Aime 
+	 */
+	@Test
+	public void mandelbrotUnderEscapeDistance(){
+		Sets sets = new Sets();
+		double x = 0.3207031250000001;
+		double y = -0.07109374999999386;
+		int escapeTime = sets.mandelbrotSet(x, y);
+		assertEquals(escapeTime, 254, 0.0);
+	}
 	public void multibrotTest(int x, int y) {
 		double xCalc;
 		double yCalc;
