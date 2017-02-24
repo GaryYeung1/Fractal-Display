@@ -171,7 +171,7 @@ public class Sets {
   			{
   				double x = w * j;
   				double y = h * i;
-  				grid[i][j] = Multibrot(x,y);
+  				grid[i][j] = this.Multibrot(x,y);
   			}
   		}
 
