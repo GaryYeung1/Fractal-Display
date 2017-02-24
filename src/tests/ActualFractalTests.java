@@ -27,6 +27,22 @@ public class ActualFractalTests {
 	 * @param y
 	 */
 	@Test
+	public void mandelbrotSetTranslationTest(){
+		Sets set = new Sets();
+		double w = (0.6 - (-2.15)) / 512;
+		double h = (1.3 - (-1.3)) / 512; 
+		int[][] grid = new int[512][512];
+
+		for(int i = 0; i < 512 ;i++){
+			for(int j = 0; j < 512 ;j++){
+				double x = w * j;
+				double y = h * i;
+				grid[i][j] = set.mandelbrotSet(x,y); 
+			}
+		}
+		assertTrue(grid == set.Mandelbrot_set());
+	}
+	@Test
 	public void mandelbrotTest(){
 		Point ori = original(0,0);
 		float escapeTime;
@@ -59,6 +75,24 @@ public class ActualFractalTests {
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
 	@Test
+	public void juliaSetTranslationTest(){
+		Sets set = new Sets();
+		double w = (1.7 - (-1.7)) / 512; 
+		double h = (1.0 - (-1.0)) / 512; 
+ 		int[][] grid = new int[512][512];
+
+  		for(int i = 0; i < 512 ;i++)
+  		{
+  			for(int j = 0; j < 512 ;j++)
+  			{
+  				double x = w * j;
+  				double y = h * i;
+  				grid[i][j] = set.juliaSet(x, y); 
+  			}
+  		}
+  		assertTrue(grid==set.Julia_set());
+	}
+	@Test
 	public void juliaTest(){
 		Point ori = original(0,0);
 		float escapeTime;
@@ -88,6 +122,24 @@ public class ActualFractalTests {
 	 * This is for the Burning Ship Set.
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
+	@Test
+	public void burningShipSetTranslationTest(){
+		Sets set = new Sets();
+		double w = (1.7 - (-1.8)) / 512;  
+		double h = (0.025 - (-0.08)) / 512; 
+ 		int[][] grid = new int[512][512];
+
+  		for(int i = 0; i < 512 ;i++)
+  		{
+  			for(int j = 0; j < 512 ;j++)
+  			{
+  				double x = w * j;
+  				double y = h * i;
+  				grid[i][j] = set.burningShipSet(x,y);  
+  			}
+  		}
+  		assertTrue(grid == set.BurningShip_set());
+	}
 	@Test
 	public void burningShipTest(){
 		Point ori = original(0,0);
@@ -141,6 +193,24 @@ public class ActualFractalTests {
 	 * @author Florebencia Fils-Aime
 	 */
 	@Test
+	public void multibrotSetTranslationTest(){
+		Sets set = new Sets();
+		double w = (1 - (-1)) / 512;
+		double h = (1.3 - (-1.3)) / 512;
+		int[][] grid = new int[512][512];
+
+  		for(int i = 0; i < 512 ;i++)
+  		{
+  			for(int j = 0; j < 512 ;j++)
+  			{
+  				double x = w * j;
+  				double y = h * i;
+  				grid[i][j] = set.Multibrot(x,y);
+  			}
+  		}
+  		assertTrue(grid == set.Multibrot_set());
+	}
+	@Test
 	public void mandelbrotExceedsEscapeDistance(){
 		Sets sets = new Sets();
 		double x = 0.5946289062500001;
@@ -162,19 +232,19 @@ public class ActualFractalTests {
 		assertEquals(escapeTime, 254, 0.0);
 	}
 	/** Method checks if the burning ship set stays below the escape distance. 
-	 * @author genessy 
-	 */
-			@Test
-			
-			public void burningShipBelowEscapeDistance(){
-				Sets sets = new Sets();
-				//int escapeTime = sets.burningShipSet(x, y);
-				double x = 1.0492187499999897;
-				double y = -0.234375;
-				int escapeTime = sets.burningShipSet(x, y);
-				assertEquals(escapeTime, 254, 0);
-				
-			}
+	 +	 * @author genessy 
+	 +	 */
+	 @Test
+	 			
+	 public void burningShipBelowEscapeDistance(){
+	 	Sets sets = new Sets();
+	 	//int escapeTime = sets.burningShipSet(x, y);
+	 	double x = 1.0492187499999897;
+	 	double y = -0.234375;
+	 	int escapeTime = sets.burningShipSet(x, y);
+	 	assertEquals(escapeTime, 254, 0);
+	 				
+	 			}
 	public void multibrotTest(int x, int y) {
 		double xCalc;
 		double yCalc;
