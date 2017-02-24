@@ -47,7 +47,7 @@ public class Sets {
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
-		double dist = Math.pow(Math.pow(xCalc, 2) + Math.pow(yCalc, 2),1/2);
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		while(dist<=2 && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
