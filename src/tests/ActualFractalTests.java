@@ -179,7 +179,7 @@ public class ActualFractalTests {
 		assertEquals(1, escapeTime, 0.0);
 	}
 	/**
-	 * 
+	 * Method checks if the julia set exceeds the escape distance.
 	 */
 	@Test
 	public void juliaExceedsEscapeDistance(){
@@ -191,7 +191,7 @@ public class ActualFractalTests {
 		
 				}
 	/**
-	 * 
+	 * Method checks if the julia set stays below the escape distance.
 	 */
 	@Test
 	public void juliaBelowEscapeDistance(){
