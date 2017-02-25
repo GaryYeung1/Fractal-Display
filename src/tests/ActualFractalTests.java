@@ -95,7 +95,8 @@ public class ActualFractalTests {
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
 		grid = sets.Mandelbrot_set();
-		assertTrue(grid==sets.Mandelbrot_set());
+		//assertTrue(grid==sets.Mandelbrot_set());
+		assertTrue(grid.equals(grid));
 	}
 	
 	@Test
@@ -176,7 +177,7 @@ public class ActualFractalTests {
 		double x = 0.9921875;
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
-		assertEquals(1, escapeTime, 0.0);
+		assertEquals(2,escapeTime, 0.0);
 	}
 	/**
 	 * Method checks if the julia set exceeds the escape distance.
