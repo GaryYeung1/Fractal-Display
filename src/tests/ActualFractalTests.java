@@ -47,6 +47,7 @@ public class ActualFractalTests {
 		}
 		assertTrue(grid[1][1] == set.mandelbrotSet(0.0043,0.0051));
 	}
+	
 
 	@Test
 	public void mandelbrotTest() {
