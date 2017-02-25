@@ -52,10 +52,10 @@ public class Sets {
 		while(dist<=2 && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
-			passes++;
-			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 			xCalc = xPrime;
 			yCalc = yPrime;
+			passes += 1; 
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
 		escapeTime = passes;
 		return escapeTime;
@@ -99,7 +99,7 @@ public class Sets {
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			passes++;
-			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 			xCalc = xPrime;
 			yCalc = yPrime;
 		}
