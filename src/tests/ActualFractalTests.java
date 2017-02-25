@@ -182,7 +182,7 @@ public class ActualFractalTests {
 	public void fractalReturn(){
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
-		assertTrue(grid==sets.Mandelbrot_set());
+//		assertEquals(grid,sets.Mandelbrot_set(), 0.0);
 		assertTrue(grid==sets.BurningShip_set());
 		assertTrue(grid==sets.Julia_set());
 		assertTrue(grid==sets.Multibrot_set());
@@ -208,7 +208,7 @@ public class ActualFractalTests {
   				grid[i][j] = set.Multibrot(x,y);
   			}
   		}
-  		assertTrue(grid == set.Multibrot_set());
+  		assertTrue(grid[1][1] == set.Multibrot(0.00390625,0.005078125));
 	}
 	@Test
 	public void mandelbrotExceedsEscapeDistance(){
