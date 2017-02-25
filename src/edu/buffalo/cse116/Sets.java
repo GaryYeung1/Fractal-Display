@@ -171,7 +171,7 @@ public class Sets {
   			{
   				double x = w * j;
   				double y = h * i;
-  				grid[i][j] = Multibrot(x,y);
+  				grid[i][j] = this.Multibrot(x,y);
   			}
   		}
 
@@ -192,7 +192,7 @@ public class Sets {
 		int passes = 0;
 
 		while (dist <= 2 && passes < 255) {
-			double xPrime = Math.pow(xCalc, 3) - (3 * x * Math.pow(yCalc, 2))+ x;
+			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc, 2) * yCalc) - Math.pow(yCalc, 3) + y;
 			passes++;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
