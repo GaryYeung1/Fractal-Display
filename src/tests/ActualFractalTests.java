@@ -150,8 +150,8 @@ public class ActualFractalTests {
 	@Test
 	public void burningShipBelowEscapeDistance() {
 		Sets sets = new Sets();
-		double x = 1.0492187499999897;
-		double y = -0.234375;
+		double x = -1.7443359374999874;
+		double y = -0.017451171875000338;
 		int escapeTime = sets.burningShipSet(x, y);
 		assertEquals(255, escapeTime, 0);
 	}
@@ -177,6 +177,29 @@ public class ActualFractalTests {
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
 		assertEquals(1, escapeTime, 0.0);
+	}
+	/**
+	 * 
+	 */
+	@Test
+	public void juliaExceedsEscapeDistance(){
+		Sets sets = new Sets();
+		double x = 1.6933593749999853;
+		double y = 0.9765625;
+		int escapeTime = sets.juliaSet(x, y);
+		assertEquals(255, escapeTime, 0);
+		
+				}
+	/**
+	 * 
+	 */
+	@Test
+	public void juliaBelowEscapeDistance(){
+		Sets sets = new Sets();
+		double x = 1.0492187499999897;
+				double y = -0.234375;
+		int escapeTime = sets.juliaSet(x, y);
+		assertEquals(255, escapeTime, 0);
 	}
 //	public void multibrotTest(int x, int y) {
 //		double xCalc;
