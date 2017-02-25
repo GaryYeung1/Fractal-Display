@@ -216,7 +216,7 @@ public class ActualFractalTests {
 		double x = 0.5946289062500001;
 		double y = 1.2949218750000122;
 		int escapeTime = sets.mandelbrotSet(x, y);
-		assertEquals(escapeTime, 1, 0.0);
+		assertEquals(1, escapeTime, 0.0);
 	}
 	/**
 	 * This method checks if the mandelbrot set will never exceed the escape distance. If it doesn't the sets
@@ -229,7 +229,7 @@ public class ActualFractalTests {
 		double x = 0.3207031250000001;
 		double y = -0.07109374999999386;
 		int escapeTime = sets.mandelbrotSet(x, y);
-		assertEquals(escapeTime, 254, 0.0);
+		assertEquals(1, escapeTime, 0.0);
 	}
 	/** Method checks if the burning ship set stays below the escape distance. 
 	 +	 * @author genessy 
@@ -242,7 +242,7 @@ public class ActualFractalTests {
 	 	double x = 1.0492187499999897;
 	 	double y = -0.234375;
 	 	int escapeTime = sets.burningShipSet(x, y);
-	 	assertEquals(escapeTime, 254, 0);
+	 	assertEquals(255, escapeTime, 0);
 	 				
 	 			}
 	public void multibrotTest(int x, int y) {
