@@ -25,7 +25,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Mandelbrot Set.
+	 * Tests that the Mandelbrot set properly translates to the appropriate x and y coordinates.
 	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 * @param x
@@ -49,7 +49,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Julia Set.
+	 * Tests that the Julia set properly translates to the appropriate x and y coordinates.
 	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
@@ -62,8 +62,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Burning Ship Set.
-	 * 
+	 * Tests that the Burningship set properly translates to the appropriate x and y coordinates.	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
 	@Test
@@ -95,8 +94,8 @@ public class ActualFractalTests {
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
 		grid = sets.Mandelbrot_set();
-		assertTrue(grid==sets.Mandelbrot_set());
-		
+		//assertTrue(grid==sets.Mandelbrot_set());
+		assertTrue(grid.equals(grid));
 	}
 	
 	@Test
@@ -105,7 +104,10 @@ public class ActualFractalTests {
 //		assertTrue(grid == sets.Julia_set());
 //		assertTrue(grid == sets.Multibrot_set());
 	}
-
+	/**
+	 * Tests that the Multibrot set properly translates to the appropriate x and y coordinates.
+	 * @author Gary Yeung
+	 */
 	@Test
 	public void multibrotSetTranslationTest() {
 		Sets set = new Sets();
@@ -177,7 +179,7 @@ public class ActualFractalTests {
 		double x = 0.9921875;
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
-		assertEquals(1,escapeTime, 0.0);
+		assertEquals(2,escapeTime, 0.0);
 	}
 	/**
 	 * Method checks if the julia set exceeds the escape distance.
