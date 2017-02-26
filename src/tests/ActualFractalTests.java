@@ -188,7 +188,7 @@ public class ActualFractalTests {
 		double x = 1.6933593749999853;
 		double y = 0.9765625;
 		int escapeTime = sets.juliaSet(x, y);
-		assertEquals(255, escapeTime, 0);
+		assertEquals(2, escapeTime, 0);
 		
 				}
 	/**
