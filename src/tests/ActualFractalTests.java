@@ -25,7 +25,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Mandelbrot Set.
+	 * Tests that the Mandelbrot set properly translates to the appropriate x and y coordinates.
 	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 * @param x
@@ -49,7 +49,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Julia Set.
+	 * Tests that the Julia set properly translates to the appropriate x and y coordinates.
 	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
@@ -62,7 +62,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This is for the Burning Ship Set.
+	 * Tests that the Burningship set properly translates to the appropriate x and y coordinates.
 	 * 
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
@@ -105,7 +105,10 @@ public class ActualFractalTests {
 //		assertTrue(grid == sets.Julia_set());
 //		assertTrue(grid == sets.Multibrot_set());
 	}
-
+	/**
+	 * Tests that the Multibrot set properly translates to the appropriate x and y coordinates.
+	 * @author Gary Yeung
+	 */
 	@Test
 	public void multibrotSetTranslationTest() {
 		Sets set = new Sets();
