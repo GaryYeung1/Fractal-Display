@@ -62,7 +62,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * Tests that the Burningship set properly translates to the appropriate x and y coordinates.	 * 
+	Tests that the Burningship set properly translates to the appropriate x and y coordinates.
 	 * @author Gary Yeung, Yang Cai, Florebencia Fils-Aime
 	 */
 	@Test
