@@ -7,7 +7,7 @@ package edu.buffalo.cse116;
 
 /**
  *
- * @author caiyang
+ * @author Yang Cai
  */
 public class GUI extends javax.swing.JFrame {
 
