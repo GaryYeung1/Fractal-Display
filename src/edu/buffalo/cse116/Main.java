@@ -3,7 +3,8 @@ package edu.buffalo.cse116;
 import edu.buffalo.cse116.*;
 
 public class Main {
-	/*
+	/**
+	 * @author Gary
 	Worked on writing the main method. Didn't create update for xCalc/yCalc, or set current point escape time.
 	 */ 
 
