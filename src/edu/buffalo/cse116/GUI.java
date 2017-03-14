@@ -31,7 +31,7 @@ public class GUI extends JFrame {
 	private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
-	
+	private Model _model;	
 
 	public GUI() {		
 		initComponents();		
@@ -42,6 +42,7 @@ public class GUI extends JFrame {
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
+		_model = new Model(this);
 		
 		jPanel1 = new FractalPanel();
 		jMenuBar1 = new JMenuBar();
