@@ -42,7 +42,7 @@ public class GUI extends JFrame {
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-
+		
 		jPanel1 = new FractalPanel();
 		jMenuBar1 = new JMenuBar();
 		jMenu1 = new JMenu();
@@ -56,6 +56,8 @@ public class GUI extends JFrame {
 		jMenuItem6 = new JMenuItem();
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
+	
+	
 		set = new Sets();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -153,8 +155,19 @@ public class GUI extends JFrame {
 				GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
 		pack();
+		
 	}
 	
+	public int getEscapeTime(){
+		Scanner getEscapeTime = new Scanner(System.in);
+		int eT;
+		String change = "Set escape time";
+		eT = getEscapeTime.nextInt();
+		if(eT <= 0){
+			System.out.println("please input valid escape time");
+		}
+		return eT;
+	}
 
 	private void jMenuItem1ActionPerformed(ActionEvent evt) {
 		this.dispose();
@@ -215,4 +228,5 @@ public class GUI extends JFrame {
 			}
 		});
 	}
+}
 
