@@ -1,12 +1,15 @@
 package edu.buffalo.cse116;
 
 import java.awt.Point;
+import edu.buffalo.cse116.*;
 
 public class Sets {
 	/**
 	 * This is to create the sets.
 	 */
-	public Sets(){}
+	public Sets(){
+		
+	}
 	/**
 	 * this sets the point system up for the coordinates.
 	 * @param x
