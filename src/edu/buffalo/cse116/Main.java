@@ -11,6 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		new Sets();
+		new GUI().setVisible(true);
 	}
 }
 
