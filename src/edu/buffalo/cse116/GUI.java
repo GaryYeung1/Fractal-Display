@@ -1,10 +1,13 @@
 package edu.buffalo.cse116;
 
 import javax.swing.*;
+
+import edu.buffalo.fractal.FractalPanel;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.IndexColorModel;
 import java.util.*;
-
 /**
  *
  * @author Yang Cai
@@ -23,16 +26,24 @@ public class GUI extends JFrame {
 	private JMenuItem jMenuItem6;
 	private JMenuItem jMenuItem7;
 	private JMenuItem jMenuItem8;
-	private JPanel jPanel1;
+	private FractalPanel jPanel1; // FractalPanel is the jpanel 
+	private Sets set;
+	private final int numberOfColors = 50;
+	private IndexColorModel colorModel;
+	private int[][] escapeSteps;
+	
 
-	public GUI() {
-		initComponents();
+	public GUI() {		
+		initComponents();		
+		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
+		this.escapeSteps = this.set.Mandelbrot_set();		
+		updatePanel();
 	}
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
-		jPanel1 = new JPanel();
+		jPanel1 = new FractalPanel();
 		jMenuBar1 = new JMenuBar();
 		jMenu1 = new JMenu();
 		jMenuItem1 = new JMenuItem();
@@ -45,6 +56,7 @@ public class GUI extends JFrame {
 		jMenuItem6 = new JMenuItem();
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
+		set = new Sets();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,15 +82,35 @@ public class GUI extends JFrame {
 		jMenu2.setText("Fractal");
 
 		jMenuItem2.setText("Mandelbrot Set");
+		jMenuItem2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem2ActionPerformed(evt);
+			}
+		});
 		jMenu2.add(jMenuItem2);
 
 		jMenuItem3.setText("Julia Set");
+		jMenuItem3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem3ActionPerformed(evt);
+			}
+		});
 		jMenu2.add(jMenuItem3);
 
 		jMenuItem4.setText("Burning Ship Set");
+		jMenuItem4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem4ActionPerformed(evt);
+			}
+		});
 		jMenu2.add(jMenuItem4);
 
 		jMenuItem5.setText("Multibrot Set");
+		jMenuItem5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem5ActionPerformed(evt);
+			}
+		});
 		jMenu2.add(jMenuItem5);
 
 		jMenuBar1.add(jMenu2);
@@ -86,6 +118,11 @@ public class GUI extends JFrame {
 		jMenu3.setText("Color");
 
 		jMenuItem6.setText("Red");
+		jMenuItem6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem6ActionPerformed(evt);
+			}
+		});
 		jMenu3.add(jMenuItem6);
 
 		jMenuItem7.setText("Green");
@@ -97,6 +134,11 @@ public class GUI extends JFrame {
 		jMenu3.add(jMenuItem7);
 
 		jMenuItem8.setText("Blue");
+		jMenuItem8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem8ActionPerformed(evt);
+			}
+		});
 		jMenu3.add(jMenuItem8);
 
 		jMenuBar1.add(jMenu3);
@@ -112,13 +154,53 @@ public class GUI extends JFrame {
 
 		pack();
 	}
+	
 
 	private void jMenuItem1ActionPerformed(ActionEvent evt) {
-		// TODO add your handling code here:
+		this.dispose();
 	}
 
+	/*To change the color model*/
+	private void jMenuItem6ActionPerformed(ActionEvent evt) {
+		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);
+		updatePanel();
+	}
+	
 	private void jMenuItem7ActionPerformed(ActionEvent evt) {
-		// TODO add your handling code here:
+		this.colorModel = ColorModelFactory.createBluesColorModel(numberOfColors);
+		updatePanel(); 
+	}
+	
+	private void jMenuItem8ActionPerformed(ActionEvent evt) {
+		this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
+		updatePanel();
+	}
+	
+	/*To change the fractal*/
+	private void jMenuItem2ActionPerformed(ActionEvent evt) {
+		this.escapeSteps = this.set.Mandelbrot_set();
+		updatePanel();
+	}
+	
+	private void jMenuItem3ActionPerformed(ActionEvent evt) {
+		this.escapeSteps = this.set.Julia_set();
+		updatePanel();
+	}
+	
+	private void jMenuItem4ActionPerformed(ActionEvent evt) {
+		this.escapeSteps = this.set.BurningShip_set();
+		updatePanel();
+	}
+	
+	private void jMenuItem5ActionPerformed(ActionEvent evt) {
+		this.escapeSteps = this.set.Multibrot_set();
+		updatePanel();
+	}
+	
+	/*Update the panel with */
+	private void updatePanel(){
+		this.jPanel1.setIndexColorModel(this.colorModel);
+		this.jPanel1.updateImage(this.escapeSteps);
 	}
 
 	/**
@@ -134,4 +216,3 @@ public class GUI extends JFrame {
 		});
 	}
 
-}
