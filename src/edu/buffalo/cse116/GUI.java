@@ -143,7 +143,7 @@ public class GUI extends JFrame {
 		});
 		jMenu3.add(jMenuItem7);
 
-		jMenuItem8.setText("Green");
+		jMenuItem8.setText("Gray");
 		jMenuItem8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem8ActionPerformed(evt);
