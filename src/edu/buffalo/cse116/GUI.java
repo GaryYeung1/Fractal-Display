@@ -9,60 +9,64 @@ import java.awt.event.*;
 import java.awt.image.IndexColorModel;
 import java.util.*;
 /**
- *
+ * This class creates the GUI that will run the program.
  * @author Yang Cai
  */
 public class GUI extends JFrame {
 
-	private JMenu jMenu1;
-	private JMenu jMenu2;
-	private JMenu jMenu3;
+	private JMenu jMenu1,jMenu2,jMenu3;
 	private JMenuBar jMenuBar1;
-	private JMenuItem jMenuItem1;
-	private JMenuItem jMenuItem2;
-	private JMenuItem jMenuItem3;
-	private JMenuItem jMenuItem4;
-	private JMenuItem jMenuItem5;
-	private JMenuItem jMenuItem6;
-	private JMenuItem jMenuItem7;
-	private JMenuItem jMenuItem8;
+	
+	private JMenuItem jMenuItem1,jMenuItem2,jMenuItem3,jMenuItem4, jMenuItem5;
+	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8; 
+	
 	private FractalPanel jPanel1; // FractalPanel is the jpanel 
+	
 	private Sets set;
+	
 	private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
 	private Model _model;	
-
+/**
+ * 
+ * @author Yang Cai
+ */
 	public GUI() {		
 		initComponents();		
 		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
 		this.escapeSteps = this.set.Mandelbrot_set();		
 		updatePanel();
 	}
-
+/**
+ * 
+ * @author Yang Cai
+ */
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 		_model = new Model(this);
-		
 		jPanel1 = new FractalPanel();
+		
 		jMenuBar1 = new JMenuBar();
 		jMenu1 = new JMenu();
 		jMenuItem1 = new JMenuItem();
+		
 		jMenu2 = new JMenu();
 		jMenuItem2 = new JMenuItem();
 		jMenuItem3 = new JMenuItem();
 		jMenuItem4 = new JMenuItem();
 		jMenuItem5 = new JMenuItem();
+		
 		jMenu3 = new JMenu();
 		jMenuItem6 = new JMenuItem();
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
 	
-	
 		set = new Sets();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+		//
 		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(
@@ -78,6 +82,7 @@ public class GUI extends JFrame {
 				jMenuItem1ActionPerformed(evt);
 			}
 		});
+		
 		jMenu1.add(jMenuItem1);
 
 		jMenuBar1.add(jMenu1);

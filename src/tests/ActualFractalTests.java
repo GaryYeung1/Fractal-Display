@@ -204,30 +204,5 @@ public class ActualFractalTests {
 		int escapeTime = sets.juliaSet(x, y);
 		assertEquals(255, escapeTime, 0);
 	}
-//	public void multibrotTest(int x, int y) {
-//		double xCalc;
-//		double yCalc;
-//		xCalc = (0.6 - (-2.15)) / 512;
-//		yCalc = (1.3 - (-1.3)) / 512;
-//		double[][] grid = new double[512][512];
-//		for (int i = 0; i < grid.length; i++) {
-//			for (int k = 0; k < grid[i].length; i++) {
-//				grid[i][k] = -2.15 + i * (xCalc) - 1.3 + (k * yCalc);
-//			}
-//		}
-//		// Point ori = original(0, 0);
-//
-//		double xPrime;
-//		double yPrime;
-//		double dist = 0;
-//		int passes = 0;
-//
-//		while (dist <= 2 && passes < 255) {
-//			xPrime = Math.pow(x, 3) - (3 * x * Math.pow(y, 2)) + xCalc;
-//			yPrime = (3 * Math.pow(x, 2) * y) - Math.pow(y, 3) + yCalc;
-//			passes++;
-//			dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-//
-//		}
-//	}
+
 }

@@ -7,7 +7,7 @@ import javax.swing.*;
 public class FractalGUI {
 	/**
 	This class is used to create the program that will show the fractal.
-	@author garyy
+	@author Gary Yeung 
 	**/
 	JPanel _panel = new JPanel();
 	JFrame _frame = new JFrame("Fractal Creator");
