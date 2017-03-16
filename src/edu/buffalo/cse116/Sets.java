@@ -7,8 +7,9 @@ public class Sets {
 	/**
 	 * This is to create the sets.
 	 */
+	
 	public Sets(){
-		
+
 	}
 	/**
 	 * this sets the point system up for the coordinates.
@@ -31,8 +32,8 @@ public class Sets {
 
 		for(int i = 0; i < 512 ;i++){
 			for(int j = 0; j < 512 ;j++){
-				double x = w * j;
-				double y = h * i;
+				double x = -2.15 + (i*w);
+				double y = -1.3 + (j*h);
 				grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
 			}
 		}
@@ -52,7 +53,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist<=2 && passes< 255){
+		while(dist<= 2 && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -77,8 +78,8 @@ public class Sets {
   		{
   			for(int j = 0; j < 512 ;j++)
   			{
-  				double x = w * j;
-  				double y = h * i;
+  				double x = -1.7 + (w * i);
+  				double y = -1.0 + (h * j);
   				grid[i][j] = this.juliaSet(x, y); //sets the points up
   			}
   		}
@@ -124,8 +125,8 @@ public class Sets {
   		{
   			for(int j = 0; j < 512 ;j++)
   			{
-  				double x = w * j;
-  				double y = h * i;
+  				double x = -1.8 + (w * i);
+  				double y = -0.08 + (h * j);
   				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
   			}
   		}
@@ -172,8 +173,8 @@ public class Sets {
   		{
   			for(int j = 0; j < 512 ;j++)
   			{
-  				double x = w * j;
-  				double y = h * i;
+  				double x = -1 + (w * i);
+  				double y = -1.3 + (h * j);
   				grid[i][j] = this.Multibrot(x,y);
   			}
   		}
