@@ -133,7 +133,7 @@ public class GUI extends JFrame {
 		});
 		jMenu3.add(jMenuItem6);
 
-		jMenuItem7.setText("Green");
+		jMenuItem7.setText("Blue");
 		jMenuItem7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem7ActionPerformed(evt);
@@ -141,7 +141,7 @@ public class GUI extends JFrame {
 		});
 		jMenu3.add(jMenuItem7);
 
-		jMenuItem8.setText("Blue");
+		jMenuItem8.setText("Green");
 		jMenuItem8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem8ActionPerformed(evt);
