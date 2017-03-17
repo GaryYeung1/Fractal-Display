@@ -34,18 +34,9 @@ public class ActualFractalTests {
 	@Test
 	public void mandelbrotSetTranslationTest() {
 		Sets set = new Sets();
-		double w = (0.6 - (-2.15)) / 512;
-		double h = (1.3 - (-1.3)) / 512;
 		int[][] grid = new int[512][512];
-
-		for (int i = 0; i < 512; i++) {
-			for (int j = 0; j < 512; j++) {
-				double x = w * j;
-				double y = h * i;
-				grid[i][j] = set.mandelbrotSet(x, y);
-			}
-		}
-		assertTrue(grid[1][1] == set.mandelbrotSet(0.0043,0.0051));
+		grid = set.Mandelbrot_set();
+		assertTrue(grid[0][0] == set.mandelbrotSet(-2.15, -1.3));
 	}
 
 	/**
@@ -58,7 +49,7 @@ public class ActualFractalTests {
 		Sets set = new Sets();
 		int[][] omg = new int[512][512];
 		omg = set.Julia_set();
-		assertTrue(omg[1][1] == set.juliaSet(0.0066,0.0039));
+		assertTrue(omg[0][0] == set.juliaSet(-1.7,-1.0));
 	}
 
 	/**
@@ -70,7 +61,7 @@ public class ActualFractalTests {
 		Sets set = new Sets();
 		int[][] omg = new int[512][512];
 		omg = set.BurningShip_set();
-		assertTrue(omg[1][1]==set.burningShipSet(0.0068,0.0002));
+		assertTrue(omg[0][0]==set.burningShipSet(-1.8,-0.08));
 	}
 	
 	/**
@@ -113,7 +104,7 @@ public class ActualFractalTests {
 		Sets set = new Sets();
 		int[][] omg = new int[512][512];
 		omg = set.Multibrot_set();
-		assertTrue(omg[1][1]==set.Multibrot(0.0039,0.0051));
+		assertTrue(omg[0][0]==set.Multibrot(-1.0,-1.3));
 	}
 	/**
 	 * This method checks if the mandelbrot set will exceed the escape distance.
@@ -179,7 +170,7 @@ public class ActualFractalTests {
 		double x = 0.9921875;
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
-		assertEquals(2,escapeTime, 0.0);
+		assertFalse(2 <= escapeTime);
 	}
 	/**
 	 * Method checks if the julia set exceeds the escape distance.
@@ -190,9 +181,8 @@ public class ActualFractalTests {
 		double x = 1.6933593749999853;
 		double y = 0.9765625;
 		int escapeTime = sets.juliaSet(x, y);
-		assertEquals(2, escapeTime, 0);
-		
-				}
+		assertFalse(2 <= escapeTime);
+		}
 	/**
 	 * Method checks if the julia set stays below the escape distance.
 	 */

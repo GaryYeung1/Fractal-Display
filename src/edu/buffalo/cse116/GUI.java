@@ -18,8 +18,9 @@ public class GUI extends JFrame {
 	private JMenuBar jMenuBar1;
 	
 	private JMenuItem jMenuItem1,jMenuItem2,jMenuItem3,jMenuItem4, jMenuItem5;
-	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8; 
-	
+	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8;
+	public JLabel	escapeDistanceRequest;
+	public JTextField escapeDistance;
 	private FractalPanel jPanel1; // FractalPanel is the jpanel 
 	
 	private Sets set;
@@ -61,7 +62,8 @@ public class GUI extends JFrame {
 		jMenuItem6 = new JMenuItem();
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
-	
+		escapeDistance = new JTextField(10);
+		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");
 		set = new Sets();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +75,7 @@ public class GUI extends JFrame {
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 479, Short.MAX_VALUE));
 		jPanel1Layout.setVerticalGroup(
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 309, Short.MAX_VALUE));
-
+		
 		jMenu1.setText("File");
 
 		jMenuItem1.setText("Exit");
@@ -133,7 +135,7 @@ public class GUI extends JFrame {
 		});
 		jMenu3.add(jMenuItem6);
 
-		jMenuItem7.setText("Green");
+		jMenuItem7.setText("Blue");
 		jMenuItem7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem7ActionPerformed(evt);
@@ -141,7 +143,7 @@ public class GUI extends JFrame {
 		});
 		jMenu3.add(jMenuItem7);
 
-		jMenuItem8.setText("Blue");
+		jMenuItem8.setText("Gray");
 		jMenuItem8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem8ActionPerformed(evt);
@@ -152,16 +154,16 @@ public class GUI extends JFrame {
 		jMenuBar1.add(jMenu3);
 
 		setJMenuBar(jMenuBar1);
-
+		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jPanel1,
 				GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jPanel1,
 				GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-
-		pack();
 		
+		pack();
+	
 	}
 	
 	public int getEscapeTime(){

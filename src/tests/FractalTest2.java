@@ -24,7 +24,7 @@ public class FractalTest2 {
 			yCalc = y;
 			double dist = 3;
 			int passes = 0;
-			while(dist>=0 && passes< 255){
+			while(dist > 0 && passes< 255){
 				double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 				double yPrime = 2 * xCalc * yCalc + y;
 				xCalc = xPrime;
@@ -48,7 +48,7 @@ public class FractalTest2 {
 		yCalc = y;
 		double dist = 3;
 		int passes = 0;
-		while(dist >= 0 && passes < 255){
+		while(dist > 0 && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			passes++;
@@ -72,7 +72,7 @@ public class FractalTest2 {
 		double dist = 3;
 		int passes = 0;
 		
-		while(dist >= 0 && passes < 255){
+		while(dist > 0 && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			passes++;
@@ -96,7 +96,7 @@ public class FractalTest2 {
 
 		int passes = 0;
 
-		while (dist >= 0 && passes < 255) {
+		while (dist > 0 && passes < 255) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc, 2) * yCalc) - Math.pow(yCalc, 3) + y;
 			passes++;
