@@ -50,6 +50,7 @@ public class GUI extends JFrame {
 		
 		jMenuBar1 = new JMenuBar();
 		jMenu1 = new JMenu();
+		
 		jMenuItem1 = new JMenuItem();
 		
 		jMenu2 = new JMenu();
@@ -77,7 +78,7 @@ public class GUI extends JFrame {
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 309, Short.MAX_VALUE));
 		
 		jMenu1.setText("File");
-
+		
 		jMenuItem1.setText("Exit");
 		jMenuItem1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -152,18 +153,32 @@ public class GUI extends JFrame {
 		jMenu3.add(jMenuItem8);
 
 		jMenuBar1.add(jMenu3);
+		
 
 		setJMenuBar(jMenuBar1);
 		
+
+		
+		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jPanel1,
-				GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jPanel1,
-				GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
+				addComponent(escapeDistance, 150, 150, 150).
+				addComponent(escapeDistanceRequest, 400, 400, 400).
+				addComponent(jPanel1,GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				);
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
+				addComponent(escapeDistance, 20, 20, 20).
+				addComponent(escapeDistanceRequest, 60, 60, 60).
+				addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 		
 		pack();
 	
+		
+//		.
+//		addComponent(escapeDistance, 150, 150, 150).
+//		.
+//		addComponent(escapeDistance, 20, 20, 20).
 	}
 	
 	public int getEscapeTime(){
