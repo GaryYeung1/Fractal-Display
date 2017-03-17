@@ -179,7 +179,7 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Multibrot_set(){
-  		double w = (1 - (-1)) / 512;
+  		double w = (1 - (-1)) / 512.0;
 		double h = (1.3 - (-1.3)) / 512;
 		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
