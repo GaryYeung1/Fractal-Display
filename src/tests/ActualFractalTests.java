@@ -77,7 +77,7 @@ public class ActualFractalTests {
 	}
 
 	/**
-	 * This tests if the mandelbrot will return a int[512][512]
+	 * This tests if the mandelbrot will return an int[512][512]
 	 * @author Florebencia Fils-Aime
 	 */
 	@Test
@@ -85,17 +85,19 @@ public class ActualFractalTests {
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
 		grid = sets.Mandelbrot_set();
-		assertTrue(grid.equals(sets.Mandelbrot_set()));
+		assertArrayEquals(grid, sets.Mandelbrot_set());
 	}
-	
+	/**
+	 * This tests if the burningShip set will return an array of 512 by 512
+	 * @author Florebencia Fils-Aime
+	 */
 	@Test
 	public void burningShipFractalReturn(){
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
 		grid = sets.BurningShip_set();
-		assertTrue(grid.equals(sets.BurningShip_set()));
-//		assertTrue(grid == sets.Julia_set());
-//		assertTrue(grid == sets.Multibrot_set());
+		assertArrayEquals(grid, sets.BurningShip_set());
+
 	}
 	/**
 	 * Tests that the Multibrot set properly translates to the appropriate x and y coordinates.

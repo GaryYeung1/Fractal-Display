@@ -253,18 +253,5 @@ public class GUI extends JFrame {
 		this.jPanel1.setIndexColorModel(this.colorModel);
 		this.jPanel1.updateImage(this.escapeSteps);
 	}
-
-	/**
-	 * @param args
-	 *
-	 */
-	public static void main(String args[]) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new GUI().setVisible(true);
-			}
-		});
-	}
 }
 

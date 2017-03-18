@@ -1,18 +1,21 @@
 package edu.buffalo.cse116;
 
+import java.awt.EventQueue;
+
 import edu.buffalo.cse116.*;
 
 public class Main {
 	/**
-	 * @author Gary
-	Worked on writing the main method. Didn't create update for xCalc/yCalc, or set current point escape time.
+	 * This runs our gui and shows all the things needed in our application.
+	 * @author Gary and Yang
 	 */ 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		new Sets();
-		new GUI().setVisible(true);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new GUI().setVisible(true);
+			}
+		});
 	}
 }
 
