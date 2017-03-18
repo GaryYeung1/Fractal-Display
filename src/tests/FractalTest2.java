@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import edu.buffalo.cse116.*;
 
 public class FractalTest2 {
 	/**
@@ -14,6 +15,12 @@ public class FractalTest2 {
 	/**
 	 * @author Genessy and Florebencia
 	 */
+	@Test public void juliaFractalReturn(){
+		Sets sets = new Sets();
+		int[][] grid = new int[512][512];
+		grid = sets.Julia_set();
+		assertTrue(grid.equals(sets.Julia_set()));
+	}
 	@Test
 	public void mandelbrotExceedsDist(){
 			int escapeTime;

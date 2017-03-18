@@ -85,13 +85,15 @@ public class ActualFractalTests {
 		Sets sets = new Sets();
 		int[][] grid = new int[512][512];
 		grid = sets.Mandelbrot_set();
-		//assertTrue(grid==sets.Mandelbrot_set());
-		assertTrue(grid.equals(grid));
+		assertTrue(grid.equals(sets.Mandelbrot_set()));
 	}
 	
 	@Test
 	public void burningShipFractalReturn(){
-//		assertTrue(grid == sets.BurningShip_set());
+		Sets sets = new Sets();
+		int[][] grid = new int[512][512];
+		grid = sets.BurningShip_set();
+		assertTrue(grid.equals(sets.BurningShip_set()));
 //		assertTrue(grid == sets.Julia_set());
 //		assertTrue(grid == sets.Multibrot_set());
 	}
@@ -194,5 +196,6 @@ public class ActualFractalTests {
 		int escapeTime = sets.juliaSet(x, y);
 		assertEquals(255, escapeTime, 0);
 	}
+	
 
 }
