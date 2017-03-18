@@ -9,7 +9,6 @@ public class Sets {
 	 */
 	
 	public Sets(){
-
 	}
 	/**
 	 * this sets the point system up for the coordinates.

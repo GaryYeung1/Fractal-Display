@@ -21,6 +21,7 @@ public class GUI extends JFrame {
 	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8; 
 	public JLabel	escapeDistanceRequest;
 	public JTextField escapeDistance;
+	public JButton enterEscapeDistance;
 	private FractalPanel jPanel1; // FractalPanel is the jpanel 
 	
 	private Sets set;
@@ -38,6 +39,7 @@ public class GUI extends JFrame {
 		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
 		this.escapeSteps = this.set.Mandelbrot_set();		
 		updatePanel();
+	
 	}
 /**
  * 
@@ -64,8 +66,9 @@ public class GUI extends JFrame {
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
 		JMenuItem jMenuItem9 = new JMenuItem();
-		escapeDistance = new JTextField(10);
+		escapeDistance = new JTextField("2");
 		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");
+		enterEscapeDistance = new JButton("Enter");
 		set = new Sets();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -158,6 +161,12 @@ public class GUI extends JFrame {
 				jMenuItem9ActionPerformed(evt);
 			}
 		});
+		enterEscapeDistance.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				jMenuItem10ActionPerformed(evt);
+			}
+		});
+		
 		
 		jMenu3.add(jMenuItem8);
 
@@ -174,11 +183,13 @@ public class GUI extends JFrame {
 		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
 				addComponent(escapeDistance, 150, 150, 150).
 				addComponent(escapeDistanceRequest, 400, 400, 400).
+				addComponent(enterEscapeDistance, 80, 80, 80).
 				addComponent(jPanel1,GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				);
 		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
 				addComponent(escapeDistance, 20, 20, 20).
 				addComponent(escapeDistanceRequest, 60, 60, 60).
+				addComponent(enterEscapeDistance, 80, 80, 80).
 				addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 		
 		pack();
@@ -189,16 +200,30 @@ public class GUI extends JFrame {
 //		.
 //		addComponent(escapeDistance, 20, 20, 20).
 	}
-	
-	public int getEscapeTime(){
-		Scanner getEscapeTime = new Scanner(System.in);
-		int eT;
-		String change = "Set escape time";
-		eT = getEscapeTime.nextInt();
-		if(eT <= 0){
-			System.out.println("please input valid escape time");
+	/**
+	 * Gets the value inputed by the user and sets it as the escape distance for the fractals. If invalid input is entered, displays
+	 * message requesting for valid input.
+	 * @return userInputEscapeDistance.
+	 * @author garyy
+	 */
+	private int getEscapeDistance(){
+		String userInput;
+		userInput = escapeDistance.getText();
+		int userEscapeDistance = 2;
+		try{
+			userEscapeDistance = Integer.parseInt(userInput);
+			escapeDistance.setText("");
+			if(userEscapeDistance <= 0){
+				escapeDistanceRequest.setText("please enter a valid escape distance.");
+				userEscapeDistance = 2;
+			}
+			System.out.println("" + userEscapeDistance);	
 		}
-		return eT;
+		catch(NumberFormatException e){
+			escapeDistanceRequest.setText("please enter a valid escape distance.");
+		}
+	
+		return userEscapeDistance;
 	}
 
 	private void jMenuItem1ActionPerformed(ActionEvent evt) {
@@ -245,6 +270,11 @@ public class GUI extends JFrame {
 	
 	private void jMenuItem5ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.Multibrot_set();
+		updatePanel();
+	}
+	/* for the escape distance button*/
+	private void jMenuItem10ActionPerformed(ActionEvent evt){
+		this.getEscapeDistance();
 		updatePanel();
 	}
 	
