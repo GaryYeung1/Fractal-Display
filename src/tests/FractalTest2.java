@@ -3,15 +3,41 @@ package tests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import edu.buffalo.cse116.*;
 
 public class FractalTest2 {
 	/**
+	 * This class runs the fractal tests for Phase Two. It also contains fractal tests
+	 * from phase one.
 	 * @author Genessy and Florebencia
 	 */
 	public FractalTest2(){
 		
 	}
 	/**
+	 * This sees if the julia set method returns a fractal of int[512][512]
+	 * @author Genessy and Florebencia
+	 */
+	@Test public void juliaFractalReturn(){
+		Sets sets = new Sets();
+		int[][] grid = new int[512][512];
+		grid = sets.Julia_set();
+		assertArrayEquals(grid, sets.Julia_set());
+	}
+	/**
+	 * This sees if the multibrot set will return an array of int 512 by 512
+	 * @author Florebencia Fils-Aime
+	 */
+	@Test
+	public void multibrotFractalReturn(){
+		Sets sets = new Sets();
+		int[][] grid = new int[512][512];
+		grid = sets.Multibrot_set();
+		assertArrayEquals(grid, sets.Multibrot_set());
+	}
+	/**
+	 * This class tests if the escape distance is 3, then  it checks if the mandelbrot set
+	 * will return an escape time more than 10.
 	 * @author Genessy and Florebencia
 	 */
 	@Test
@@ -36,6 +62,8 @@ public class FractalTest2 {
 			assertTrue(10 < escapeTime);
 	}
 	/**
+	 * This method checks if the escape distance is 3, then it will check if the julia set
+	 * will return an escape time more than 10.
 	 * @author Genessy and Florebencia
 	 */
 	@Test 
@@ -60,6 +88,8 @@ public class FractalTest2 {
 		assertTrue(10 < escapeTime);
 	}
 	/**
+	 * This method checks if the escape distance is 3, and then will check if the burning 
+	 * ship set's escape time is greater than 10
 	 * @author Genessy and Florebencia
 	 */
 	@Test
@@ -84,6 +114,8 @@ public class FractalTest2 {
 		assertTrue(10 < escapeTime);
 	}
 	/**
+	 * This method checks if the escape distance is 3, then it calculates if the escape time
+	 * is greater than 10.
 	 * @author Genessy and Florebencia
 	 */
 	@Test

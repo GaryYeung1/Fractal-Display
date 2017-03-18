@@ -66,7 +66,7 @@ public class GUI extends JFrame {
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
 		JMenuItem jMenuItem9 = new JMenuItem();
-		escapeDistance = new JTextField("2");
+		escapeDistance = new JTextField();
 		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");
 		enterEscapeDistance = new JButton("Enter");
 		set = new Sets();
@@ -216,8 +216,7 @@ public class GUI extends JFrame {
 			if(userEscapeDistance <= 0){
 				escapeDistanceRequest.setText("please enter a valid escape distance.");
 				userEscapeDistance = 2;
-			}
-			System.out.println("" + userEscapeDistance);	
+			}	
 		}
 		catch(NumberFormatException e){
 			escapeDistanceRequest.setText("please enter a valid escape distance.");
@@ -284,17 +283,6 @@ public class GUI extends JFrame {
 		this.jPanel1.updateImage(this.escapeSteps);
 	}
 
-	/**
-	 * @param args
-	 *
-	 */
-	public static void main(String args[]) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new GUI().setVisible(true);
-			}
-		});
-	}
+	
 }
 
