@@ -34,7 +34,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist<= 2 && passes< 255){
+		while(dist > 0 && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -58,7 +58,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
-		while(dist <= 2 && passes < 255){
+		while(dist > 0 && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -83,7 +83,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist <= 2 && passes < 255){
+		while(dist > 0 && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			xCalc = xPrime;
@@ -107,7 +107,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while (dist <= 2 && passes < 255) {
+		while (dist > 0 && passes < 255) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;
@@ -115,14 +115,15 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
-		//Set the current point's escape-time equal to passes ***********************************
+		//Set the current point's escape-time equal to passes 
 	  	escapeTime = passes;
 	  	return escapeTime;
 	}
 
-	/** Set mandelbrot set method and calculates the fractal into a 2D array with 512 rows and columns. 
+	/** Set mandelbrot set method and calculates the fractal into a 2D array with 
+	 * 512 rows and columns. 
 	 * @author Genessy 
-	 * @return
+	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(){
 		double w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
@@ -138,7 +139,9 @@ public class Sets {
 		return grid;
 	}
 	/**
-	 * @author Genessy - Julia set method and calculates the fractal into a 2D array with 512 rows and columns. 
+	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
+	 *  columns.
+	 * @author Genessy  
 	 * @return
 	 */
 	public int[][] Julia_set(){

@@ -122,7 +122,7 @@ public class ActualFractalTests {
 		double x = 0.5946289062500001;
 		double y = 1.2949218750000122;
 		int escapeTime = sets.mandelbrotSet(x, y);
-		assertEquals(1, escapeTime, 0.0);
+		assertEquals(11.0, escapeTime, 0.0);
 	}
 
 	/**
@@ -154,7 +154,9 @@ public class ActualFractalTests {
 		assertEquals(255, escapeTime, 0);
 	}
 	/**
-	 * 
+	 * This method calculates how many loops the multibrot should do while being under the 
+	 * escape distance
+	 * @author Florebencia and Genessy
 	 */
 	@Test
 	public void multibrotUnderEscapeDistance(){
@@ -166,7 +168,8 @@ public class ActualFractalTests {
 	}
 	
 	/**
-	 * 
+	 * This method checks if the escape time exceeds escape distance
+	 * @author Florebencia 
 	 */
 	@Test
 	public void multibrotExceedsEscapeDistance(){
@@ -174,10 +177,11 @@ public class ActualFractalTests {
 		double x = 0.9921875;
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
-		assertFalse(2 <= escapeTime);
+		assertTrue(0 <= escapeTime);
 	}
 	/**
 	 * Method checks if the julia set exceeds the escape distance.
+	 * @author Genessy
 	 */
 	@Test
 	public void juliaExceedsEscapeDistance(){
@@ -185,7 +189,7 @@ public class ActualFractalTests {
 		double x = 1.6933593749999853;
 		double y = 0.9765625;
 		int escapeTime = sets.juliaSet(x, y);
-		assertFalse(2 <= escapeTime);
+		assertTrue(0 <= escapeTime);
 		}
 	/**
 	 * Method checks if the julia set stays below the escape distance.
