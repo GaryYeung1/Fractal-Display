@@ -5,11 +5,12 @@ import edu.buffalo.cse116.*;
 
 public class Sets {
 	/**
-	 * This is to create the sets.
+	 * This is to create the sets. It is also the model class for our GUI.
 	 */
+	private GUI _gui; 
 	
-	public Sets(){
-
+	public Sets(GUI gui){
+		_gui = gui;
 	}
 	/**
 	 * this sets the point system up for the coordinates.

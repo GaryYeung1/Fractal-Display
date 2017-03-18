@@ -10,7 +10,7 @@ import java.awt.image.IndexColorModel;
 import java.util.*;
 /**
  * This class creates the GUI that will run the program.
- * @author Yang Cai
+ * @author Yang Cai, Gary Yeung, Genessy Munoz
  */
 public class GUI extends JFrame {
 
@@ -29,7 +29,7 @@ public class GUI extends JFrame {
 	private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
-	private Model _model;	
+	
 /**
  * 
  * @author Yang Cai
@@ -42,37 +42,12 @@ public class GUI extends JFrame {
 	
 	}
 /**
- * 
- * @author Yang Cai
+ * This creates the components of the GUI
+ * @author Yang Cai and Gary Yeung
  */
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		_model = new Model(this);
 		jPanel1 = new FractalPanel();
-		
-		jMenuBar1 = new JMenuBar();
-		jMenu1 = new JMenu();
-		
-		jMenuItem1 = new JMenuItem();
-		
-		jMenu2 = new JMenu();
-		jMenuItem2 = new JMenuItem();
-		jMenuItem3 = new JMenuItem();
-		jMenuItem4 = new JMenuItem();
-		jMenuItem5 = new JMenuItem();
-		
-		jMenu3 = new JMenu();
-		jMenuItem6 = new JMenuItem();
-		jMenuItem7 = new JMenuItem();
-		jMenuItem8 = new JMenuItem();
-		JMenuItem jMenuItem9 = new JMenuItem();
-		escapeDistance = new JTextField();
-		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");
-		enterEscapeDistance = new JButton("Enter");
-		set = new Sets();
-
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
 		//
 		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
@@ -80,6 +55,34 @@ public class GUI extends JFrame {
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 479, Short.MAX_VALUE));
 		jPanel1Layout.setVerticalGroup(
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 309, Short.MAX_VALUE));
+		set = new Sets(this);
+		
+		// this creates the file menu and its item. It also creates the menu bar. 
+		jMenuBar1 = new JMenuBar();
+		jMenu1 = new JMenu();
+		jMenuItem1 = new JMenuItem();
+		
+		// this creates the fractal menu and its items.
+		jMenu2 = new JMenu();
+		jMenuItem2 = new JMenuItem();
+		jMenuItem3 = new JMenuItem();
+		jMenuItem4 = new JMenuItem();
+		jMenuItem5 = new JMenuItem();
+		
+		// this creates the Color menu and lets you chose different color models.
+		jMenu3 = new JMenu();
+		jMenuItem6 = new JMenuItem();
+		jMenuItem7 = new JMenuItem();
+		jMenuItem8 = new JMenuItem();
+		JMenuItem jMenuItem9 = new JMenuItem();
+		
+		//creates the elements necessary to tell the user to put in the escape distance.
+		escapeDistance = new JTextField();
+		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");	
+		enterEscapeDistance = new JButton("Enter");
+
+
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		jMenu1.setText("File");
 		
@@ -174,10 +177,7 @@ public class GUI extends JFrame {
 		
 
 		setJMenuBar(jMenuBar1);
-		
-
-		
-		
+			
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).
