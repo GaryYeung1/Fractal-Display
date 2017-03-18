@@ -84,4 +84,19 @@ public class ColorModelFactory {
     IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
     return retVal;
   }
+  /**
+  Color model that creates different shade's of green *
+   * @author genessy*/
+  public static IndexColorModel createGreenColorModel(int numColors){
+	byte[] reds = new byte[numColors];
+	byte[] greens = new byte[numColors];
+	byte[] blues = new byte[numColors];
+	 for (int i = 0; i < reds.length - 1; i++) {
+   greens[i] = (byte) ((Math.log10(i) / Math.log10(blues.length)) * 256);
+   blues[i] = 0;
+   reds[i] = 0;
+  }
+	 IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
+	    return retVal;
+}
 }

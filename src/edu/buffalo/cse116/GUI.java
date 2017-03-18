@@ -18,7 +18,7 @@ public class GUI extends JFrame {
 	private JMenuBar jMenuBar1;
 	
 	private JMenuItem jMenuItem1,jMenuItem2,jMenuItem3,jMenuItem4, jMenuItem5;
-	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8;
+	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8; 
 	public JLabel	escapeDistanceRequest;
 	public JTextField escapeDistance;
 	private FractalPanel jPanel1; // FractalPanel is the jpanel 
@@ -63,6 +63,7 @@ public class GUI extends JFrame {
 		jMenuItem6 = new JMenuItem();
 		jMenuItem7 = new JMenuItem();
 		jMenuItem8 = new JMenuItem();
+		JMenuItem jMenuItem9 = new JMenuItem();
 		escapeDistance = new JTextField(10);
 		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");
 		set = new Sets();
@@ -150,6 +151,14 @@ public class GUI extends JFrame {
 				jMenuItem8ActionPerformed(evt);
 			}
 		});
+		jMenu3.add(jMenuItem9);
+		jMenuItem9.setText("Green");
+		jMenuItem9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jMenuItem9ActionPerformed(evt);
+			}
+		});
+		
 		jMenu3.add(jMenuItem8);
 
 		jMenuBar1.add(jMenu3);
@@ -195,8 +204,11 @@ public class GUI extends JFrame {
 	private void jMenuItem1ActionPerformed(ActionEvent evt) {
 		this.dispose();
 	}
-
-	/*To change the color model*/
+/**
+ * To change the color model
+ * @author genessy
+ */
+	
 	private void jMenuItem6ActionPerformed(ActionEvent evt) {
 		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);
 		updatePanel();
@@ -211,7 +223,10 @@ public class GUI extends JFrame {
 		this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
 		updatePanel();
 	}
-	
+	private void jMenuItem9ActionPerformed(ActionEvent evt) {
+		this.colorModel = ColorModelFactory.createGreenColorModel(numberOfColors);
+		updatePanel();
+	}
 	/*To change the fractal*/
 	private void jMenuItem2ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.Mandelbrot_set();
