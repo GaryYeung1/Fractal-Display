@@ -1,0 +1,10 @@
+To run our program you must click on the main class and run it as a java application
+With the OurScanner class you must put in the escape distance to actually see the fractal.
+So look down at the console to input the integer value.
+Please ignore the jtextfield and the jbutton they get the escape distance for you.
+Also if you want to put in a new escape distance, you must rerun the program through the main class.
+The multibrot set takes a while to load so please wait patiently.
+Running our tests is probably the most annoying part. You have to constantly 
+put in an escape Distance for the tests to work.
+So we suggest inputing the same integer over and over again until all tests are completed.
+Thank you.

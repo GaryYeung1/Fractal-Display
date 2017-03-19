@@ -8,9 +8,13 @@ public class Sets {
 	 * This is to create the sets. It is also the model class for our GUI.
 	 */
 	private GUI _gui; 
+	private OurScanner scan;
+	private int num;
 	
 	public Sets(GUI gui){
 		_gui = gui;
+		scan = new OurScanner();
+//		num = scan.getEscapeDistance();
 	}
 	/**
 	 * this sets the point system up for the coordinates.
@@ -35,7 +39,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist > 0 && passes< 255){
+		while(scan.getEscapeDistance() > dist && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -59,7 +63,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
-		while(dist > 0 && passes < 255){
+		while(scan.getEscapeDistance() > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -84,7 +88,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist > 0 && passes < 255){
+		while(scan.getEscapeDistance() > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			xCalc = xPrime;
@@ -108,7 +112,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while (dist > 0 && passes < 255) {
+		while (scan.getEscapeDistance()> dist && passes < 255) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;

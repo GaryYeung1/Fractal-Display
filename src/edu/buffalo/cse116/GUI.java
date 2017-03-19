@@ -31,7 +31,7 @@ public class GUI extends JFrame {
 	private int[][] escapeSteps;
 	
 /**
- * 
+ * This gives the basis of the ui. It has all the methods needed to run the program.
  * @author Yang Cai
  */
 	public GUI() {		
@@ -87,6 +87,7 @@ public class GUI extends JFrame {
 		jMenu1.setText("File");
 		
 		jMenuItem1.setText("Exit");
+		
 		jMenuItem1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jMenuItem1ActionPerformed(evt);
@@ -204,9 +205,9 @@ public class GUI extends JFrame {
 	 * Gets the value inputed by the user and sets it as the escape distance for the fractals. If invalid input is entered, displays
 	 * message requesting for valid input.
 	 * @return userInputEscapeDistance.
-	 * @author garyy
+	 * @author Gary Yeung
 	 */
-	private int getEscapeDistance(){
+	public int getEscapeDistance(){
 		String userInput;
 		userInput = escapeDistance.getText();
 		int userEscapeDistance = 2;
@@ -228,45 +229,81 @@ public class GUI extends JFrame {
 	private void jMenuItem1ActionPerformed(ActionEvent evt) {
 		this.dispose();
 	}
-/**
- * To change the color model
- * @author genessy
- */
 	
+/**
+ * This changes the color model to red
+ * @author Genessy Munoz
+ * @param evt
+ */
 	private void jMenuItem6ActionPerformed(ActionEvent evt) {
 		this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);
 		updatePanel();
 	}
-	
+	/**
+	 * This changes the color model to blue.
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem7ActionPerformed(ActionEvent evt) {
 		this.colorModel = ColorModelFactory.createBluesColorModel(numberOfColors);
 		updatePanel(); 
 	}
 	
+	/**
+	 * This changes the color model to gray
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem8ActionPerformed(ActionEvent evt) {
 		this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
 		updatePanel();
 	}
+	
+	/**
+	 * This changes the color model to green.
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem9ActionPerformed(ActionEvent evt) {
 		this.colorModel = ColorModelFactory.createGreenColorModel(numberOfColors);
 		updatePanel();
 	}
-	/*To change the fractal*/
+	
+	/**
+	 * This changes the fractal to Mandelbrot set
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem2ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.Mandelbrot_set();
 		updatePanel();
 	}
 	
+	/**
+	 * This changes the fractal to Julia set
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem3ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.Julia_set();
 		updatePanel();
 	}
 	
+	/**
+	 * This changes the fractal to BurningShip set
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem4ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.BurningShip_set();
 		updatePanel();
 	}
 	
+	/**
+	 * This changes the fractal to Multibrot set
+	 * @author Genessy Munoz
+	 * @param evt
+	 */
 	private void jMenuItem5ActionPerformed(ActionEvent evt) {
 		this.escapeSteps = this.set.Multibrot_set();
 		updatePanel();

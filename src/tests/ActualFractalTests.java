@@ -10,7 +10,9 @@ import edu.buffalo.cse116.*;
 
 public class ActualFractalTests {
 	private GUI _gui;
+	private Sets sets;
 	public ActualFractalTests() {
+		sets = new Sets(_gui);
 	}
 
 	/**
@@ -34,10 +36,10 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void mandelbrotSetTranslationTest() {
-		Sets set = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int[][] grid = new int[512][512];
-		grid = set.Mandelbrot_set();
-		assertTrue(grid[0][0] == set.mandelbrotSet(-2.15, -1.3));
+		grid = sets.Mandelbrot_set();
+		assertTrue(grid[0][0] == sets.mandelbrotSet(-2.15, -1.3));
 	}
 
 	/**
@@ -47,10 +49,10 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void juliaSetTranslationTest() {
-		Sets set = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int[][] omg = new int[512][512];
-		omg = set.Julia_set();
-		assertTrue(omg[0][0] == set.juliaSet(-1.7,-1.0));
+		omg = sets.Julia_set();
+		assertTrue(omg[0][0] == sets.juliaSet(-1.7,-1.0));
 	}
 
 	/**
@@ -59,10 +61,10 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void burningShipSetTranslationTest() {
-		Sets set = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int[][] omg = new int[512][512];
-		omg = set.BurningShip_set();
-		assertTrue(omg[0][0]==set.burningShipSet(-1.8,-0.08));
+		omg = sets.BurningShip_set();
+		assertTrue(omg[0][0]==sets.burningShipSet(-1.8,-0.08));
 	}
 	
 	/**
@@ -72,7 +74,7 @@ public class ActualFractalTests {
 	 */
 	@Test 
 	public void burningShipTest2() {
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int escapeTime = sets.burningShipSet(-1.75, 0);
 		assertTrue(escapeTime > 1);
 	}
@@ -83,7 +85,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void mandelbrotFractalReturn() {
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int[][] grid = new int[512][512];
 		grid = sets.Mandelbrot_set();
 		assertArrayEquals(grid, sets.Mandelbrot_set());
@@ -94,7 +96,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void burningShipFractalReturn(){
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		int[][] grid = new int[512][512];
 		grid = sets.BurningShip_set();
 		assertArrayEquals(grid, sets.BurningShip_set());
@@ -106,10 +108,10 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void multibrotSetTranslationTest() {
-		Sets set = new Sets(_gui);
+//		Sets set = new Sets(_gui);
 		int[][] omg = new int[512][512];
-		omg = set.Multibrot_set();
-		assertTrue(omg[0][0]==set.Multibrot(-1.0,-1.3));
+		omg = sets.Multibrot_set();
+		assertTrue(omg[0][0]==sets.Multibrot(-1.0,-1.3));
 	}
 	/**
 	 * This method checks if the mandelbrot set will exceed the escape distance.
@@ -119,11 +121,11 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void mandelbrotExceedsEscapeDistance() {
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 0.5946289062500001;
 		double y = 1.2949218750000122;
 		int escapeTime = sets.mandelbrotSet(x, y);
-		assertEquals(11.0, escapeTime, 0.0);
+		assertEquals(2.0, escapeTime, 0.0);
 	}
 
 	/**
@@ -135,7 +137,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void mandelbrotUnderEscapeDistance() {
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 0.3207031250000001;
 		double y = -0.07109374999999386;
 		int escapeTime = sets.mandelbrotSet(x, y);
@@ -148,7 +150,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void burningShipBelowEscapeDistance() {
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = -1.7443359374999874;
 		double y = -0.017451171875000338;
 		int escapeTime = sets.burningShipSet(x, y);
@@ -161,7 +163,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void multibrotUnderEscapeDistance(){
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 0.5859375;
 		double y = 0.24375000000000108;
 		int escapeTime = sets.Multibrot(x, y);
@@ -174,7 +176,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void multibrotExceedsEscapeDistance(){
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 0.9921875;
 		double y = 1.05625;
 		int escapeTime = sets.Multibrot(x, y);
@@ -186,7 +188,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void juliaExceedsEscapeDistance(){
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 1.6933593749999853;
 		double y = 0.9765625;
 		int escapeTime = sets.juliaSet(x, y);
@@ -197,7 +199,7 @@ public class ActualFractalTests {
 	 */
 	@Test
 	public void juliaBelowEscapeDistance(){
-		Sets sets = new Sets(_gui);
+//		Sets sets = new Sets(_gui);
 		double x = 1.0492187499999897;
 				double y = -0.234375;
 		int escapeTime = sets.juliaSet(x, y);
