@@ -12,7 +12,6 @@ public class Sets {
 	private GUI _gui; 
 	private OurScanner scan;
 	private int num;
-	private int _escapeDistance;
 	public Sets(GUI gui){
 		_gui = gui;
 		scan = new OurScanner();
@@ -28,16 +27,7 @@ public class Sets {
 		Point original = new Point(x,y);
 		return original;
 	}
-	/**
-	 * Sets the variable _escapeDistance to userinput value.
-	 */
-	public int getEscapeDistance2(){
-		_escapeDistance = _gui.getEscapeDistance();
-		if(_escapeDistance == 0){
-			_escapeDistance = 2;
-		}
-		return _escapeDistance;
-	}
+
 	/**
 	 * This is for the Mandelbrot Set.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
@@ -229,3 +219,5 @@ public class Sets {
 	}	
 
 }
+
+

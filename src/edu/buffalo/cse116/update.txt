@@ -1,2 +1,2 @@
-To update the escape Distance you have to rerun the program and the ourscanner class made sure you can't put integer
+To update the escape Distance you have to rerun the program and the ourscanner class makes sure you can't put integer
 values less than or equal to zero
