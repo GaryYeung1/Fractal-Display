@@ -14,11 +14,12 @@ import java.util.*;
  */
 public class GUI extends JFrame {
 
-	private JMenu jMenu1,jMenu2,jMenu3;
+	private JMenu jMenu1,jMenu2,jMenu3,jMenu4;
 	private JMenuBar jMenuBar1;
 	
 	private JMenuItem jMenuItem1,jMenuItem2,jMenuItem3,jMenuItem4, jMenuItem5;
-	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8; 
+	private JMenuItem jMenuItem6,jMenuItem7,jMenuItem8;
+	private JMenuItem jMenuItem9;
 	public JLabel	escapeDistanceRequest;
 	public JTextField escapeDistance;
 	public JButton enterEscapeDistance;
@@ -77,6 +78,8 @@ public class GUI extends JFrame {
 		JMenuItem jMenuItem9 = new JMenuItem();
 		
 		//creates the elements necessary to tell the user to put in the escape distance.
+		jMenu4 = new JMenu();
+		jMenuItem9 = new JMenuItem();
 		escapeDistance = new JTextField();
 		escapeDistanceRequest = new JLabel("Please enter desired escape distance.");	
 		enterEscapeDistance = new JButton("Enter");
@@ -165,18 +168,24 @@ public class GUI extends JFrame {
 				jMenuItem9ActionPerformed(evt);
 			}
 		});
-		enterEscapeDistance.addActionListener(new ActionListener(){
+
+		jMenu3.add(jMenuItem8);
+		jMenuBar1.add(jMenu3);
+		
+		jMenu4.setText("Escape Distance");
+		jMenuItem9.setText("Set Escape Distance");
+		jMenuItem9.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
 				jMenuItem10ActionPerformed(evt);
 			}
 		});
-		
-		
-		jMenu3.add(jMenuItem8);
-
-		jMenuBar1.add(jMenu3);
-		
-
+		jMenu4.add(jMenuItem9);
+		enterEscapeDistance.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				jMenuItem11ActionPerformed(evt);
+			}
+		});		
+		jMenuBar1.add(jMenu4);
 		setJMenuBar(jMenuBar1);
 			
 		GroupLayout layout = new GroupLayout(getContentPane());
@@ -312,6 +321,9 @@ public class GUI extends JFrame {
 	private void jMenuItem10ActionPerformed(ActionEvent evt){
 		this.getEscapeDistance();
 		updatePanel();
+	}
+	private void jMenuItem11ActionPerformed(ActionEvent evt){
+		
 	}
 	
 	/*Update the panel with */
