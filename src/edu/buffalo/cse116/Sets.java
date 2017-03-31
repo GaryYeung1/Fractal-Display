@@ -1,14 +1,22 @@
 package edu.buffalo.cse116;
 
 import java.awt.Point;
+import java.util.Scanner;
+
 import edu.buffalo.cse116.*;
 
 public class Sets {
 	/**
-	 * This is to create the sets.
+	 * This is to create the sets. It is also the model class for our GUI.
 	 */
-	
-	public Sets(){
+	private GUI _gui; 
+	private OurScanner scan;
+	private int num;
+	private int _escapeDistance;
+	public Sets(GUI gui){
+		_gui = gui;
+		scan = new OurScanner();
+//		num = scan.getEscapeDistance();
 	}
 	/**
 	 * this sets the point system up for the coordinates.
@@ -21,19 +29,30 @@ public class Sets {
 		return original;
 	}
 	/**
+	 * Sets the variable _escapeDistance to userinput value.
+	 */
+	public int getEscapeDistance2(){
+		_escapeDistance = _gui.getEscapeDistance();
+		if(_escapeDistance == 0){
+			_escapeDistance = 2;
+		}
+		return _escapeDistance;
+	}
+	/**
 	 * This is for the Mandelbrot Set.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
 	 */
 	public int mandelbrotSet(double x, double y){
+		int escapeDistance = _gui.getEscapeDistance();
 		int escapeTime;
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist<= 2 && passes< 255){
+		while(escapeDistance> dist && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -51,13 +70,14 @@ public class Sets {
 	 * @param y
 	 */
 	public int juliaSet(double x, double y){
+		int escapeDistance = _gui.getEscapeDistance();
 		int escapeTime; 
 		double xCalc, yCalc;
 		xCalc = x; 
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
-		while(dist <= 2 && passes < 255){
+		while(escapeDistance > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -77,12 +97,13 @@ public class Sets {
 	 * @return
 	 */
 	public int burningShipSet(double x, double y){
+		int escapeDistance = _gui.getEscapeDistance();
 		int escapeTime;
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(dist <= 2 && passes < 255){
+		while(escapeDistance > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			xCalc = xPrime;
@@ -101,12 +122,13 @@ public class Sets {
 	 * @return
 	 */
 	public int Multibrot(double x, double y) {
+		int escapeDistance = _gui.getEscapeDistance();
 		int escapeTime;
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while (dist <= 2 && passes < 255) {
+		while (escapeDistance> dist && passes < 255) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;
@@ -114,14 +136,15 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
-		//Set the current point's escape-time equal to passes ***********************************
+		//Set the current point's escape-time equal to passes 
 	  	escapeTime = passes;
 	  	return escapeTime;
 	}
 
-	/** Set mandelbrot set method and calculates the fractal into a 2D array with 512 rows and columns. 
+	/** Set mandelbrot set method and calculates the fractal into a 2D array with 
+	 * 512 rows and columns. 
 	 * @author Genessy 
-	 * @return
+	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(){
 		double w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
@@ -137,7 +160,9 @@ public class Sets {
 		return grid;
 	}
 	/**
-	 * @author Genessy - Julia set method and calculates the fractal into a 2D array with 512 rows and columns. 
+	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
+	 *  columns.
+	 * @author Genessy  
 	 * @return
 	 */
 	public int[][] Julia_set(){
@@ -190,5 +215,17 @@ public class Sets {
   		}
   		return grid;
   	}
-		
+	public int getEscapeDistance1(){
+		int escapeDistance;
+		Scanner myScanner = new Scanner(System.in);
+		System.out.println("Hello. Please enter an integer for the escapeDistance:");
+		escapeDistance = myScanner.nextInt();
+		while(escapeDistance <= 0){
+			System.out.println("I'm sorry. You can't put a number less than zero. Try and enter the number again: ");
+			escapeDistance = myScanner.nextInt();
+		}
+		System.out.println("Thank you, the fractal will be here shortly");
+		return escapeDistance;
+	}	
+
 }

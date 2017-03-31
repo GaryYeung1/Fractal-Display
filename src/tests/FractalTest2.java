@@ -11,6 +11,8 @@ public class FractalTest2 {
 	 * from phase one.
 	 * @author Genessy and Florebencia
 	 */
+	private GUI _gui;
+	
 	public FractalTest2(){
 		
 	}
@@ -19,7 +21,7 @@ public class FractalTest2 {
 	 * @author Genessy and Florebencia
 	 */
 	@Test public void juliaFractalReturn(){
-		Sets sets = new Sets();
+		Sets sets = new Sets(_gui);
 		int[][] grid = new int[512][512];
 		grid = sets.Julia_set();
 		assertArrayEquals(grid, sets.Julia_set());
@@ -30,7 +32,7 @@ public class FractalTest2 {
 	 */
 	@Test
 	public void multibrotFractalReturn(){
-		Sets sets = new Sets();
+		Sets sets = new Sets(_gui);
 		int[][] grid = new int[512][512];
 		grid = sets.Multibrot_set();
 		assertArrayEquals(grid, sets.Multibrot_set());
