@@ -172,20 +172,21 @@ public class GUI extends JFrame {
 		jMenu3.add(jMenuItem8);
 		jMenuBar1.add(jMenu3);
 		
-		jMenu4.setText("Escape Distance");
-		jMenuItem9.setText("Set Escape Distance");
+		jMenu4.setText("Green");
+		jMenuItem9.setText("Green");
 		jMenuItem9.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
 				jMenuItem10ActionPerformed(evt);
 			}
 		});
-		jMenu4.add(jMenuItem9);
+		jMenu3.add(jMenuItem9);
+		jMenuBar1.add(jMenu3);
 		enterEscapeDistance.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
 				jMenuItem11ActionPerformed(evt);
 			}
 		});		
-		jMenuBar1.add(jMenu4);
+		jMenuBar1.add(jMenu3);
 		setJMenuBar(jMenuBar1);
 			
 		GroupLayout layout = new GroupLayout(getContentPane());
@@ -323,8 +324,10 @@ public class GUI extends JFrame {
 		updatePanel();
 	}
 	private void jMenuItem11ActionPerformed(ActionEvent evt){
-		
+		this.getEscapeDistance();
+		updatePanel();
 	}
+	
 	
 	/*Update the panel with */
 	private void updatePanel(){
@@ -334,4 +337,3 @@ public class GUI extends JFrame {
 
 	
 }
-
