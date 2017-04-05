@@ -17,26 +17,16 @@ public class Sets {
 		scan = new OurScanner();
 //		num = scan.getEscapeDistance();
 	}
-	/**
-	 * this sets the point system up for the coordinates.
-	 * @param x
-	 * @param y
-	 * @author Yang Cai and Florebencia Fils-Aime 
-	 */
-	public Point original(int x, int y){
-		Point original = new Point(x,y);
-		return original;
-	}
 
 	/**
 	 * This is for the Mandelbrot Set.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
+	 * @return passes (since it's the escapeTime)
 	 */
 	public int mandelbrotSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime;
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
@@ -50,18 +40,17 @@ public class Sets {
 			passes += 1; 
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
-		escapeTime = passes;
-		return escapeTime;
+		return passes;
 	}
 	/**
 	 * This is for the Julia Set.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
+	 * @return passes since it's the escape distance
 	 */
 	public int juliaSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime; 
 		double xCalc, yCalc;
 		xCalc = x; 
 		yCalc = y;
@@ -76,8 +65,7 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		
 		}
-		escapeTime = passes;
-		return escapeTime;
+		return passes;
 	}
 	/**
 	 * This is for the Burning Ship set
@@ -88,7 +76,6 @@ public class Sets {
 	 */
 	public int burningShipSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime;
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
@@ -101,19 +88,17 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
-		escapeTime = passes;
-		return escapeTime;
+		return passes;
 		}
 	/**
 	 * This creates the Multibrot Set
 	 * @author Genessy and Yang
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return passes since it's the escape distance
 	 */
 	public int Multibrot(double x, double y) {
 		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime;
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
@@ -127,8 +112,7 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
 		//Set the current point's escape-time equal to passes 
-	  	escapeTime = passes;
-	  	return escapeTime;
+	  	return passes;
 	}
 
 	/** Set mandelbrot set method and calculates the fractal into a 2D array with 
@@ -217,6 +201,32 @@ public class Sets {
 		System.out.println("Thank you, the fractal will be here shortly");
 		return escapeDistance;
 	}	
+	/**
+	 * This method will be used to change the escapeTime so that the fractal looks different
+	 * with each user input 
+	 * @author Florebencia Fils-Aime
+	 * @return an integer that equals the new escape time
+	 */
+	public int getNewEscapeTime(double x, double y){
+		int escapeDistance = _gui.getEscapeDistance();
+		int escapeTime;
+		double xCalc, yCalc;
+		xCalc = x;
+		yCalc = y;
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+		int passes = 0;
+		while(escapeDistance> dist && passes< 255){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
+			double yPrime = 2 * xCalc * yCalc + y;
+			xCalc = xPrime;
+			yCalc = yPrime;
+			passes += 1; 
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
+		}
+		escapeTime = passes;
+		return escapeTime;
+		
+	}
 
 }
 
