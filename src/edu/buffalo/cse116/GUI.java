@@ -164,9 +164,19 @@ public class GUI extends JFrame {
         FractalMenu.add(JuliaItem);
 
         BurningShipItem.setText("Burning Ship Set");
+        BurningShipItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                BurningShipItemActionPerformed(evt);
+            }
+        });
         FractalMenu.add(BurningShipItem);
 
         MultibrotItem.setText("Multibrot Set");
+        MultibrotItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	MultibrotItemActionPerformed(evt);
+            }
+        });
         FractalMenu.add(MultibrotItem);
 
         jMenuBar1.add(FractalMenu);
@@ -276,11 +286,21 @@ public class GUI extends JFrame {
 		updatePanel();
     }
 
+    private void BurningShipItemActionPerformed(ActionEvent evt) {
+    	this.escapeSteps = this.set.BurningShip_set();
+		updatePanel();
+    }
+    
+    private void MultibrotItemActionPerformed(ActionEvent evt) {
+    	this.escapeSteps = this.set.Multibrot_set();
+		updatePanel();
+    }
     /**
      * @author Genessy Munoz
      * @param evt
      */
     private void JuliaItemActionPerformed(ActionEvent evt) {
+    	this.escapeSteps = this.set.Julia_set();
 		updatePanel();
     }
 
@@ -289,7 +309,8 @@ public class GUI extends JFrame {
      * @param evt
      */
     private void GrayItemActionPerformed(ActionEvent evt) {
-    	
+    	this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
+		updatePanel();
     }
 
 	/*Update the panel with */
