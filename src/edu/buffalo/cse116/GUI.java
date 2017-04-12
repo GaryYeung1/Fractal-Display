@@ -184,9 +184,19 @@ public class GUI extends JFrame {
         ColorMenu.setText("Color");
 
         RedItem.setText("Red");
+        GrayItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                RedItemActionPerformed(evt);
+            }
+        });
         ColorMenu.add(RedItem);
 
         BlueItem.setText("Blue");
+        GrayItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                BlueItemActionPerformed(evt);
+            }
+        });
         ColorMenu.add(BlueItem);
 
         GrayItem.setText("Gray");
@@ -310,6 +320,14 @@ public class GUI extends JFrame {
      */
     private void GrayItemActionPerformed(ActionEvent evt) {
     	this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
+		updatePanel();
+    }
+    private void RedItemActionPerformed(ActionEvent evt) {
+    	this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);
+		updatePanel();
+    }
+    private void BlueItemActionPerformed(ActionEvent evt) {
+    	this.colorModel = ColorModelFactory.createBluesColorModel(numberOfColors);
 		updatePanel();
     }
 
