@@ -40,6 +40,10 @@ public class GUI extends JFrame {
 		updatePanel();
     }
 
+    /**
+     * This creates the components of the GUI
+     * @author Yang Cai and Gary Yeung
+     */
     @SuppressWarnings("unchecked")
 
     private void initComponents() {
@@ -69,6 +73,8 @@ public class GUI extends JFrame {
         GreenItem = new JMenuItem();
         set = new Sets(this);
         jMenu1.setText("jMenu1");
+
+		// this creates the file menu and its item. It also creates the menu bar. 
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -216,7 +222,12 @@ public class GUI extends JFrame {
 
         pack();
     }
-
+	/**
+	 * Gets the value inputed by the user and sets it as the escape distance for the fractals. If invalid input is entered, displays
+	 * message requesting for valid input.
+	 * @return userInputEscapeDistance.
+	 * @author Gary Yeung
+	 */
     public int getEscapeDistance(){
 		String userInput;
 		userInput = Escapedis.getText();
@@ -235,31 +246,53 @@ public class GUI extends JFrame {
 	
 		return userEscapeDistance;
 	}
+
     private void ExitActionPerformed(ActionEvent evt) {
     	this.dispose();
     }
 
+    /**
+     * @author Genessy Munoz
+     * @param evt
+     */
     private void SetButtonActionPerformed(ActionEvent evt) {
     	this.getEscapeDistance();
 		updatePanel();
     }
 
+    /**
+     * @author Genessy Munoz
+     * @param evt
+     */
     private void EscapedisActionPerformed(ActionEvent evt) {
     }
 
+    /**
+     * @author Genessy Munoz
+     * @param evt
+     */
     private void MandelbrotItemActionPerformed(ActionEvent evt) {
     	this.escapeSteps = this.set.Mandelbrot_set();
 		updatePanel();
     }
 
+    /**
+     * @author Genessy Munoz
+     * @param evt
+     */
     private void JuliaItemActionPerformed(ActionEvent evt) {
 		updatePanel();
     }
 
+    /**
+     * @author Genessy Munoz
+     * @param evt
+     */
     private void GrayItemActionPerformed(ActionEvent evt) {
     	
     }
 
+	/*Update the panel with */
 	private void updatePanel(){
 		this.jPanel1.setIndexColorModel(this.colorModel);
 		this.jPanel1.updateImage(this.escapeSteps);
