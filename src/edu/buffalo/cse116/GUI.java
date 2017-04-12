@@ -11,8 +11,8 @@ import javax.swing.*;
 
 import edu.buffalo.fractal.FractalPanel;
 /**
- *
- * @author caiyang
+ * This class creates the GUI that will run the program.
+ * @author Yang Cai, Gary Yeung, Genessy Munoz
  */
 public class GUI extends JFrame {
     private JTextField Escapedis;
@@ -29,8 +29,15 @@ public class GUI extends JFrame {
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
 
+	/**
+	 * This gives the basis of the ui. It has all the methods needed to run the program.
+	 * @author Yang Cai
+	 */
     public GUI() {
         initComponents();
+        this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
+		this.escapeSteps = this.set.Mandelbrot_set();		
+		updatePanel();
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +67,7 @@ public class GUI extends JFrame {
         BlueItem = new JMenuItem();
         GrayItem = new JMenuItem();
         GreenItem = new JMenuItem();
-
+        set = new Sets(this);
         jMenu1.setText("jMenu1");
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
