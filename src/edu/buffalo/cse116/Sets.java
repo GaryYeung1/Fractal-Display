@@ -25,6 +25,7 @@ public class Sets {
 	 * @param y
 	 * @return passes (since it's the escapeTime)
 	 */
+	//run a second loop for to get the new escapeTime
 	public int mandelbrotSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
 		double xCalc, yCalc;
@@ -32,6 +33,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
+		int passes2 = 0;
 		while(escapeDistance> dist && passes< 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
@@ -40,7 +42,16 @@ public class Sets {
 			passes += 1; 
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
-		return passes;
+			while(escapeDistance> dist && passes2< passes){
+				double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
+				double yPrime = 2 * xCalc * yCalc + y;
+				xCalc = xPrime;
+				yCalc = yPrime;
+				passes2 += 1; 
+				dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
+			}
+			return passes2;
+		 
 	}
 	/**
 	 * This is for the Julia Set.
@@ -56,6 +67,7 @@ public class Sets {
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
+		int passes2 = 0;
 		while(escapeDistance > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
@@ -65,7 +77,15 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		
 		}
-		return passes;
+		while(escapeDistance > dist && passes2 < passes){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
+			double yPrime = 2 * xCalc * yCalc + 0.188887;
+			xCalc = xPrime;
+			yCalc = yPrime;
+			passes2 += 1;
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
+		}
+		return passes2;
 	}
 	/**
 	 * This is for the Burning Ship set
@@ -80,6 +100,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
+		int passes2 = 0;
 		while(escapeDistance > dist && passes < 255){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
@@ -88,7 +109,15 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
-		return passes;
+		while(escapeDistance > dist && passes2 < passes){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
+			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
+			xCalc = xPrime;
+			yCalc = yPrime;
+			passes2 += 1;
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
+		}
+		return passes2;
 		}
 	/**
 	 * This creates the Multibrot Set
@@ -103,6 +132,7 @@ public class Sets {
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
+		int passes2= 0;
 		while (escapeDistance> dist && passes < 255) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
@@ -111,8 +141,16 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
+		while (escapeDistance> dist && passes2 < passes) {
+			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
+			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
+			xCalc = xPrime;
+			yCalc = yPrime;
+			passes2 += 1;
+			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+		}
 		//Set the current point's escape-time equal to passes 
-	  	return passes;
+	  	return passes2;
 	}
 
 	/** Set mandelbrot set method and calculates the fractal into a 2D array with 
