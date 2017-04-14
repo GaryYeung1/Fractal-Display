@@ -141,4 +141,78 @@ public class FractalTest2 {
 		int res = passes;
 		assertTrue(10 < res);
 	}
+	/**
+	 * When the mandelbrot set has an escape distance of 2 and an escape time of 135, it 
+	 * will never exceed the escape distance.
+	 * @author Florebencia Fils-Aime
+	 */
+	@Test
+	public void mandelbrotWSetEscapeTimeAndDistance(){
+		int escapeTime;
+		double xCalc, yCalc;
+		double x = 0.3207031250000001;
+		double y = -0.07109374999999386;
+		xCalc = x;
+		yCalc = y;
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+		int passes = 0;
+		while(dist > 2 && passes< 135){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
+			double yPrime = 2 * xCalc * yCalc + y;
+			xCalc = xPrime;
+			yCalc = yPrime;
+			passes += 1; 
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
+		}
+		escapeTime = passes;
+		assertTrue(135 == escapeTime);
+	}
+	/**
+	 * @author Florebencia Fils-Aime
+	 */
+	@Test
+	public void juliaWSetDistanceAndTime(){
+		int escapeTime; 
+		double xCalc, yCalc;
+		double x = 1.492187499999897;
+		double y = -0.234375;
+		xCalc = x; 
+		yCalc = y;
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+		int passes = 0;
+		while(dist > 2 && passes < 135){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
+			double yPrime = 2 * xCalc * yCalc + 0.188887;
+			passes++;
+			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
+			xCalc = xPrime;
+			yCalc = yPrime;
+		}
+		escapeTime = passes;
+		assertTrue(135 == escapeTime);
+	}
+	/**
+	 * @author Florebencia Fils-Aime
+	 */
+	@Test
+	public void burningShipWSetDistanceAndTime(){
+		int escapeTime;
+		double x = -1.7443359374999874;
+		double y = -0.017451171875000338;
+		double xCalc = x;
+		double yCalc = y;
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+		int passes = 0;
+		
+		while(dist > 2 && passes < 135){
+			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
+			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
+			passes++;
+			dist = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+			xCalc = xPrime;
+			yCalc = yPrime;
+		}
+		escapeTime = passes;
+		assertTrue(135 == escapeTime);
+	}
 }
