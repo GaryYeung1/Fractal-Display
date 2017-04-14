@@ -136,7 +136,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		System.out.print("You're moving the mouse");
 	}
 	/**
 	 * "Invoked when the mouse button has been clicked (pressed and released) on a component."
@@ -144,6 +144,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.print("All you did was click on the panel");
 
 	}
 	/**
@@ -152,6 +153,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.print("Yay! The mouse in the panel!");
 
 	}
 }

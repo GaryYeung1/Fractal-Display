@@ -1,6 +1,5 @@
 package edu.buffalo.cse116;
 
-
 import java.awt.image.IndexColorModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,6 +9,7 @@ import java.util.*;
 import javax.swing.*;
 
 import edu.buffalo.fractal.FractalPanel;
+import edu.buffalo.cse116.*;
 /**
  * This class creates the GUI that will run the program.
  * @author Yang Cai, Gary Yeung, Genessy Munoz
@@ -28,6 +28,7 @@ public class GUI extends JFrame {
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
+	private MouseDragHandler mouseHandler;
 
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
@@ -51,27 +52,34 @@ public class GUI extends JFrame {
         jMenu1 = new JMenu();
         jDialog1 = new JDialog();
         jDialog2 = new JDialog();
+        
         jMenuBar2 = new JMenuBar();
         FileMenu = new JMenu();
         EditMenu = new JMenu();
+        
         jPanel1 = new FractalPanel();
         jLabel1 = new JLabel();
         Escapedis = new JTextField();
+        
         SetButton = new JButton();
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
+        
         Exit = new JMenuItem();
         FractalMenu = new JMenu();
         MandelbrotItem = new JMenuItem();
         JuliaItem = new JMenuItem();
         BurningShipItem = new JMenuItem();
         MultibrotItem = new JMenuItem();
+        
         ColorMenu = new JMenu();
         RedItem = new JMenuItem();
         BlueItem = new JMenuItem();
         GrayItem = new JMenuItem();
         GreenItem = new JMenuItem();
+        
         set = new Sets(this);
+        mouseHandler = new MouseDragHandler();
         jMenu1.setText("jMenu1");
 
 		// this creates the file menu and its item. It also creates the menu bar. 
@@ -116,6 +124,9 @@ public class GUI extends JFrame {
             jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 382, Short.MAX_VALUE)
         );
+        //adds the mouseListener to the fractal panel
+        jPanel1.addMouseListener(mouseHandler);
+        jPanel1.addMouseMotionListener(mouseHandler);
 
         jLabel1.setText("Please enter a valid escape distance.");
 

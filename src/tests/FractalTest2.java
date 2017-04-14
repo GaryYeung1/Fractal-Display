@@ -215,4 +215,28 @@ public class FractalTest2 {
 		escapeTime = passes;
 		assertTrue(135 == escapeTime);
 	}
+	/**
+	 * @author
+	 */
+	@Test
+	public void multibrotWSetDistanceAndTime(){
+		double x = 0.5859375;
+		double y = 0.24375000000000108;
+		double xCalc = x;
+		double yCalc = y;
+		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+
+		int passes = 0;
+
+		while (dist > 0 && passes < 255) {
+			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
+			double yPrime = (3 * Math.pow(xCalc, 2) * yCalc) - Math.pow(yCalc, 3) + y;
+			passes++;
+			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
+			xCalc = xPrime;
+			yCalc = yPrime;
+		}
+		int res = passes;
+		assertTrue(10 < res);
+	}
 }

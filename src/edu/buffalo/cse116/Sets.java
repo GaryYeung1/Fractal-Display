@@ -14,7 +14,7 @@ public class Sets {
 	private int num;
 	public Sets(GUI gui){
 		_gui = gui;
-		scan = new OurScanner();
+//		scan = new OurScanner();
 //		num = scan.getEscapeDistance();
 	}
 
