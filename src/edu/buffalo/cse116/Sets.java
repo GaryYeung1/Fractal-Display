@@ -42,7 +42,7 @@ public class Sets {
 			passes += 1; 
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
-			while(escapeDistance> dist && passes2< passes){
+			/*while(escapeDistance> dist && passes2< passes){
 				double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 				double yPrime = 2 * xCalc * yCalc + y;
 				xCalc = xPrime;
@@ -51,6 +51,8 @@ public class Sets {
 				dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 			}
 			return passes2;
+			*/
+		return passes;
 		 
 	}
 	/**
@@ -77,7 +79,7 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		
 		}
-		while(escapeDistance > dist && passes2 < passes){
+		/*while(escapeDistance > dist && passes2 < passes){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -86,6 +88,8 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
 		return passes2;
+		*/
+		return passes;
 	}
 	/**
 	 * This is for the Burning Ship set
@@ -109,6 +113,7 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
+		/*
 		while(escapeDistance > dist && passes2 < passes){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
@@ -118,6 +123,8 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
 		return passes2;
+		*/
+		return passes;
 		}
 	/**
 	 * This creates the Multibrot Set
@@ -141,7 +148,7 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
-		while (escapeDistance> dist && passes2 < passes) {
+		/*while (escapeDistance> dist && passes2 < passes) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;
@@ -151,6 +158,8 @@ public class Sets {
 		}
 		//Set the current point's escape-time equal to passes 
 	  	return passes2;
+	  	*/
+		return passes;
 	}
 
 	/** Set mandelbrot set method and calculates the fractal into a 2D array with 

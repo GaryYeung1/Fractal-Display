@@ -28,7 +28,10 @@ public class GUI extends JFrame {
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
+
 	private MouseDragHandler mouseHandler;
+
+	private int _userEscapeDistance;
 
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
@@ -81,7 +84,7 @@ public class GUI extends JFrame {
         set = new Sets(this);
         mouseHandler = new MouseDragHandler();
         jMenu1.setText("jMenu1");
-
+        _userEscapeDistance = 2;
 		// this creates the file menu and its item. It also creates the menu bar. 
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
@@ -262,20 +265,20 @@ public class GUI extends JFrame {
     public int getEscapeDistance(){
 		String userInput;
 		userInput = Escapedis.getText();
-		int userEscapeDistance = 2;
 		try{
-			userEscapeDistance = Integer.parseInt(userInput);
+			_userEscapeDistance = Integer.parseInt(userInput);
 			Escapedis.setText("");
-			if(userEscapeDistance <= 0){
-				jLabel1.setText("please enter a valid escape distance.");
-				userEscapeDistance = 2;
+			jLabel1.setText("Please enter an escape distance.");
+			if(_userEscapeDistance <= 0){
+				jLabel1.setText("Please enter a valid escape distance.");
+				_userEscapeDistance = 2;
 			}	
 		}
 		catch(NumberFormatException e){
-			jLabel1.setText("please enter a valid escape distance.");
+			jLabel1.setText("Please enter a valid escape distance.");
+			Escapedis.setText("");
 		}
-	
-		return userEscapeDistance;
+		return _userEscapeDistance;
 	}
 
     private void ExitActionPerformed(ActionEvent evt) {
