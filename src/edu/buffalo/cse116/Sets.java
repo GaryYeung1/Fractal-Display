@@ -14,7 +14,7 @@ public class Sets {
 	private int num;
 	public Sets(GUI gui){
 		_gui = gui;
-//		scan = new OurScanner();
+		scan = new OurScanner();
 //		num = scan.getEscapeDistance();
 	}
 
@@ -28,13 +28,14 @@ public class Sets {
 	//run a second loop for to get the new escapeTime
 	public int mandelbrotSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
+		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		int passes2 = 0;
-		while(escapeDistance> dist && passes< 255){
+		while(escapeDistance> dist && passes< escapeTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -64,13 +65,14 @@ public class Sets {
 	 */
 	public int juliaSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
+		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x; 
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
 		int passes2 = 0;
-		while(escapeDistance > dist && passes < 255){
+		while(escapeDistance > dist && passes < escapeTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -100,12 +102,13 @@ public class Sets {
 	 */
 	public int burningShipSet(double x, double y){
 		int escapeDistance = _gui.getEscapeDistance();
+		int escapeTime = _gui.getEscapeTime();
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		int passes2 = 0;
-		while(escapeDistance > dist && passes < 255){
+		while(escapeDistance > dist && passes < escapeTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			xCalc = xPrime;
@@ -135,12 +138,13 @@ public class Sets {
 	 */
 	public int Multibrot(double x, double y) {
 		int escapeDistance = _gui.getEscapeDistance();
+		int escapeTime = _gui.getEscapeTime();
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		int passes2= 0;
-		while (escapeDistance> dist && passes < 255) {
+		while (escapeDistance> dist && passes < escapeTime) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;
@@ -235,19 +239,7 @@ public class Sets {
   			}
   		}
   		return grid;
-  	}
-	public int getEscapeDistance1(){
-		int escapeDistance;
-		Scanner myScanner = new Scanner(System.in);
-		System.out.println("Hello. Please enter an integer for the escapeDistance:");
-		escapeDistance = myScanner.nextInt();
-		while(escapeDistance <= 0){
-			System.out.println("I'm sorry. You can't put a number less than zero. Try and enter the number again: ");
-			escapeDistance = myScanner.nextInt();
-		}
-		System.out.println("Thank you, the fractal will be here shortly");
-		return escapeDistance;
-	}	
+  	}	
 	/**
 	 * This method will be used to change the escapeTime so that the fractal looks different
 	 * with each user input 
