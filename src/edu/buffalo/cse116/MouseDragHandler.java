@@ -1,5 +1,6 @@
 package edu.buffalo.cse116;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -35,6 +36,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 			lastX= arg0.getX();
 			lastY= arg0.getY();
 		}
+		System.out.println("The last coordinate was ("+lastX + ", " + lastY+ ").");
 	}
 	/**
 	 * This method starts working when the mouse leaves the fractal panel;
@@ -59,6 +61,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		_isMousePressed = true;
 		firstX = e.getX();
 		firstY = e.getY();
+		System.out.println("You pressed at coordinate (" + firstX +", "+ firstY+").");
 	}
 	/**
 	 * This method starts when the user stops holding down the mouse. It sets the boolean 
@@ -69,6 +72,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		_isMousePressed= false;
+		System.out.println("Aw, you stopped clicking.");
 	}
 	/**
 	 * This gets the height of the region selected by the user.
@@ -103,32 +107,24 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		}
 	}
  /**
-  * returns the first coordinate of X
+  * returns the first coordinate the user clicked on.
   * @author Florebencia Fils-Aime
   * @return firstX
   */
-	public int firstXValue(){return firstX;}
-	
+	public Point firstCoordinate(){
+		Point first = new Point(firstX,firstY);
+		return first;
+	}
+
 	/**
-	 * returns the first coordinate of Y
-	 * @author Florebencia Fils-Aime
-	 * @return firstY
-	 */
-	public int firstYValue() {	return firstY;}
-	
-	/**
-	 * return the last coordinate of X
+	 * return the last coordinate the user dragged to.
 	 * @author Florebencia Fils-Aime
 	 * @return lastX
 	 */
-	public int lastXValue(){return lastX;}
-	
-	/**
-	 * return the last coordinate of Y
-	 * @author Florebencia Fils-Aime
-	 * @return
-	 */
-	public int lastYValue(){return lastY;}
+	public Point lastCoordinate(){
+		Point last = new Point(lastX,lastY);
+		return last;
+	}
 	/**
 	 * "Invoked when the mouse cursor has been moved onto a component but no buttons have 
 	 * been pushed."
@@ -136,7 +132,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.print("You're moving the mouse");
+//		System.out.println("You're moving the mouse!");
 	}
 	/**
 	 * "Invoked when the mouse button has been clicked (pressed and released) on a component."
@@ -144,7 +140,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.print("All you did was click on the panel");
+		System.out.println("All you did was click on the panel");
 
 	}
 	/**
@@ -153,7 +149,12 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.print("Yay! The mouse in the panel!");
+		System.out.println("Yay! The mouse in the panel!");
 
 	}
+	
+//	public void Draw(int x, int y, int x2, int y2){
+//		2DGraphics rectangle = fractalgui.getgraphics();
+//		
+//	}
 }
