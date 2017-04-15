@@ -315,7 +315,6 @@ public class GUI extends JFrame {
     		jLabel2.setText("Please enter a valid escape time.");
     		EscapeTime.setText("");
     	}
-    	System.out.println(_userEscapeTime);
     	return _userEscapeTime;
     }
 
