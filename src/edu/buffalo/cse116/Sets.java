@@ -12,9 +12,11 @@ public class Sets {
 	private GUI _gui; 
 	private OurScanner scan;
 	private int num;
+	private MouseDragHandler _mouse;
 	public Sets(GUI gui){
 		_gui = gui;
 		scan = new OurScanner();
+		_mouse = new MouseDragHandler();
 //		num = scan.getEscapeDistance();
 	}
 
@@ -172,8 +174,12 @@ public class Sets {
 	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(){
-		double w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
-		double h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
+		double w = _mouse.width();
+		double h = _mouse.height();
+		if(w == 0 && h == 0){
+		w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
+		h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
+		}
 		int[][] grid = new int[512][512];
 		for(int i = 0; i < 512 ;i++){
 			for(int j = 0; j < 512 ;j++){
@@ -191,8 +197,12 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Julia_set(){
-  		double w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
-		double h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
+		double w = _mouse.width();
+		double h = _mouse.height();
+		if(w == 0 && h == 0){
+  		w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
+		h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
+		}
  		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
@@ -209,8 +219,12 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] BurningShip_set(){
-  		double w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
-		double h = (0.025 - (-0.08)) / 512; // sets the y coordinates
+		double w = _mouse.width();
+		double h = _mouse.height();
+		if(w == 0 && h == 0){
+  		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
+		h = (0.025 - (-0.08)) / 512; // sets the y coordinates
+		}
  		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
@@ -228,8 +242,12 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Multibrot_set(){
-  		double w = (1 - (-1)) / 512.0;
-		double h = (1.3 - (-1.3)) / 512;
+		double w = _mouse.width();
+		double h = _mouse.height();
+		if (w == 0 && h == 0){
+  		w = (1 - (-1)) / 512.0;
+		h = (1.3 - (-1.3)) / 512;
+		}
 		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
