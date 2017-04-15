@@ -81,10 +81,10 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 */
 	public int height(){
 		if(firstY > lastY){
-			return firstX-lastX;
+			return (firstY-lastY)/512;
 		}
 		else if (lastY> firstY){
-			return lastY-firstY;
+			return (lastY-firstY)/512;
 		}
 		else{
 			return 0;
@@ -97,10 +97,10 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 */
 	public int width(){
 		if(firstX > lastX){
-			return firstX-lastX;
+			return (firstX-lastX)/512;
 		}
 		else if (lastX> firstX){
-			return lastX-firstX;
+			return (lastX-firstX)/512;
 		}
 		else{
 			return 0;

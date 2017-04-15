@@ -1,5 +1,6 @@
 package edu.buffalo.cse116;
 
+
 import java.awt.image.IndexColorModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,17 +10,19 @@ import java.util.*;
 import javax.swing.*;
 
 import edu.buffalo.fractal.FractalPanel;
-import edu.buffalo.cse116.*;
 /**
  * This class creates the GUI that will run the program.
  * @author Yang Cai, Gary Yeung, Genessy Munoz
  */
 public class GUI extends JFrame {
     private JTextField Escapedis;
+    private JTextField EscapeTime;
     private JMenuItem Exit;
     private JButton SetButton;
+    private JButton SetTimeButton;
     private JDialog jDialog1,jDialog2;
     private JLabel jLabel1;
+    private JLabel jLabel2;
     private JMenu jMenu1,jMenu2,FractalMenu,FileMenu,EditMenu,ColorMenu;
     private JMenuBar jMenuBar1,jMenuBar2;
     private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem;
@@ -28,11 +31,8 @@ public class GUI extends JFrame {
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
-
-	private MouseDragHandler mouseHandler;
-
 	private int _userEscapeDistance;
-
+	private int _userEscapeTime;
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
@@ -55,36 +55,33 @@ public class GUI extends JFrame {
         jMenu1 = new JMenu();
         jDialog1 = new JDialog();
         jDialog2 = new JDialog();
-        
         jMenuBar2 = new JMenuBar();
         FileMenu = new JMenu();
         EditMenu = new JMenu();
-        
         jPanel1 = new FractalPanel();
         jLabel1 = new JLabel();
+        jLabel2 = new JLabel();
         Escapedis = new JTextField();
-        
+        EscapeTime = new JTextField();
         SetButton = new JButton();
+        SetTimeButton = new JButton();
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
-        
         Exit = new JMenuItem();
         FractalMenu = new JMenu();
         MandelbrotItem = new JMenuItem();
         JuliaItem = new JMenuItem();
         BurningShipItem = new JMenuItem();
         MultibrotItem = new JMenuItem();
-        
         ColorMenu = new JMenu();
         RedItem = new JMenuItem();
         BlueItem = new JMenuItem();
         GrayItem = new JMenuItem();
         GreenItem = new JMenuItem();
-        
         set = new Sets(this);
-        mouseHandler = new MouseDragHandler();
         jMenu1.setText("jMenu1");
         _userEscapeDistance = 2;
+        _userEscapeTime = 255;
 		// this creates the file menu and its item. It also creates the menu bar. 
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
@@ -127,11 +124,8 @@ public class GUI extends JFrame {
             jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 382, Short.MAX_VALUE)
         );
-        //adds the mouseListener to the fractal panel
-        jPanel1.addMouseListener(mouseHandler);
-        jPanel1.addMouseMotionListener(mouseHandler);
 
-        jLabel1.setText("Please enter a valid escape distance.");
+        jLabel1.setText("Please enter an escape distance.");
 
         Escapedis.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -144,6 +138,21 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent evt) {
                 SetButtonActionPerformed(evt);
             }
+        });
+        
+        jLabel2.setText("Please enter an escape time.");
+        
+        EscapeTime.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt){
+        		EscapeTimeActionPerformed(evt);
+        	}
+        });
+        
+        SetTimeButton.setText("Set");
+        SetTimeButton.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt){
+        		SetTimeButtonActionPerformed(evt);
+        	}
         });
 
         jMenu2.setText("File");
@@ -240,6 +249,12 @@ public class GUI extends JFrame {
                 .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SetButton)
+                .addContainerGap(176, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SetTimeButton)
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -250,7 +265,10 @@ public class GUI extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SetButton))
+                    .addComponent(SetButton)
+                    .addComponent(jLabel2)
+                    .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SetTimeButton))
                 .addContainerGap())
         );
 
@@ -269,7 +287,7 @@ public class GUI extends JFrame {
 			_userEscapeDistance = Integer.parseInt(userInput);
 			Escapedis.setText("");
 			jLabel1.setText("Please enter an escape distance.");
-			if(_userEscapeDistance <= 0){
+			if(_userEscapeDistance <= 1){
 				jLabel1.setText("Please enter a valid escape distance.");
 				_userEscapeDistance = 2;
 			}	
@@ -280,6 +298,25 @@ public class GUI extends JFrame {
 		}
 		return _userEscapeDistance;
 	}
+    
+    public int getEscapeTime(){
+    	String userInput;
+    	userInput = EscapeTime.getText();
+    	try{
+    		_userEscapeTime = Integer.parseInt(userInput);
+    		EscapeTime.setText("");
+    		jLabel2.setText("Please enter an escape time.");
+    		if(_userEscapeTime <= 1 || _userEscapeTime > 255){
+    			jLabel2.setText("Please enter a valid escape distance.");
+    			_userEscapeTime = 255;
+    		}
+    	}
+    	catch(NumberFormatException e){
+    		jLabel2.setText("Please enter a valid escape time.");
+    		EscapeTime.setText("");
+    	}
+    	return _userEscapeTime;
+    }
 
     private void ExitActionPerformed(ActionEvent evt) {
     	this.dispose();
@@ -293,12 +330,26 @@ public class GUI extends JFrame {
     	this.getEscapeDistance();
 		updatePanel();
     }
-
+    
+    /**
+     * @author garyy
+     */
+    private void SetTimeButtonActionPerformed(ActionEvent evt){
+    	this.getEscapeTime();
+    	updatePanel();
+    }
     /**
      * @author Genessy Munoz
      * @param evt
      */
     private void EscapedisActionPerformed(ActionEvent evt) {
+    }
+    
+    /**
+     * @author garyy
+     */
+    private void EscapeTimeActionPerformed(ActionEvent evt){
+    	
     }
 
     /**
