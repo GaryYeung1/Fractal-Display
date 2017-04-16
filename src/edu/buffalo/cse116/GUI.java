@@ -20,6 +20,7 @@ public class GUI extends JFrame {
     private JMenuItem Exit;
     private JButton SetButton;
     private JButton SetTimeButton;
+    private JButton Reset;
     private JDialog jDialog1,jDialog2;
     private JLabel jLabel1;
     private JLabel jLabel2;
@@ -65,6 +66,7 @@ public class GUI extends JFrame {
         EscapeTime = new JTextField();
         SetButton = new JButton();
         SetTimeButton = new JButton();
+        Reset = new JButton();
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
         Exit = new JMenuItem();
@@ -152,6 +154,13 @@ public class GUI extends JFrame {
         SetTimeButton.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		SetTimeButtonActionPerformed(evt);
+        	}
+        });
+        
+        Reset.setText("Reset");
+        Reset.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt){
+        		ResetActionPerformed(evt);
         	}
         });
 
@@ -255,7 +264,9 @@ public class GUI extends JFrame {
                 .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SetTimeButton)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE)
+                .addComponent(Reset)
+                .addContainerGap(176,  Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -268,7 +279,8 @@ public class GUI extends JFrame {
                     .addComponent(SetButton)
                     .addComponent(jLabel2)
                     .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SetTimeButton))
+                    .addComponent(SetTimeButton)
+                    .addComponent(Reset))
                 .addContainerGap())
         );
 
@@ -317,6 +329,11 @@ public class GUI extends JFrame {
     	}
     	return _userEscapeTime;
     }
+   
+    public int reset(){
+    	int i = 0;
+    	return i +1;
+    }
 
     private void ExitActionPerformed(ActionEvent evt) {
     	this.dispose();
@@ -336,6 +353,13 @@ public class GUI extends JFrame {
      */
     private void SetTimeButtonActionPerformed(ActionEvent evt){
     	this.getEscapeTime();
+    	updatePanel();
+    }
+    /**
+     * @author garyy
+     */
+    private void ResetActionPerformed(ActionEvent evt){
+    	this.reset();
     	updatePanel();
     }
     /**
