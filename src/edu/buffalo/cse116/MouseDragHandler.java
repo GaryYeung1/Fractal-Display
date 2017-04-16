@@ -12,17 +12,21 @@ import java.awt.event.MouseMotionListener;
 public class MouseDragHandler implements MouseListener, MouseMotionListener {
 
 	private boolean _isMousePressed;
-	private int firstX, lastX, firstY, lastY;
+	private double firstX, lastX, firstY, lastY, testX, testY, retYVal, retXVal;
 	/**
 	 * This class is used for the methods necessary to get the mouse actions needed 
 	 * to recalculate the fractal to zoom in.
 	 */
 	public MouseDragHandler(){
 		_isMousePressed = false;
-		firstX = 0; 
-		lastX = 0;
-		firstY = 0;
-		lastY = 0;
+		firstX = 0.0; 
+		lastX = 0.0;
+		firstY = 0.0;
+		lastY = 0.0;
+		testX = 0.0;
+		testY = 0.0;
+		retYVal = 0.0;
+		retXVal = 0.0;
 	}
 	/**
 	 * The method starts when the button is pressed on a certain component and dragged.
@@ -78,20 +82,37 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		testX = e.getX();
+		testY = e.getY();
+		retYVal = (Math.abs(firstY-testY))/512;
+		retXVal = (Math.abs(firstX - testX))/512;
+		System.out.println("width is " + retXVal + " height is " + retYVal);
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
+	
+	public double retX(){
+		return retXVal;
+	}
+	public double retY(){
+		return retYVal;
+	}
+	
 	/**
 	 * This gets the height of the region selected by the user.
 	 * @return the height of the region selected to make zoom in
 	 * @author Florebencia Fils-Aime
 	 */
-	public int height(){
-		if(firstY > lastY){
-			return (firstY-lastY)/512;
+	public double height(){
+		if(firstY > testY){
+			double retVal = (firstY-testY)/512;
+			System.out.print(retVal);
+			return retVal;
 		}
-		else if (lastY> firstY){
-			return (lastY-firstY)/512;
+		else if (testY> firstY){
+			double retVal = (testY-firstY)/512;
+			System.out.println(retVal);
+			return retVal;
 		}
 		else{
 			return 0;
@@ -102,12 +123,16 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 * @return the width of the region selected to make zoom in
 	 * @author Florebencia Fils-Aime
 	 */
-	public int width(){
-		if(firstX > lastX){
-			return (firstX-lastX)/512;
+	public double width(){
+		if(firstX > testX){
+			double retVal = (firstX-testX)/512;
+			System.out.println(retVal);
+			return retVal;
 		}
-		else if (lastX> firstX){
-			return (lastX-firstX)/512;
+		else if (lastX> testX){
+			double retVal =  (lastX-testX)/512;
+			System.out.println(retVal);
+			return retVal;
 		}
 		else{
 			return 0;
@@ -125,7 +150,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
   * @return firstX
   */
 	public Point firstCoordinate(){
-		Point first = new Point(firstX,firstY);
+		Point first = new Point();
 		return first;
 	}
 
@@ -135,7 +160,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 * @return lastX
 	 */
 	public Point lastCoordinate(){
-		Point last = new Point(lastX,lastY);
+		Point last = new Point();
 		return last;
 	}
 	/**

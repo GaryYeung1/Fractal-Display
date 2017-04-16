@@ -21,7 +21,7 @@ public class Sets {
 	}
 
 	/**
-	 * This is for the Mandelbrot Set.
+	 * This is for the Mandelbrot Set,  and uses user input for the escape distance/ escape time.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
@@ -59,7 +59,7 @@ public class Sets {
 		 
 	}
 	/**
-	 * This is for the Julia Set.
+	 * This is for the Julia Set,  and uses user input for the escape distance/ escape time.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
@@ -96,7 +96,7 @@ public class Sets {
 		return passes;
 	}
 	/**
-	 * This is for the Burning Ship set
+	 * This is for the Burning Ship set, and uses user input for the escape distance/ escape time.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
@@ -132,8 +132,8 @@ public class Sets {
 		return passes;
 		}
 	/**
-	 * This creates the Multibrot Set
-	 * @author Genessy and Yang
+	 * This creates the Multibrot Set, and uses user input for the escape distance/ escape time.
+	 * @author Genessy and Yang and Garyyeun
 	 * @param x
 	 * @param y
 	 * @return passes since it's the escape distance
@@ -169,23 +169,25 @@ public class Sets {
 	}
 
 	/** Set mandelbrot set method and calculates the fractal into a 2D array with 
-	 * 512 rows and columns. 
-	 * @author Genessy 
+	 * 512 rows and columns. Uses user input for the coordinate range.
+	 * @author Genessy and Garyyeun
 	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
 		w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 		h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
 		}
-		if(reset > 0){
+
+		if(reset == 1){
 			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-			reset -= 1;
+			reset = 0;
 		}
+
 		int[][] grid = new int[512][512];
 		for(int i = 0; i < 512 ;i++){
 			for(int j = 0; j < 512 ;j++){
@@ -198,13 +200,13 @@ public class Sets {
 	}
 	/**
 	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
-	 *  columns.
-	 * @author Genessy  
+	 *  columns. Uses user input for the coordinate range.
+	 * @author Genessy  and Garyyeun
 	 * @return
 	 */
 	public int[][] Julia_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
@@ -226,13 +228,13 @@ public class Sets {
   		return grid;
   	}
 	/**
-	 * @author Genessy  
-	 * Creates Burning Ship set method and calculates the fractal into a 2D array with 512 rows and columns.
+	 * @author Genessy and Garyyeun
+	 * Creates Burning Ship set method and calculates the fractal into a 2D array with 512 rows and columns. Uses user input for the coordinate range.
 	 * @return
 	 */
 	public int[][] BurningShip_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
@@ -255,13 +257,13 @@ public class Sets {
   	}
 	
 	/**
-	 * This method creates and calculates the fractal for the Multibrot_set
-	 * @author Genessy and Yang 
+	 * This method creates and calculates the fractal for the Multibrot_set. Uses user input for the coordinate range.
+	 * @author Genessy and Yang and Garyyeun
 	 * @return
 	 */
 	public int[][] Multibrot_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if (w == 0 && h == 0){
   		w = (1 - (-1)) / 512.0;
