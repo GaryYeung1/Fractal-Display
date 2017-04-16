@@ -176,9 +176,15 @@ public class Sets {
 	public int[][] Mandelbrot_set(){
 		double w = _mouse.width();
 		double h = _mouse.height();
+		int reset = _gui.reset();
 		if(w == 0 && h == 0){
 		w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 		h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
+		}
+		if(reset > 0){
+			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
+			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
+			reset -= 1;
 		}
 		int[][] grid = new int[512][512];
 		for(int i = 0; i < 512 ;i++){
@@ -199,9 +205,15 @@ public class Sets {
 	public int[][] Julia_set(){
 		double w = _mouse.width();
 		double h = _mouse.height();
+		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
 		h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
+		}
+		if( reset > 0){
+	  		w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
+			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
+			reset -=1;
 		}
  		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
@@ -221,9 +233,15 @@ public class Sets {
 	public int[][] BurningShip_set(){
 		double w = _mouse.width();
 		double h = _mouse.height();
+		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
 		h = (0.025 - (-0.08)) / 512; // sets the y coordinates
+		}
+		if(reset > 0){
+	  		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
+			h = (0.025 - (-0.08)) / 512; // sets the y coordinates
+			reset -=1;
 		}
  		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
@@ -244,9 +262,14 @@ public class Sets {
 	public int[][] Multibrot_set(){
 		double w = _mouse.width();
 		double h = _mouse.height();
+		int reset = _gui.reset();
 		if (w == 0 && h == 0){
   		w = (1 - (-1)) / 512.0;
 		h = (1.3 - (-1.3)) / 512;
+		}
+		if(reset > 0){
+	  		w = (1 - (-1)) / 512.0;
+			h = (1.3 - (-1.3)) / 512;			
 		}
 		int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
@@ -286,5 +309,3 @@ public class Sets {
 	}
 
 }
-
-

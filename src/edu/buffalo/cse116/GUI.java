@@ -33,6 +33,7 @@ public class GUI extends JFrame {
 	private int[][] escapeSteps;
 	private int _userEscapeDistance;
 	private int _userEscapeTime;
+	private MouseDragHandler _mouse;
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
@@ -82,6 +83,7 @@ public class GUI extends JFrame {
         jMenu1.setText("jMenu1");
         _userEscapeDistance = 2;
         _userEscapeTime = 255;
+        _mouse = new MouseDragHandler();
 		// this creates the file menu and its item. It also creates the menu bar. 
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
@@ -113,6 +115,10 @@ public class GUI extends JFrame {
         jMenuBar2.add(EditMenu);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        // adds the mouseListener in the panel
+        jPanel1.addMouseListener(_mouse);
+        jPanel1.addMouseMotionListener(_mouse);
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -271,7 +277,7 @@ public class GUI extends JFrame {
                     .addComponent(SetTimeButton))
                 .addContainerGap())
         );
-
+        
         pack();
     }
 	/**
