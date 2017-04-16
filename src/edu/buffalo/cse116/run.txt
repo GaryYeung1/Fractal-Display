@@ -1,10 +1,10 @@
 To run our program you must click on the main class and run it as a java application
-With the OurScanner class you must put in the escape distance to actually see the fractal.
-So look down at the console to input the integer value.
-Please ignore the jtextfield and the jbutton they don't get the escape distance for you.
-Also if you want to put in a new escape distance, you must rerun the program through the main class.
+With the jtextfield and set button you must put in the escape distance and escapetime
+to actually change the fractal.
+You must reload the fractal by clicking on the menu bar containing the fractal
 The multibrot set takes a while to load so please wait patiently.
-Running our tests is probably the most annoying part. You have to constantly 
-put in an escape Distance for the tests to work.
-So we suggest inputing the same integer over and over again until all tests are completed.
+The mouseDragListener class creates a mouse listener and a mouse motion listener. It gets the 
+coordinates of the mouse and attemps to show the user where the mouse is dragging. It will 
+tell you it's coordinates in the console.
+
 Thank you.

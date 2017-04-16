@@ -1,2 +1,3 @@
-To update the escape Distance you have to rerun the program and the ourscanner class makes sure you can't put integer
-values less than or equal to zero
+write that to change escapetime/escapedistance put in a valid number in 
+the jtextfield and click set, then reload the fractal to get the new fractal. 
+To reload a new fractal just click on the menuItem of that fractal

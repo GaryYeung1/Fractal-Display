@@ -1,0 +1,2 @@
+To reset the fractal, you push the reset button and then reload the fractal 
+by pressing the menu item containing the fractal.

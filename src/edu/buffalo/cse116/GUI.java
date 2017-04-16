@@ -289,7 +289,7 @@ public class GUI extends JFrame {
                     .addComponent(Reset))
                 .addContainerGap())
         );
-        
+
         pack();
     }
 	/**

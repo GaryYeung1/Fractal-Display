@@ -1,6 +1,8 @@
 package edu.buffalo.cse116;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -26,9 +28,11 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 * The method starts when the button is pressed on a certain component and dragged.
 	 * Luckily the mouse events will continue under the user stops pressing the button.
 	 * So in other words it will get the last x and y coordinates to recalculate the fractal
-	 * when the button stops being pressed.
+	 * when the button stops being pressed. It also attempts to let the viewer see what they 
+	 * have selected.
 	 * @author Florebencia Fils-Aime
 	 */
+	@SuppressWarnings("null")
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -36,6 +40,9 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 			lastX= arg0.getX();
 			lastY= arg0.getY();
 		}
+		//attempts to draw the rectangle onto the jpanel1
+		Graphics2D drawer = null;
+		drawer.draw(new Rectangle(firstX, firstY, this.width(), this.height()));
 		System.out.println("The last coordinate was ("+lastX + ", " + lastY+ ").");
 	}
 	/**
@@ -105,6 +112,12 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		else{
 			return 0;
 		}
+	}
+	public int firstX(){
+		return firstX;
+	}
+	public int firstY(){
+		return firstY;
 	}
  /**
   * returns the first coordinate the user clicked on.
