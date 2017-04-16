@@ -316,7 +316,12 @@ public class GUI extends JFrame {
 		}
 		return _userEscapeDistance;
 	}
-    
+	/**
+	 * Gets the value inputed by the user and sets it as the escape time for the fractals. If invalid input is entered, displays
+	 * message requesting for valid input.
+	 * @return userInputEscapeTime.
+	 * @author Gary Yeung
+	 */
     public int getEscapeTime(){
     	String userInput;
     	userInput = EscapeTime.getText();
@@ -335,7 +340,11 @@ public class GUI extends JFrame {
     	}
     	return _userEscapeTime;
     }
-   
+   /**
+    * @author garyy
+    * Acts as an on/off switch for the reset button.
+    * @return a value of 1 to act as on.
+    */
     public int reset(){
     	int i = 0;
     	return i +1;
