@@ -8,7 +8,7 @@ import java.awt.image.IndexColorModel;
 import java.util.*;
 
 import javax.swing.*;
-
+//:)
 import edu.buffalo.fractal.FractalPanel;
 /**
  * This class creates the GUI that will run the program.
