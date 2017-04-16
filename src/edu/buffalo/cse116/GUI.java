@@ -364,7 +364,32 @@ public class GUI extends JFrame {
     	ResetValue +=1;
     	return ResetValue;
     }
-
+    public double returnXInitial(){
+    	double initialXCoordinate = _mouse.retXInitial();
+    	double finalXCoordinate = _mouse.retXFinal();
+    	if(initialXCoordinate < finalXCoordinate){
+    		return initialXCoordinate;	
+    	}
+    	if(initialXCoordinate > finalXCoordinate){
+    		return finalXCoordinate;
+    	}
+    	else{
+    		return 0.0;
+    	}
+    }
+    public double returnYInitial(){
+    	double initialYCoordinate = _mouse.retYInitial();
+    	double finalYCoordinate = _mouse.retXFinal();
+    	if(initialYCoordinate < finalYCoordinate){
+    		return initialYCoordinate;
+    	}
+    	if(initialYCoordinate > finalYCoordinate){
+    		return finalYCoordinate;
+    	}
+    	else{
+    		return 0.0;
+    	}
+    }
     public double setXCoordinate(){
     	double xCoordinate = _mouse.retX();
     	return xCoordinate;

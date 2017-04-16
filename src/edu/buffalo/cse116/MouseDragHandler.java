@@ -83,9 +83,20 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
-	
+	public double retXInitial(){
+		return firstX;
+	}
+	public double retXFinal(){
+		return testX;
+	}
 	public double retX(){
 		return retXVal;
+	}
+	public double retYInitial(){
+		return firstY;
+	}
+	public double retYFinal(){
+		return testY;
 	}
 	public double retY(){
 		return retYVal;
