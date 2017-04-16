@@ -174,18 +174,20 @@ public class Sets {
 	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
 		w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 		h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
 		}
-		if(reset > 0){
+
+		if(reset == 1){
 			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-			reset -= 1;
+			reset = 0;
 		}
+
 		int[][] grid = new int[512][512];
 		for(int i = 0; i < 512 ;i++){
 			for(int j = 0; j < 512 ;j++){
@@ -203,8 +205,8 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Julia_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
@@ -231,8 +233,8 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] BurningShip_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if(w == 0 && h == 0){
   		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
@@ -260,8 +262,8 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Multibrot_set(){
-		double w = _mouse.width();
-		double h = _mouse.height();
+		double w = _gui.setXCoordinate();
+		double h = _gui.setYCoordinate();
 		int reset = _gui.reset();
 		if (w == 0 && h == 0){
   		w = (1 - (-1)) / 512.0;

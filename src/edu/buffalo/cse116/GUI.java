@@ -21,6 +21,8 @@ public class GUI extends JFrame {
     private JButton SetButton;
     private JButton SetTimeButton;
     private JButton Reset;
+    private int ResetValue;
+    private JButton SetCoordinates;
     private JDialog jDialog1,jDialog2;
     private JLabel jLabel1;
     private JLabel jLabel2;
@@ -68,6 +70,8 @@ public class GUI extends JFrame {
         SetButton = new JButton();
         SetTimeButton = new JButton();
         Reset = new JButton();
+        ResetValue = 0;
+        SetCoordinates = new JButton();
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
         Exit = new JMenuItem();
@@ -167,6 +171,13 @@ public class GUI extends JFrame {
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		ResetActionPerformed(evt);
+        	}
+        });
+        
+        SetCoordinates.setText("Set Coordinates");
+        SetCoordinates.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt){
+        		SetCoordinatesActionPerformed(evt);
         	}
         });
 
@@ -272,7 +283,9 @@ public class GUI extends JFrame {
                 .addComponent(SetTimeButton)
                 .addContainerGap(176, Short.MAX_VALUE)
                 .addComponent(Reset)
-                .addContainerGap(176,  Short.MAX_VALUE))
+                .addContainerGap(176,  Short.MAX_VALUE)
+                .addComponent(SetCoordinates)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -286,7 +299,8 @@ public class GUI extends JFrame {
                     .addComponent(jLabel2)
                     .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(SetTimeButton)
-                    .addComponent(Reset))
+                    .addComponent(Reset)
+                    .addComponent(SetCoordinates))
                 .addContainerGap())
         );
         
@@ -346,10 +360,19 @@ public class GUI extends JFrame {
     * @return a value of 1 to act as on.
     */
     public int reset(){
-    	int i = 0;
-    	return i +1;
+    	int ResetValue = 0;
+    	ResetValue +=1;
+    	return ResetValue;
     }
 
+    public double setXCoordinate(){
+    	double xCoordinate = _mouse.retX();
+    	return xCoordinate;
+    }
+    public double setYCoordinate(){
+    	double yCoordinate = _mouse.retY();
+    	return yCoordinate;
+    }
     private void ExitActionPerformed(ActionEvent evt) {
     	this.dispose();
     }
@@ -375,6 +398,11 @@ public class GUI extends JFrame {
      */
     private void ResetActionPerformed(ActionEvent evt){
     	this.reset();
+    	updatePanel();
+    }
+    private void SetCoordinatesActionPerformed(ActionEvent evt){
+    	this.setXCoordinate();
+    	this.setYCoordinate();
     	updatePanel();
     }
     /**
