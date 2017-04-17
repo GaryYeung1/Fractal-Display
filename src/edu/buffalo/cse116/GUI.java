@@ -174,7 +174,12 @@ public class GUI extends JFrame {
         Reset.setText("Reset");
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
+        		if(ResetValue > 0){
+        			ResetValue = 0;
+        		}
+        		else{
         		ResetValue = 1;
+        		}
         	}
         });
         
