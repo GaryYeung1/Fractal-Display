@@ -37,6 +37,8 @@ public class GUI extends JFrame {
 	private int _userEscapeDistance;
 	private int _userEscapeTime;
 	private MouseDragHandler _mouse;
+	private double xCoordinate;
+	private double yCoordinate;
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
@@ -90,6 +92,8 @@ public class GUI extends JFrame {
         _userEscapeDistance = 2;
         _userEscapeTime = 255;
         _mouse = new MouseDragHandler();
+        xCoordinate = 0.0;
+        yCoordinate = 0.0;
 		// this creates the file menu and its item. It also creates the menu bar. 
 
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
@@ -170,14 +174,15 @@ public class GUI extends JFrame {
         Reset.setText("Reset");
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		ResetActionPerformed(evt);
+        		ResetValue = 1;
         	}
         });
         
         SetCoordinates.setText("Set Coordinates");
         SetCoordinates.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		SetCoordinatesActionPerformed(evt);
+        		xCoordinate= _mouse.retX();
+        		yCoordinate = _mouse.retY();
         	}
         });
 
@@ -360,8 +365,6 @@ public class GUI extends JFrame {
     * @return a value of 1 to act as on.
     */
     public int reset(){
-    	int ResetValue = 0;
-    	ResetValue +=1;
     	return ResetValue;
     }
     public double returnXInitial(){
@@ -391,11 +394,9 @@ public class GUI extends JFrame {
     	}
     }
     public double setXCoordinate(){
-    	double xCoordinate = _mouse.retX();
     	return xCoordinate;
     }
     public double setYCoordinate(){
-    	double yCoordinate = _mouse.retY();
     	return yCoordinate;
     }
     private void ExitActionPerformed(ActionEvent evt) {

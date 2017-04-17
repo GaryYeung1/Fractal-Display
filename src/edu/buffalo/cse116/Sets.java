@@ -179,6 +179,7 @@ public class Sets {
 		double iX = _gui.returnXInitial();
 		double iY = _gui.returnYInitial();
 		int reset = _gui.reset();
+		System.out.println("reset value is " + reset);
 		if(w == 0 && h == 0){
 			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
@@ -193,7 +194,7 @@ public class Sets {
 			return grid;
 			}
 		if(reset == 1){
-		    reset = 0;
+			reset = 0;
 			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
 			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
 			int[][] grid = new int[512][512];
@@ -204,10 +205,10 @@ public class Sets {
 					grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
 					}
 				}
+
 			return grid;
 			}
-			
-		int[][] grid = new int[512][512];
+		else{int[][] grid = new int[512][512];
 		for(int i = 0; i < 512 ;i++){
 			for(int j = 0; j < 512 ;j++){
 				double x = iX + (i*w);
@@ -216,6 +217,7 @@ public class Sets {
 			}
 		}
 		return grid;
+		}
 	}
 	/**
 	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
@@ -242,7 +244,7 @@ public class Sets {
 	  		}
 	  		return grid;
 			}
-		if( reset > 0){
+		if( reset == 1){
 	  		reset = 0;
 			w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
 			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
@@ -256,7 +258,7 @@ public class Sets {
 	  		}
 	  		return grid;
 			}
- 		int[][] grid = new int[512][512];
+		else{int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
   				double x = iX + (w * i);
@@ -265,6 +267,7 @@ public class Sets {
   			}
   		}
   		return grid;
+		}
   	}
 	/**
 	 * @author Genessy and Garyyeun
@@ -304,7 +307,7 @@ public class Sets {
 	  		}
 	  		return grid;
 		}
- 		int[][] grid = new int[512][512];
+		else{	int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
   				double x = iX + (w * i);
@@ -312,7 +315,9 @@ public class Sets {
   				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
   			}
   		}
+		
   		return grid;
+		}
   	}
 	
 	/**
@@ -352,7 +357,7 @@ public class Sets {
 	  		}
 	  		return grid;
 		}
-		int[][] grid = new int[512][512];
+		else{int[][] grid = new int[512][512];
   		for(int i = 0; i < 512 ;i++){
   			for(int j = 0; j < 512 ;j++){
   				double x = iX + (w * i);
@@ -361,6 +366,7 @@ public class Sets {
   			}
   		}
   		return grid;
+		}
   	}	
 	/**
 	 * This method will be used to change the escapeTime so that the fractal looks different
