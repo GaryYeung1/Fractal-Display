@@ -16,35 +16,35 @@ public class ActualFractalTests {
 	private final int userInputTime, userInputDis;
 	public ActualFractalTests() {
 		sets = new Sets(_gui);
-		_gui = new GUI();
+//		_gui = new GUI();
 		scanner = new Scanner(System.in);
-		System.out.println("Hello. Please enter an integer for the escapeDistance:");
-		int dis = scanner.nextInt();
-		if(dis>0){
-			userInputDis = dis;
-		}
-		else{
-			while(dis <= 0){
-				System.out.println("I'm sorry. You can't put a number less "
-						+ "than zero. Try and enter the number again: ");
-				dis = scanner.nextInt();
-			}
-			userInputDis = dis;
-		}
-		System.out.println("Thank you. Can you enter an integer for the escapeTime? "
-				+ "Type here:");
-		int time = scanner.nextInt();
-		if(time>1 && time<255){
-			userInputTime = time;
-		}
-		else{
-			while(time < 1 || time > 255){
-				System.out.println("I'm sorry. You can't put a number less than 1 or "
-						+ "greater than 255. Try and enter the number again: ");
-				time = scanner.nextInt();
-			}
-			userInputTime = time;
-		}
+//		System.out.println("Hello. Please enter an integer for the escapeDistance:");
+//		int dis = scanner.nextInt();
+//		if(dis>0){
+//			userInputDis = dis;
+//		}
+//		else{
+//			while(dis <= 0){
+//				System.out.println("I'm sorry. You can't put a number less "
+//						+ "than zero. Try and enter the number again: ");
+//				dis = scanner.nextInt();
+//			}
+//			userInputDis = dis;
+//		}
+//		System.out.println("Thank you. Can you enter an integer for the escapeTime? "
+//				+ "Type here:");
+//		int time = scanner.nextInt();
+//		if(time>1 && time<255){
+//			userInputTime = time;
+//		}
+//		else{
+//			while(time < 1 || time > 255){
+//				System.out.println("I'm sorry. You can't put a number less than 1 or "
+//						+ "greater than 255. Try and enter the number again: ");
+//				time = scanner.nextInt();
+//			}
+//			userInputTime = time;
+//		}
 
 	}
 	
@@ -60,38 +60,9 @@ public class ActualFractalTests {
 	@Test
 	public void mandelbrotSetTranslationTest() {
 		Sets sets = new Sets(_gui);
-		int[][] grid = new int[512][512];
-		grid = sets.Mandelbrot_set();
-		assertTrue(grid[0][0] == sets.mandelbrotSet(-2.15, -1.3));
-		double xCalc, yCalc;
-		xCalc = x;
-		yCalc = y;
-		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-		int passes = 0;
-		int passes2 = 0;
-		while(userInputDis>= dist && passes< userInputTime){
-			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-			double yPrime = 2 * xCalc * yCalc + y;
-			xCalc = xPrime;
-			yCalc = yPrime;
-			passes += 1; 
-			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
-		}
-		double w = -2.15;
-		double h = -1.3;
-		if(w == 0 && h == 0){
-		w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
-		h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-		}
-		int[][] grid = new int[512][512];
-		for(int i = 0; i < 512 ;i++){
-			for(int j = 0; j < 512 ;j++){
-				double x = -2.15 + (i*w);
-				double y = -1.3 + (j*h);
-				grid[i][j] = passes; // sets the points up
-			}
-		}
-
+		int[][] grid = new int[2048][2048];
+		grid = sets.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);
+		assertEquals(grid[0][0], sets.mandelbrotSet(-2.15, -1.3, 2, 255));
 	}
 
 	/**

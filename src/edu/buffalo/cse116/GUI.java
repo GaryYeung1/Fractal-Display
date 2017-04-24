@@ -15,38 +15,32 @@ import edu.buffalo.fractal.FractalPanel;
  * @author Yang Cai, Gary Yeung, Genessy Munoz
  */
 public class GUI extends JFrame {
-    private JTextField Escapedis;
-    private JTextField EscapeTime;
-    private JMenuItem Exit;
-    private JButton SetButton;
-    private JButton SetTimeButton;
-    private JButton Reset;
+    private JTextField Escapedis,EscapeTime;
+    private JButton SetButton,SetTimeButton,Reset,SetCoordinates;
     private int ResetValue;
-    private JButton SetCoordinates;
     private JDialog jDialog1,jDialog2;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
+    private JLabel jLabel1,jLabel2;
     private JMenu jMenu1,jMenu2,FractalMenu,FileMenu,EditMenu,ColorMenu;
     private JMenuBar jMenuBar1,jMenuBar2;
-    private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem;
+    private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem,Exit;
     private FractalPanel jPanel1;
     private Sets set;
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
-	private int _userEscapeDistance;
-	private int _userEscapeTime;
+	private int _userEscapeDistance,_userEscapeTime;
 	private MouseDragHandler _mouse;
-	private double xCoordinate;
-	private double yCoordinate;
+	private double xCoordinate,yCoordinate;
+	private boolean startPic; // used for the if statements in the fractal actions
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
 	 */
     public GUI() {
+    	startPic = true;
         initComponents();
         this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
-		this.escapeSteps = this.set.Mandelbrot_set();		
+		this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);		
 		updatePanel();
     }
 
@@ -636,7 +630,12 @@ public class GUI extends JFrame {
      * @param evt
      */
     private void MandelbrotItemActionPerformed(ActionEvent evt) {
-    	this.escapeSteps = this.set.Mandelbrot_set();
+    	
+    	if(startPic){
+    	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
+    	else{
+    		this.escapeSteps = set.Mandelbrot_set(_mouse.firstX(), _mouse.firstY(), _mouse., y2, escDist, escTime)
+    	}
 		updatePanel();
     }
 
@@ -646,6 +645,7 @@ public class GUI extends JFrame {
     }
     
     private void MultibrotItemActionPerformed(ActionEvent evt) {
+    	if((_mouse.firstX()==0)&&())
     	this.escapeSteps = this.set.Multibrot_set();
 		updatePanel();
     }

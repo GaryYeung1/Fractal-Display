@@ -27,17 +27,15 @@ public class Sets {
 	 * @param y
 	 * @return passes (since it's the escapeTime)
 	 */
-	//run a second loop for to get the new escapeTime
-	public int mandelbrotSet(double x, double y){
-		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime = _gui.getEscapeTime();
+	public int mandelbrotSet(double x, double y, int escDis, int escTime){
+//		int escapeDistance = _gui.getEscapeDistance();
+//		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		int passes2 = 0;
-		while(escapeDistance> dist && passes< escapeTime){
+		while(escDis> dist && passes< escTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -65,16 +63,16 @@ public class Sets {
 	 * @param y
 	 * @return passes since it's the escape distance
 	 */
-	public int juliaSet(double x, double y){
-		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime = _gui.getEscapeTime();
+	public int juliaSet(double x, double y, int escDist, int escTime){
+//		int escapeDistance = _gui.getEscapeDistance();
+//		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x; 
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
-		int passes2 = 0;
-		while(escapeDistance > dist && passes < escapeTime){
+//		int passes2 = 0;
+		while(escDist > dist && passes < escTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
 			xCalc = xPrime;
@@ -102,15 +100,15 @@ public class Sets {
 	 * @param y
 	 * @return
 	 */
-	public int burningShipSet(double x, double y){
-		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime = _gui.getEscapeTime();
+	public int burningShipSet(double x, double y, int escDist, int escTime){
+//		int escapeDistance = _gui.getEscapeDistance();
+//		int escapeTime = _gui.getEscapeTime();
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		int passes2 = 0;
-		while(escapeDistance > dist && passes < escapeTime){
+		while(escDist > dist && passes < escTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
 			xCalc = xPrime;
@@ -138,15 +136,15 @@ public class Sets {
 	 * @param y
 	 * @return passes since it's the escape distance
 	 */
-	public int Multibrot(double x, double y) {
-		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime = _gui.getEscapeTime();
+	public int Multibrot(double x, double y, int escDist, int escTime) {
+//		int escapeDistance = _gui.getEscapeDistance();
+//		int escapeTime = _gui.getEscapeTime();
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
 		int passes2= 0;
-		while (escapeDistance> dist && passes < escapeTime) {
+		while (escDist> dist && passes < escTime) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
 			xCalc = xPrime;
@@ -173,151 +171,151 @@ public class Sets {
 	 * @author Genessy and Garyyeun
 	 * @return grid
 	 */
-	public int[][] Mandelbrot_set(){
-		double w = _gui.setXCoordinate();
-		double h = _gui.setYCoordinate();
-		double iX = _gui.returnXInitial();
-		double iY = _gui.returnYInitial();
-		int reset = _gui.reset();
-		System.out.println("reset value is " + reset);
-		if(w == 0 && h == 0){
-			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
-			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-			int[][] grid = new int[512][512];
-			for(int i = 0; i < 512 ;i++){
-				for(int j = 0; j < 512 ;j++){
-					double x = -2.15 + (i*w);
-					double y = -1.3 + (j*h);
-					grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
+	public int[][] Mandelbrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
+//		double w = _gui.setXCoordinate();
+//		double h = _gui.setYCoordinate();
+//		double iX = _gui.returnXInitial();
+//		double iY = _gui.returnYInitial();
+//		int reset = _gui.reset();
+//		System.out.println("reset value is " + reset);
+//		if(w == 0 && h == 0){
+			double w = (x2 - x) / 2048; // sets the range for the x coordinates
+			double h = (y2 - y) / 2048; // sets the range for the y coordinates
+			int[][] grid = new int[2048][2048];
+			for(int i = 0; i < 2048 ;i++){
+				for(int j = 0; j < 2048 ;j++){
+					double newX = x + (i*w);
+					double newY = y + (j*h);
+					grid[i][j] = this.mandelbrotSet(newX,newY,escDist,escTime); // sets the points up
 					}
 				}
 			return grid;
 			}
-		if(reset == 1){
-			reset = 0;
-			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
-			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-			int[][] grid = new int[512][512];
-			for(int i = 0; i < 512 ;i++){
-				for(int j = 0; j < 512 ;j++){
-					double x = -2.15 + (i*w);
-					double y = -1.3 + (j*h);
-					grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
-					}
-				}
-
-			return grid;
-			}
-		else{int[][] grid = new int[512][512];
-		for(int i = 0; i < 512 ;i++){
-			for(int j = 0; j < 512 ;j++){
-				double x = iX + (i*w);
-				double y = iY + (j*h);
-				grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
-			}
-		}
-		return grid;
-		}
-	}
+//		if(reset == 1){
+//			reset = 0;
+//			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
+//			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
+//			int[][] grid = new int[512][512];
+//			for(int i = 0; i < 512 ;i++){
+//				for(int j = 0; j < 512 ;j++){
+//					double x = -2.15 + (i*w);
+//					double y = -1.3 + (j*h);
+//					grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
+//					}
+//				}
+//
+//			return grid;
+//			}
+//		else{int[][] grid = new int[512][512];
+//		for(int i = 0; i < 512 ;i++){
+//			for(int j = 0; j < 512 ;j++){
+//				double x = iX + (i*w);
+//				double y = iY + (j*h);
+//				grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
+//			}
+//		}
+//		return grid;
+//		}
+//	}
 	/**
 	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
 	 *  columns. Uses user input for the coordinate range.
 	 * @author Genessy  and Garyyeun
 	 * @return
 	 */
-	public int[][] Julia_set(){
-		double w = _gui.setXCoordinate();
-		double h = _gui.setYCoordinate();
-		double iX = _gui.returnXInitial();
-		double iY = _gui.returnYInitial();
-		int reset = _gui.reset();
-		if(w == 0 && h == 0){
-			w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
-			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1.7 + (w * i);
-	  				double y = -1.0 + (h * j);
-	  				grid[i][j] = this.juliaSet(x, y); //sets the points up
+	public int[][] Julia_set(double x, double y, double x2, double y2,int escDist, int escTime){
+//		double w = _gui.setXCoordinate();
+//		double h = _gui.setYCoordinate();
+//		double iX = _gui.returnXInitial();
+//		double iY = _gui.returnYInitial();
+//		int reset = _gui.reset();
+//		if(w == 0 && h == 0){
+		double w = (x2 - x) / 2048; // sets the range for the x coordinates
+		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		int[][] grid = new int[2048][2048];
+		for(int i = 0; i < 2048 ;i++){
+			for(int j = 0; j < 2048 ;j++){
+				double newX = x + (i*w);
+				double newY = y + (j*h);
+	  				grid[i][j] = this.juliaSet(x, y, escDist, escTime); //sets the points up
 	  			}
 	  		}
 	  		return grid;
 			}
-		if( reset == 1){
-	  		reset = 0;
-			w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
-			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1.7 + (w * i);
-	  				double y = -1.0 + (h * j);
-	  				grid[i][j] = this.juliaSet(x, y); //sets the points up
-	  			}
-	  		}
-	  		return grid;
-			}
-		else{int[][] grid = new int[512][512];
-  		for(int i = 0; i < 512 ;i++){
-  			for(int j = 0; j < 512 ;j++){
-  				double x = iX + (w * i);
-  				double y = iY + (h * j);
-  				grid[i][j] = this.juliaSet(x, y); //sets the points up
-  			}
-  		}
-  		return grid;
-		}
-  	}
+//		if( reset == 1){
+//	  		reset = 0;
+//			w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
+//			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
+//			int[][] grid = new int[512][512];
+//	  		for(int i = 0; i < 512 ;i++){
+//	  			for(int j = 0; j < 512 ;j++){
+//	  				double x = -1.7 + (w * i);
+//	  				double y = -1.0 + (h * j);
+//	  				grid[i][j] = this.juliaSet(x, y); //sets the points up
+//	  			}
+//	  		}
+//	  		return grid;
+//			}
+//		else{int[][] grid = new int[512][512];
+//  		for(int i = 0; i < 512 ;i++){
+//  			for(int j = 0; j < 512 ;j++){
+//  				double x = iX + (w * i);
+//  				double y = iY + (h * j);
+//  				grid[i][j] = this.juliaSet(x, y); //sets the points up
+//  			}
+//  		}
+//  		return grid;
+//		}
+//  	}
 	/**
 	 * @author Genessy and Garyyeun
 	 * Creates Burning Ship set method and calculates the fractal into a 2D array with 512 rows and columns. Uses user input for the coordinate range.
 	 * @return
 	 */
-	public int[][] BurningShip_set(){
-		double w = _gui.setXCoordinate();
-		double h = _gui.setYCoordinate();
-		double iX = _gui.returnXInitial();
-		double iY = _gui.returnYInitial();
-		int reset = _gui.reset();
-		if(w == 0 && h == 0){
-			w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
-			h = (0.025 - (-0.08)) / 512; // sets the y coordinates
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1.8 + (w * i);
-	  				double y = -0.08 + (h * j);
-	  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
+	public int[][] BurningShip_set(double x, double y, double x2, double y2, int escDist, int escTime){
+//		double w = _gui.setXCoordinate();
+//		double h = _gui.setYCoordinate();
+//		double iX = _gui.returnXInitial();
+//		double iY = _gui.returnYInitial();
+//		int reset = _gui.reset();
+//		if(w == 0 && h == 0){
+		double w = (x2 - x) / 2048; // sets the range for the x coordinates
+		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		int[][] grid = new int[2048][2048];
+		for(int i = 0; i < 2048 ;i++){
+			for(int j = 0; j < 2048 ;j++){
+				double newX = x + (i*w);
+				double newY = y + (j*h);
+	  				grid[i][j] = this.burningShipSet(newX,newY, escDist, escTime); //sets up the points 
 	  			}
 	  		}
 	  		return grid;
-			}
-		if(reset > 0){
-			reset = 0;
-	  		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
-			h = (0.025 - (-0.08)) / 512; // sets the y coordinates
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1.8 + (w * i);
-	  				double y = -0.08 + (h * j);
-	  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
-	  			}
-	  		}
-	  		return grid;
-		}
-		else{	int[][] grid = new int[512][512];
-  		for(int i = 0; i < 512 ;i++){
-  			for(int j = 0; j < 512 ;j++){
-  				double x = iX + (w * i);
-  				double y = iY + (h * j);
-  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
-  			}
-  		}
-		
-  		return grid;
-		}
+//			}
+//		if(reset > 0){
+//			reset = 0;
+//	  		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
+//			h = (0.025 - (-0.08)) / 512; // sets the y coordinates
+//			int[][] grid = new int[512][512];
+//	  		for(int i = 0; i < 512 ;i++){
+//	  			for(int j = 0; j < 512 ;j++){
+//	  				double x = -1.8 + (w * i);
+//	  				double y = -0.08 + (h * j);
+//	  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
+//	  			}
+//	  		}
+//	  		return grid;
+//		}
+//		else{	int[][] grid = new int[512][512];
+//  		for(int i = 0; i < 512 ;i++){
+//  			for(int j = 0; j < 512 ;j++){
+//  				double x = iX + (w * i);
+//  				double y = iY + (h * j);
+//  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
+//  			}
+//  		}
+//		
+//  		return grid;
+//		}
   	}
 	
 	/**
@@ -325,48 +323,48 @@ public class Sets {
 	 * @author Genessy and Yang and Garyyeun
 	 * @return
 	 */
-	public int[][] Multibrot_set(){
-		double w = _gui.setXCoordinate();
-		double h = _gui.setYCoordinate();
-		double iX = _gui.returnXInitial();
-		double iY = _gui.returnYInitial();
-		int reset = _gui.reset();
-		if (w == 0 && h == 0){
-			w = (1 - (-1)) / 512.0;
-			h = (1.3 - (-1.3)) / 512;
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1 + (w * i);
-	  				double y = -1.3 + (h * j);
-	  				grid[i][j] = this.Multibrot(x,y);
+	public int[][] Multibrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
+//		double w = _gui.setXCoordinate();
+//		double h = _gui.setYCoordinate();
+//		double iX = _gui.returnXInitial();
+//		double iY = _gui.returnYInitial();
+//		int reset = _gui.reset();
+//		if (w == 0 && h == 0){
+		double w = (x2 - x) / 2048; // sets the range for the x coordinates
+		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		int[][] grid = new int[2048][2048];
+		for(int i = 0; i < 2048 ;i++){
+			for(int j = 0; j < 2048 ;j++){
+				double newX = x + (i*w);
+				double newY = y + (j*h);
+	  				grid[i][j] = this.Multibrot(newX,newY,escDist, escTime);
 	  			}
 	  		}
 	  		return grid;
-		}
-		if(reset > 0){
-	  		w = (1 - (-1)) / 512.0;
-			h = (1.3 - (-1.3)) / 512;		
-			int[][] grid = new int[512][512];
-	  		for(int i = 0; i < 512 ;i++){
-	  			for(int j = 0; j < 512 ;j++){
-	  				double x = -1 + (w * i);
-	  				double y = -1.3 + (h * j);
-	  				grid[i][j] = this.Multibrot(x,y);
-	  			}
-	  		}
-	  		return grid;
-		}
-		else{int[][] grid = new int[512][512];
-  		for(int i = 0; i < 512 ;i++){
-  			for(int j = 0; j < 512 ;j++){
-  				double x = iX + (w * i);
-  				double y = iY + (h * j);
-  				grid[i][j] = this.Multibrot(x,y);
-  			}
-  		}
-  		return grid;
-		}
+//		}
+//		if(reset > 0){
+//	  		w = (1 - (-1)) / 512.0;
+//			h = (1.3 - (-1.3)) / 512;		
+//			int[][] grid = new int[512][512];
+//	  		for(int i = 0; i < 512 ;i++){
+//	  			for(int j = 0; j < 512 ;j++){
+//	  				double x = -1 + (w * i);
+//	  				double y = -1.3 + (h * j);
+//	  				grid[i][j] = this.Multibrot(x,y);
+//	  			}
+//	  		}
+//	  		return grid;
+//		}
+//		else{int[][] grid = new int[512][512];
+//  		for(int i = 0; i < 512 ;i++){
+//  			for(int j = 0; j < 512 ;j++){
+//  				double x = iX + (w * i);
+//  				double y = iY + (h * j);
+//  				grid[i][j] = this.Multibrot(x,y);
+//  			}
+//  		}
+//  		return grid;
+//		}
   	}	
 	/**
 	 * This method will be used to change the escapeTime so that the fractal looks different

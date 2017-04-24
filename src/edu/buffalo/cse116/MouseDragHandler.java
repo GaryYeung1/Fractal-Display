@@ -155,25 +155,8 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public int firstY(){
 		return firstY;
 	}
- /**
-  * returns the first coordinate the user clicked on.
-  * @author Florebencia Fils-Aime
-  * @return firstX
-  */
-	public Point firstCoordinate(){
-		Point first = new Point();
-		return first;
-	}
 
-	/**
-	 * return the last coordinate the user dragged to.
-	 * @author Florebencia Fils-Aime
-	 * @return lastX
-	 */
-	public Point lastCoordinate(){
-		Point last = new Point();
-		return last;
-	}
+
 	/**
 	 * "Invoked when the mouse cursor has been moved onto a component but no buttons have 
 	 * been pushed."
@@ -202,8 +185,5 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 
 	}
 	
-//	public void Draw(int x, int y, int x2, int y2){
-//		2DGraphics rectangle = fractalgui.getgraphics();
-//		
-//	}
+
 }
