@@ -86,13 +86,24 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		testY = e.getY();
 		retYVal = (Math.abs(firstY-testY))/512;
 		retXVal = (Math.abs(firstX - testX))/512;
-		System.out.println("width is " + retXVal + " height is " + retYVal);
+		System.out.println("x range is " + firstX + " - " + testX + " y range is " + retYVal + " - " + testY);
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
-	
+	public double retXInitial(){
+		return firstX;
+	}
+	public double retXFinal(){
+		return testX;
+	}
 	public double retX(){
 		return retXVal;
+	}
+	public double retYInitial(){
+		return firstY;
+	}
+	public double retYFinal(){
+		return testY;
 	}
 	public double retY(){
 		return retYVal;
@@ -187,7 +198,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Yay! The mouse in the panel!");
+		/*System.out.println("Yay! The mouse in the panel!");*/
 
 	}
 	
