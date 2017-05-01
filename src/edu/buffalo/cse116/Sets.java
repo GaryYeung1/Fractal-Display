@@ -17,25 +17,23 @@ public class Sets {
 		_gui = gui;
 		scan = new OurScanner();
 		_mouse = new MouseDragHandler();
-//		num = scan.getEscapeDistance();
 	}
 
 	/**
-	 * This is for the Mandelbrot Set,  and uses user input for the escape distance/ escape time.
+	 * This is for the Mandelbrot Set,  and uses user input for the escape 
+	 * distance/ escape time.
 	 * @author Gary Yeung, Yang Cai, Genessy Munoz, Florebencia Fils-Aime
 	 * @param x
 	 * @param y
 	 * @return passes (since it's the escapeTime)
 	 */
 	public int mandelbrotSet(double x, double y, int escDis, int escTime){
-//		int escapeDistance = _gui.getEscapeDistance();
-//		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x;
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		while(escDis> dist && passes< escTime){
+		while(escDis>dist && passes< escTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
 			double yPrime = 2 * xCalc * yCalc + y;
 			xCalc = xPrime;
@@ -43,18 +41,7 @@ public class Sets {
 			passes += 1; 
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
-			/*while(escapeDistance> dist && passes2< passes){
-				double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-				double yPrime = 2 * xCalc * yCalc + y;
-				xCalc = xPrime;
-				yCalc = yPrime;
-				passes2 += 1; 
-				dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
-			}
-			return passes2;
-			*/
 		return passes;
-		 
 	}
 	/**
 	 * This is for the Julia Set,  and uses user input for the escape distance/ escape time.
@@ -64,8 +51,6 @@ public class Sets {
 	 * @return passes since it's the escape distance
 	 */
 	public int juliaSet(double x, double y, int escDist, int escTime){
-//		int escapeDistance = _gui.getEscapeDistance();
-//		int escapeTime = _gui.getEscapeTime();
 		double xCalc, yCalc;
 		xCalc = x; 
 		yCalc = y;
@@ -81,16 +66,6 @@ public class Sets {
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		
 		}
-		/*while(escapeDistance > dist && passes2 < passes){
-			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
-			double yPrime = 2 * xCalc * yCalc + 0.188887;
-			xCalc = xPrime;
-			yCalc = yPrime;
-			passes2 += 1;
-			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
-		}
-		return passes2;
-		*/
 		return passes;
 	}
 	/**
@@ -172,13 +147,6 @@ public class Sets {
 	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
-//		double w = _gui.setXCoordinate();
-//		double h = _gui.setYCoordinate();
-//		double iX = _gui.returnXInitial();
-//		double iY = _gui.returnYInitial();
-//		int reset = _gui.reset();
-//		System.out.println("reset value is " + reset);
-//		if(w == 0 && h == 0){
 			double w = (x2 - x) / 2048; // sets the range for the x coordinates
 			double h = (y2 - y) / 2048; // sets the range for the y coordinates
 			int[][] grid = new int[2048][2048];
@@ -191,31 +159,6 @@ public class Sets {
 				}
 			return grid;
 			}
-//		if(reset == 1){
-//			reset = 0;
-//			w = (0.6 - (-2.15)) / 512; // sets the range for the x coordinates
-//			h = (1.3 - (-1.3)) / 512; // sets the range for the y coordinates
-//			int[][] grid = new int[512][512];
-//			for(int i = 0; i < 512 ;i++){
-//				for(int j = 0; j < 512 ;j++){
-//					double x = -2.15 + (i*w);
-//					double y = -1.3 + (j*h);
-//					grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
-//					}
-//				}
-//
-//			return grid;
-//			}
-//		else{int[][] grid = new int[512][512];
-//		for(int i = 0; i < 512 ;i++){
-//			for(int j = 0; j < 512 ;j++){
-//				double x = iX + (i*w);
-//				double y = iY + (j*h);
-//				grid[i][j] = this.mandelbrotSet(x,y); // sets the points up
-//			}
-//		}
-//		return grid;
-//		}
 //	}
 	/**
 	 *  Julia set method and calculates the fractal into a 2D array with 512 rows and 
