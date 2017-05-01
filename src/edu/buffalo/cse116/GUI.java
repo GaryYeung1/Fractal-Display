@@ -402,187 +402,6 @@ public class GUI extends JFrame {
     	this.dispose();
     }
 
-    
-    /**
-     * Returns an escape time for a given x and y coordinate, and user input
-     * for the mandelbrot fractal.
-     * @param double x the x-coordinate of the given point.
-     * @param double y the y-coordinate of the given point.
-     * @param int escTime the user-input escape time.
-     * @param int escDis the user-input escape distance.
-     * @author garyy
-     */
-    
-    public int mandelbrot(double x, double y, int escTime, int escDis){
-    	double xCalc = x;
-    	double yCalc = y;
-    	double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	int passes = 0;
-    	while (escDis > dist && passes < escTime){
-    		double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-    		double yPrime = 2 * xCalc * yCalc + y;
-    		xCalc = xPrime;
-    		yCalc = yPrime;
-    		passes +=1;
-    		dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	}
-    	return passes;
-    }
-    /**
-     * Returns the escape time for a given x and y coordinate, and user input
-     * for the julia fractal.
-     * @param double x the x-coordinate of the given point.
-     * @param double y the y-coordinate of the given point.
-     * @param int escTime the user-input escape time.
-     * @param int escDis the user-input escape distance.
-     * @author garyy
-     */
-    public int julia(double x, double y, int escTime, int escDis){
-    	double xCalc = x;
-    	double yCalc = y;
-    	double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	int passes = 0;
-    	while(escDis>dist && passes<escTime){
-    		double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
-    		double yPrime = 2 * xCalc * yCalc + 0.188887;
-    		xCalc = xPrime;
-    		yCalc = yPrime;
-    		dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	}
-    	return passes;
-    }
-    /**
-     * Returns the escape time for a given x and y coordinate, and user input
-     * for the burning ship fractal.
-     * @param double x the x-coordinate of the given point.
-     * @param double y the y-coordinate of the given point.
-     * @param int escTime the user-input escape time.
-     * @param int escDis the user-input escape distance.
-     * @author garyy
-     */
-    public int burningShip(double x, double y, int escTime, int escDis){
-    	double xCalc = x;
-    	double yCalc = y;
-    	double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	int passes = 0;
-    	while(escDis>dist && passes>escTime){
-    		double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-    		double yPrime = Math.abs(2*xCalc*yCalc) + y;
-    		xCalc = xPrime;
-    		yCalc = yPrime;
-    		passes+=1;
-    		dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	}
-    	return passes;
-    }
-    /**
-     * Returns the escape time for a given x and y coordinate, and user input
-     * for the multibrot fractal.
-     * @param double x the x-coordinate of the given point.
-     * @param double y the y-coordinate of the given point.
-     * @param int escTime the user-input escape time.
-     * @param int escDis the user-input escape distance.
-     * @author garyy
-     */
-    public int multibrot(double x, double y, int escTime, int escDis){
-    	double xCalc = x;
-    	double yCalc = y;
-    	double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	int passes = 0;
-    	while(escDis>dist && passes>escTime){
-    		double xPrime = Math.pow(xCalc, 3) - (3*xCalc*Math.pow(yCalc, 2)) + x;
-    		double yPrime = (3*Math.pow(xCalc, 2)*yCalc) - Math.pow(yCalc, 3) +y;
-    		xCalc = xPrime;
-    		yCalc = yPrime;
-    		passes+=1;
-    		dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-    	}
-    	return passes;
-    }
-    /**
-     * Creates a 2d array that represents the mandelbrot fractal.
-     * @param int x the initial x-coordinate that the mouse was on.
-     * @param int x2 the final x-coordinate that the mouse was on.
-     * @param int y the initial y-coordiante that the mouse was on.
-     * @param int y2 the final y-coordinate that the mouse was on.
-     * @author garyy
-     */
-    public int[][] mandelbrot_set(int x, int y, int x2, int y2, int escTime, int escDis){
-    	double w = (Math.abs(x2-x))/512;
-    	double h = (Math.abs(y2-y))/512;
-    	int[][] grid = new int[512][512];
-    	for(int i=0;i<512;i++){
-    		for(int j=0;j<512;j++){
-    			double newX = x+(i*w);
-    			double newY = x+(j*h);
-    			grid[i][j] = this.mandelbrot(newX, newY, escTime, escDis);
-    		}
-    	}
-    	return grid;
-    }
-    /**
-     * Creates a 2d array that represents the mandelbrot fractal.
-     * @param int x the initial x-coordinate that the mouse was on.
-     * @param int x2 the final x-coordinate that the mouse was on.
-     * @param int y the initial y-coordiante that the mouse was on.
-     * @param int y2 the final y-coordinate that the mouse was on.
-     * @author garyy
-     */
-    public int[][] julia_set(int x, int y, int x2, int y2, int escTime, int escDis){
-    	double w = (Math.abs(x2-x))/512;
-    	double h = (Math.abs(y2-y))/512;
-    	int[][] grid = new int[512][512];
-    	for(int i=0;i<512;i++){
-    		for(int j=0;j<512;j++){
-    			double newX = x+(i*w);
-    			double newY = x+(j*h);
-    			grid[i][j] = this.julia(newX, newY, escTime, escDis);
-    		}
-    	}
-    	return grid;
-    }
-    /**
-     * Creates a 2d array that represents the mandelbrot fractal.
-     * @param int x the initial x-coordinate that the mouse was on.
-     * @param int x2 the final x-coordinate that the mouse was on.
-     * @param int y the initial y-coordiante that the mouse was on.
-     * @param int y2 the final y-coordinate that the mouse was on.
-     * @author garyy
-     */
-    public int[][] burningShip_set(int x, int y, int x2, int y2, int escTime, int escDis){
-    	double w = (Math.abs(x2-x))/512;
-    	double h = (Math.abs(y2-y))/512;
-    	int[][] grid = new int[512][512];
-    	for(int i=0;i<512;i++){
-    		for(int j=0;j<512;j++){
-    			double newX = x+(i*w);
-    			double newY = x+(j*h);
-    			grid[i][j] = this.burningShip(newX, newY, escTime, escDis);
-    		}
-    	}
-    	return grid;
-    }
-    /**
-     * Creates a 2d array that represents the mandelbrot fractal.
-     * @param int x the initial x-coordinate that the mouse was on.
-     * @param int x2 the final x-coordinate that the mouse was on.
-     * @param int y the initial y-coordiante that the mouse was on.
-     * @param int y2 the final y-coordinate that the mouse was on.
-     * @author garyy
-     */
-    public int[][] multibrot_set(int x, int y, int x2, int y2, int escTime, int escDis){
-    	double w = (Math.abs(x2-x))/512;
-    	double h = (Math.abs(y2-y))/512;
-    	int[][] grid = new int[512][512];
-    	for(int i=0;i<512;i++){
-    		for(int j=0;j<512;j++){
-    			double newX = x+(i*w);
-    			double newY = x+(j*h);
-    			grid[i][j] = this.multibrot(newX, newY, escTime, escDis);
-    		}
-    	}
-    	return grid;
-    }
     /**
      * @author Genessy Munoz
      * @param evt
@@ -634,28 +453,42 @@ public class GUI extends JFrame {
     	if(startPic){
     	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
     	else{
-    		this.escapeSteps = set.Mandelbrot_set(_mouse.firstX(), _mouse.firstY(), _mouse., y2, escDist, escTime)
+    		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
     	}
 		updatePanel();
     }
 
     private void BurningShipItemActionPerformed(ActionEvent evt) {
-    	this.escapeSteps = this.set.BurningShip_set();
+    	if(startPic){
+    	this.escapeSteps = this.set.BurningShip_set(-1.8,-0.08,-1.7,0.025, 2, 255);
+    	}
+    	else{
+    		this.escapeSteps = set.BurningShip_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
+    	}
 		updatePanel();
     }
     
     private void MultibrotItemActionPerformed(ActionEvent evt) {
-    	if((_mouse.firstX()==0)&&())
-    	this.escapeSteps = this.set.Multibrot_set();
-		updatePanel();
+    	if(startPic){
+    		this.escapeSteps=this.set.Multibrot_set(-1.0,-1.3,1.0,1.3,2,255);
+    	}
+    	else{
+    	this.escapeSteps=this.set.Multibrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
+    	}
+    	updatePanel();
     }
     /**
      * @author Genessy Munoz
      * @param evt
      */
     private void JuliaItemActionPerformed(ActionEvent evt) {
-    	this.escapeSteps = this.set.Julia_set();
-		updatePanel();
+    	if(startPic){
+    		this.escapeSteps=this.set.Julia_set(-1.7, -1.0, 1.7, 1.0, 2, 255);
+    	}
+    	else{
+    	this.escapeSteps = this.set.Julia_set(_mouse.retXInitial(),_mouse.retYInitial(),_mouse.retXFinal(),_mouse.retYFinal(),this.getEscapeDistance(),this.getEscapeTime());
+    	}
+    	updatePanel();
     }
 
     /**

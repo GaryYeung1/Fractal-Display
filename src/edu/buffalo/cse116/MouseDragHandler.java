@@ -46,7 +46,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		}
 		//attempts to draw the rectangle onto the jpanel1
 		Graphics2D drawer = null;
-		drawer.draw(new Rectangle(firstX, firstY, this.width(), this.height()));
+//		drawer.draw(new Rectangle(firstX, firstY, this.width(), this.height()));
 		System.out.println("The last coordinate was ("+lastX + ", " + lastY+ ").");
 	}
 	/**
@@ -84,9 +84,9 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		// TODO Auto-generated method stub
 		testX = e.getX();
 		testY = e.getY();
-		retYVal = (Math.abs(firstY-testY))/512;
-		retXVal = (Math.abs(firstX - testX))/512;
-		System.out.println("x range is " + firstX + " - " + testX + " y range is " + retYVal + " - " + testY);
+		retYVal = (Math.abs(firstY-testY))/2048;
+		retXVal = (Math.abs(firstX - testX))/2048;
+		System.out.println("x range is " + firstX + " - " + testX + " y range is " + firstY + " - " + testY);
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
@@ -149,10 +149,10 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 			return 0;
 		}
 	}
-	public int firstX(){
+	public double firstX(){
 		return firstX;
 	}
-	public int firstY(){
+	public double firstY(){
 		return firstY;
 	}
 

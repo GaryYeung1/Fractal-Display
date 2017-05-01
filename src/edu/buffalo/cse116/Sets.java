@@ -3,9 +3,11 @@ package edu.buffalo.cse116;
 import java.awt.Point;
 import java.util.Scanner;
 
+import javax.swing.SwingWorker;
+
 import edu.buffalo.cse116.*;
 
-public class Sets {
+public class Sets extends SwingWorker{
 	/**
 	 * This is to create the sets. It is also the model class for our GUI.
 	 */
@@ -112,8 +114,7 @@ public class Sets {
 	 * @return passes since it's the escape distance
 	 */
 	public int Multibrot(double x, double y, int escDist, int escTime) {
-//		int escapeDistance = _gui.getEscapeDistance();
-//		int escapeTime = _gui.getEscapeTime();
+
 		double xCalc = x;
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
@@ -127,17 +128,7 @@ public class Sets {
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		}
-		/*while (escapeDistance> dist && passes2 < passes) {
-			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
-			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;
-			xCalc = xPrime;
-			yCalc = yPrime;
-			passes2 += 1;
-			dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-		}
-		//Set the current point's escape-time equal to passes 
-	  	return passes2;
-	  	*/
+
 		return passes;
 	}
 
@@ -167,12 +158,7 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Julia_set(double x, double y, double x2, double y2,int escDist, int escTime){
-//		double w = _gui.setXCoordinate();
-//		double h = _gui.setYCoordinate();
-//		double iX = _gui.returnXInitial();
-//		double iY = _gui.returnYInitial();
-//		int reset = _gui.reset();
-//		if(w == 0 && h == 0){
+
 		double w = (x2 - x) / 2048; // sets the range for the x coordinates
 		double h = (y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
@@ -185,43 +171,13 @@ public class Sets {
 	  		}
 	  		return grid;
 			}
-//		if( reset == 1){
-//	  		reset = 0;
-//			w = (1.7 - (-1.7)) / 512; //sets range for x coordinates
-//			h = (1.0 - (-1.0)) / 512; //sets range for y coordinates
-//			int[][] grid = new int[512][512];
-//	  		for(int i = 0; i < 512 ;i++){
-//	  			for(int j = 0; j < 512 ;j++){
-//	  				double x = -1.7 + (w * i);
-//	  				double y = -1.0 + (h * j);
-//	  				grid[i][j] = this.juliaSet(x, y); //sets the points up
-//	  			}
-//	  		}
-//	  		return grid;
-//			}
-//		else{int[][] grid = new int[512][512];
-//  		for(int i = 0; i < 512 ;i++){
-//  			for(int j = 0; j < 512 ;j++){
-//  				double x = iX + (w * i);
-//  				double y = iY + (h * j);
-//  				grid[i][j] = this.juliaSet(x, y); //sets the points up
-//  			}
-//  		}
-//  		return grid;
-//		}
-//  	}
+
 	/**
 	 * @author Genessy and Garyyeun
 	 * Creates Burning Ship set method and calculates the fractal into a 2D array with 512 rows and columns. Uses user input for the coordinate range.
 	 * @return
 	 */
 	public int[][] BurningShip_set(double x, double y, double x2, double y2, int escDist, int escTime){
-//		double w = _gui.setXCoordinate();
-//		double h = _gui.setYCoordinate();
-//		double iX = _gui.returnXInitial();
-//		double iY = _gui.returnYInitial();
-//		int reset = _gui.reset();
-//		if(w == 0 && h == 0){
 		double w = (x2 - x) / 2048; // sets the range for the x coordinates
 		double h = (y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
@@ -233,32 +189,7 @@ public class Sets {
 	  			}
 	  		}
 	  		return grid;
-//			}
-//		if(reset > 0){
-//			reset = 0;
-//	  		w = (-1.7 - (-1.8)) / 512; // sets the x coordinates 
-//			h = (0.025 - (-0.08)) / 512; // sets the y coordinates
-//			int[][] grid = new int[512][512];
-//	  		for(int i = 0; i < 512 ;i++){
-//	  			for(int j = 0; j < 512 ;j++){
-//	  				double x = -1.8 + (w * i);
-//	  				double y = -0.08 + (h * j);
-//	  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
-//	  			}
-//	  		}
-//	  		return grid;
-//		}
-//		else{	int[][] grid = new int[512][512];
-//  		for(int i = 0; i < 512 ;i++){
-//  			for(int j = 0; j < 512 ;j++){
-//  				double x = iX + (w * i);
-//  				double y = iY + (h * j);
-//  				grid[i][j] = this.burningShipSet(x,y); //sets up the points 
-//  			}
-//  		}
-//		
-//  		return grid;
-//		}
+
   	}
 	
 	/**
@@ -267,12 +198,6 @@ public class Sets {
 	 * @return
 	 */
 	public int[][] Multibrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
-//		double w = _gui.setXCoordinate();
-//		double h = _gui.setYCoordinate();
-//		double iX = _gui.returnXInitial();
-//		double iY = _gui.returnYInitial();
-//		int reset = _gui.reset();
-//		if (w == 0 && h == 0){
 		double w = (x2 - x) / 2048; // sets the range for the x coordinates
 		double h = (y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
@@ -284,30 +209,7 @@ public class Sets {
 	  			}
 	  		}
 	  		return grid;
-//		}
-//		if(reset > 0){
-//	  		w = (1 - (-1)) / 512.0;
-//			h = (1.3 - (-1.3)) / 512;		
-//			int[][] grid = new int[512][512];
-//	  		for(int i = 0; i < 512 ;i++){
-//	  			for(int j = 0; j < 512 ;j++){
-//	  				double x = -1 + (w * i);
-//	  				double y = -1.3 + (h * j);
-//	  				grid[i][j] = this.Multibrot(x,y);
-//	  			}
-//	  		}
-//	  		return grid;
-//		}
-//		else{int[][] grid = new int[512][512];
-//  		for(int i = 0; i < 512 ;i++){
-//  			for(int j = 0; j < 512 ;j++){
-//  				double x = iX + (w * i);
-//  				double y = iY + (h * j);
-//  				grid[i][j] = this.Multibrot(x,y);
-//  			}
-//  		}
-//  		return grid;
-//		}
+
   	}	
 	/**
 	 * This method will be used to change the escapeTime so that the fractal looks different
@@ -334,6 +236,12 @@ public class Sets {
 		escapeTime = passes;
 		return escapeTime;
 		
+	}
+
+	@Override
+	protected Object doInBackground() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

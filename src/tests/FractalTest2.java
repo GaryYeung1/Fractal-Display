@@ -167,7 +167,7 @@ public class FractalTest2 {
 	@Test
 	public void juliaWSetDistanceAndTime(){
 		int escapeTime; 
-		double x = 1.492187499999897;
+		double x = 1.0492187499999897;
 		double y = -0.234375;
 		Sets sets = new Sets(_gui);
 		escapeTime = sets.juliaSet(x, y, 2, 135);
