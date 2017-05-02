@@ -40,7 +40,8 @@ public class GUI extends JFrame {
     	startPic = true;
         initComponents();
         this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
-		this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);		
+		this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);	
+		jPanel1.setSize(2048, 2048);
 		updatePanel();
     }
 
@@ -237,7 +238,7 @@ public class GUI extends JFrame {
         ColorMenu.setText("Color");
 
         RedItem.setText("Red");
-        GrayItem.addActionListener(new ActionListener() {
+        RedItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 RedItemActionPerformed(evt);
             }
@@ -245,7 +246,7 @@ public class GUI extends JFrame {
         ColorMenu.add(RedItem);
 
         BlueItem.setText("Blue");
-        GrayItem.addActionListener(new ActionListener() {
+        BlueItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 BlueItemActionPerformed(evt);
             }
@@ -261,6 +262,11 @@ public class GUI extends JFrame {
         ColorMenu.add(GrayItem);
 
         GreenItem.setText("Green");
+        GreenItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent evt) {
+        		GreenItemActionPerformed(evt);
+        	}
+        });
         ColorMenu.add(GreenItem);
 
         jMenuBar1.add(ColorMenu);
@@ -506,6 +512,10 @@ public class GUI extends JFrame {
     private void BlueItemActionPerformed(ActionEvent evt) {
     	this.colorModel = ColorModelFactory.createBluesColorModel(numberOfColors);
 		updatePanel();
+    }
+    private void GreenItemActionPerformed(ActionEvent evt){
+    	this.colorModel=ColorModelFactory.createGreenColorModel(numberOfColors);
+    	updatePanel();
     }
 
 	/*Update the panel with */
