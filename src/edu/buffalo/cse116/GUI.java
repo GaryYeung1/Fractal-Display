@@ -16,7 +16,7 @@ import edu.buffalo.fractal.FractalPanel;
  */
 public class GUI extends JFrame {
     private JTextField Escapedis,EscapeTime;
-    private JButton SetButton,SetTimeButton,Reset,SetCoordinates;
+    private JButton SetButton,SetTimeButton,Reset;
     private int ResetValue;
     private JDialog jDialog1,jDialog2;
     private JLabel jLabel1,jLabel2;
@@ -68,7 +68,6 @@ public class GUI extends JFrame {
         SetTimeButton = new JButton();
         Reset = new JButton();
         ResetValue = 0;
-        SetCoordinates = new JButton();
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
         Exit = new JMenuItem();
@@ -169,20 +168,7 @@ public class GUI extends JFrame {
         Reset.setText("Reset");
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		if(ResetValue > 0){
-        			ResetValue = 0;
-        		}
-        		else{
-        		ResetValue = 1;
-        		}
-        	}
-        });
-        
-        SetCoordinates.setText("Set Coordinates");
-        SetCoordinates.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent evt){
-        		xCoordinate= _mouse.retX();
-        		yCoordinate = _mouse.retY();
+        		startPic=true;
         	}
         });
 
@@ -294,7 +280,6 @@ public class GUI extends JFrame {
                 .addContainerGap(176, Short.MAX_VALUE)
                 .addComponent(Reset)
                 .addContainerGap(176,  Short.MAX_VALUE)
-                .addComponent(SetCoordinates)
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -309,8 +294,7 @@ public class GUI extends JFrame {
                     .addComponent(jLabel2)
                     .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(SetTimeButton)
-                    .addComponent(Reset)
-                    .addComponent(SetCoordinates))
+                    .addComponent(Reset))
                 .addContainerGap())
         );
 
@@ -338,6 +322,7 @@ public class GUI extends JFrame {
 			jLabel1.setText("Please enter a valid escape distance.");
 			Escapedis.setText("");
 		}
+		startPic = false;
 		return _userEscapeDistance;
 	}
 	/**
@@ -362,6 +347,7 @@ public class GUI extends JFrame {
     		jLabel2.setText("Please enter a valid escape time.");
     		EscapeTime.setText("");
     	}
+    	startPic = false;
     	return _userEscapeTime;
     }
    /**
@@ -425,18 +411,6 @@ public class GUI extends JFrame {
     	updatePanel();
     }
     /**
-     * @author garyy
-     */
-    private void ResetActionPerformed(ActionEvent evt){
-    	this.reset();
-    	updatePanel();
-    }
-    private void SetCoordinatesActionPerformed(ActionEvent evt){
-    	this.setXCoordinate();
-    	this.setYCoordinate();
-    	updatePanel();
-    }
-    /**
      * @author Genessy Munoz
      * @param evt
      */
@@ -460,6 +434,9 @@ public class GUI extends JFrame {
     	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
     	else{
     		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
+    		System.out.println(_mouse.retXInitial() +" - "+ _mouse.retXFinal());
+    		System.out.println(_mouse.retYInitial() +" - "+ _mouse.retYFinal());
+
     	}
 		updatePanel();
     }
@@ -480,7 +457,7 @@ public class GUI extends JFrame {
     	}
     	else{
     	this.escapeSteps=this.set.Multibrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
-    	}
+		    	}
     	updatePanel();
     }
     /**

@@ -166,7 +166,7 @@ public class Sets extends SwingWorker{
 			for(int j = 0; j < 2048 ;j++){
 				double newX = x + (i*w);
 				double newY = y + (j*h);
-	  				grid[i][j] = this.juliaSet(x, y, escDist, escTime); //sets the points up
+	  				grid[i][j] = this.juliaSet(newX, newY, escDist, escTime); //sets the points up
 	  			}
 	  		}
 	  		return grid;
