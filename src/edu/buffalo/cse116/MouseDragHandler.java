@@ -105,7 +105,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public double retXInitialMandelbrot(){
 		double constant1 = xFMandelbrot - xIMandelbrot;
 		double constant2 = xIMandelbrot;
-		xIMandelbrot = firstX * (2.75) - 2.15;
+		xIMandelbrot = firstX * (constant1) - constant2;
 		return xIMandelbrot;
 	}
 	public double retXFinalMandelbrot(){
