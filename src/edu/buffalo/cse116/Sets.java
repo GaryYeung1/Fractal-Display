@@ -58,7 +58,6 @@ public class Sets extends SwingWorker{
 		yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));//must look like the distance formula
 		int passes = 0;
-//		int passes2 = 0;
 		while(escDist > dist && passes < escTime){
 			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) - 0.72689;
 			double yPrime = 2 * xCalc * yCalc + 0.188887;
@@ -66,7 +65,6 @@ public class Sets extends SwingWorker{
 			yCalc = yPrime;
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
-		
 		}
 		return passes;
 	}
@@ -93,17 +91,6 @@ public class Sets extends SwingWorker{
 			passes += 1;
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
 		}
-		/*
-		while(escapeDistance > dist && passes2 < passes){
-			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-			double yPrime = Math.abs(2 * xCalc * yCalc) + y;
-			xCalc = xPrime;
-			yCalc = yPrime;
-			passes2 += 1;
-			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2));
-		}
-		return passes2;
-		*/
 		return passes;
 		}
 	/**
@@ -119,7 +106,6 @@ public class Sets extends SwingWorker{
 		double yCalc = y;
 		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
 		int passes = 0;
-		int passes2= 0;
 		while (escDist> dist && passes < escTime) {
 			double xPrime = Math.pow(xCalc, 3) - (3 * xCalc * Math.pow(yCalc, 2))+ x;
 			double yPrime = (3 * Math.pow(xCalc,2) * yCalc) - Math.pow(yCalc, 3) + y;

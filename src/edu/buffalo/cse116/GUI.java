@@ -17,10 +17,9 @@ import edu.buffalo.fractal.FractalPanel;
 public class GUI extends JFrame {
     private JTextField Escapedis,EscapeTime;
     private JButton SetButton,SetTimeButton,Reset;
-    private int ResetValue;
     private JDialog jDialog1,jDialog2;
     private JLabel jLabel1,jLabel2;
-    private JMenu jMenu1,jMenu2,FractalMenu,FileMenu,EditMenu,ColorMenu;
+    private JMenu jMenu2,FractalMenu,FileMenu,EditMenu,ColorMenu;
     private JMenuBar jMenuBar1,jMenuBar2;
     private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem,Exit;
     private FractalPanel jPanel1;
@@ -28,7 +27,7 @@ public class GUI extends JFrame {
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
-	private int _userEscapeDistance,_userEscapeTime;
+	private int _userEscapeDistance,_userEscapeTime, numWorkers;
 	private MouseDragHandler _mouse;
 	private double xCoordinate,yCoordinate;
 	private boolean startPic; // used for the if statements in the fractal actions
@@ -53,21 +52,25 @@ public class GUI extends JFrame {
 
     private void initComponents() {
 
-        jMenu1 = new JMenu();
+    	//these are the dialog boxes used to tell you what to place in the jtextfields
         jDialog1 = new JDialog();
         jDialog2 = new JDialog();
+        // menubar holds menus
         jMenuBar2 = new JMenuBar();
         FileMenu = new JMenu();
         EditMenu = new JMenu();
+        //the jPanel is the fractal panel and the labels give instructions
         jPanel1 = new FractalPanel();
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
+        // the user inputs the escapetime or escapedistance
         Escapedis = new JTextField();
         EscapeTime = new JTextField();
+        // these set buttons collect the number in the jtextfield and reset resets the fractal
         SetButton = new JButton();
         SetTimeButton = new JButton();
         Reset = new JButton();
-        ResetValue = 0;
+        //more menu components
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
         Exit = new JMenuItem();
@@ -81,15 +84,18 @@ public class GUI extends JFrame {
         BlueItem = new JMenuItem();
         GrayItem = new JMenuItem();
         GreenItem = new JMenuItem();
+        // our model class 
         set = new Sets(this);
-        jMenu1.setText("jMenu1");
+        // initiates the int variables needed for the escapeTime, escapeDistance and 
+        // number of swing workers
         _userEscapeDistance = 2;
         _userEscapeTime = 255;
+        numWorkers = 1; 
+        //this is the mouse eventhandler
         _mouse = new MouseDragHandler();
         xCoordinate = 0.0;
-        yCoordinate = 0.0;
-		// this creates the file menu and its item. It also creates the menu bar. 
-
+        yCoordinate = 0.0; 
+        //I believe this creates the big space separating the fractal and the jlabels
         GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
@@ -100,7 +106,7 @@ public class GUI extends JFrame {
             jDialog1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
+      //I believe this creates the big space separating the fractal and the jlabels
         GroupLayout jDialog2Layout = new GroupLayout(jDialog2.getContentPane());
         jDialog2.getContentPane().setLayout(jDialog2Layout);
         jDialog2Layout.setHorizontalGroup(
@@ -111,7 +117,7 @@ public class GUI extends JFrame {
             jDialog2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
+        //creates the file menu
         FileMenu.setText("File");
         jMenuBar2.add(FileMenu);
 
@@ -123,7 +129,7 @@ public class GUI extends JFrame {
         // adds the mouseListener in the panel
         jPanel1.addMouseListener(_mouse);
         jPanel1.addMouseMotionListener(_mouse);
-
+        // I have no idea what this does
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,7 +140,7 @@ public class GUI extends JFrame {
             jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 382, Short.MAX_VALUE)
         );
-
+        //sets the instructions on the label and the action done in the jtextfield
         jLabel1.setText("Please enter an escape distance.");
 
         Escapedis.addActionListener(new ActionListener() {
@@ -142,14 +148,14 @@ public class GUI extends JFrame {
                 EscapedisActionPerformed(evt);
             }
         });
-
+        //collects the the number put into the textfield
         SetButton.setText("Set");
         SetButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 SetButtonActionPerformed(evt);
             }
         });
-        
+      //sets the instructions on the label and the action done in the jtextfield
         jLabel2.setText("Please enter an escape time.");
         
         EscapeTime.addActionListener(new ActionListener(){
@@ -157,21 +163,21 @@ public class GUI extends JFrame {
         		EscapeTimeActionPerformed(evt);
         	}
         });
-        
+      //collects the the number put into the textfield
         SetTimeButton.setText("Set");
         SetTimeButton.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		SetTimeButtonActionPerformed(evt);
         	}
         });
-        
+        //the button resets the fractal by making the startPic boolean true
         Reset.setText("Reset");
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		startPic=true;
         	}
         });
-
+        // sets everything for the menu items and the menus
         jMenu2.setText("File");
 
         Exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.ALT_MASK | InputEvent.CTRL_MASK));
@@ -258,7 +264,7 @@ public class GUI extends JFrame {
         jMenuBar1.add(ColorMenu);
 
         setJMenuBar(jMenuBar1);
-
+        //sets the layout of everything in the bottom of the application
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -298,7 +304,14 @@ public class GUI extends JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        this.setSize(1024, 1024);
+    }
+    /** 
+     * Returns the user input of the number of SwingWorkers
+     * @return int
+     */
+    public int getNumOfWorkers(){
+    	return numWorkers;
     }
 	/**
 	 * Gets the value inputed by the user and sets it as the escape distance for the fractals. If invalid input is entered, displays
@@ -362,12 +375,18 @@ public class GUI extends JFrame {
     public double setYCoordinate(){
     	return yCoordinate;
     }
+    /**
+     * sets the action done to close the window
+     * @param evt
+     * @author Florebencia and Gary
+     */
     private void ExitActionPerformed(ActionEvent evt) {
     	this.dispose();
     }
 
     /**
-     * @author Genessy Munoz
+     * this gets the escapeDistance needed to recalculate the fractal
+     * @author Florebencia and Gary
      * @param evt
      */
     private void SetButtonActionPerformed(ActionEvent evt) {
@@ -376,6 +395,7 @@ public class GUI extends JFrame {
     }
     
     /**
+     * this gets the escapeTime needed to recalculate the fractal
      * @author garyy
      */
     private void SetTimeButtonActionPerformed(ActionEvent evt){
@@ -447,34 +467,49 @@ public class GUI extends JFrame {
     }
 
     /**
-     * @author Genessy Munoz
+     * creates the action needed to make the fractal gray
+     * @author Gary 
      * @param evt
      */
     private void GrayItemActionPerformed(ActionEvent evt) {
     	this.colorModel = ColorModelFactory.createGrayColorModel(numberOfColors);
 		updatePanel();
     }
+    /**
+     * creates the action needed to make the fractal red
+     * @author Gary
+     * @param evt
+     */
     private void RedItemActionPerformed(ActionEvent evt) {
     	this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);
 		updatePanel();
     }
+    /**
+     * creates the action needed to make the fractal blue
+     * @author Gary
+     * @param evt
+     */
     private void BlueItemActionPerformed(ActionEvent evt) {
     	this.colorModel = ColorModelFactory.createBluesColorModel(numberOfColors);
 		updatePanel();
     }
+    /**
+     * creates the action needed to make the fractal green
+     * @author Gary
+     * @param evt
+     */
     private void GreenItemActionPerformed(ActionEvent evt){
     	this.colorModel=ColorModelFactory.createGreenColorModel(numberOfColors);
     	updatePanel();
     }
 
-	/*Update the panel with */
+	/**
+	 * This method updates the fractal panel according to all the information given by the
+	 * user
+	 * @author Florebencia and Gary
+	 */
 	private void updatePanel(){
 		this.jPanel1.setIndexColorModel(this.colorModel);
 		this.jPanel1.updateImage(this.escapeSteps);
 	}
-    /**
-     * @param args the command line arguments
-     */
-
-
 }
