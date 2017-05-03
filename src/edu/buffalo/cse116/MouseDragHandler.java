@@ -70,8 +70,8 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		_isMousePressed = true;
-		firstX = e.getX();
-		firstY = e.getY();
+		firstX = (e.getX())/2048;
+		firstY = (e.getY())/2048;
 		System.out.println("You pressed at coordinate (" + firstX +", "+ firstY+").");
 	}
 	/**
@@ -82,33 +82,60 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		testX = e.getX();
-		testY = e.getY();
-		retYVal = (Math.abs(firstY-testY))/2048;
-		retXVal = (Math.abs(firstX - testX))/2048;
+		testX = (e.getX())/2048;
+		testY = (e.getY())/2048;
 		System.out.println("x range is " + firstX + " - " + testX + " y range is " + firstY + " - " + testY);
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
-	public double retXInitial(){
-		return firstX;
+	public double retXInitialMandelbrot(){
+		return firstX * (2.75) - 2.15;
 	}
-	public double retXFinal(){
-		return testX;
+	public double retXFinalMandelbrot(){
+		return testX * (2.75) - 2.15;
 	}
-	public double retX(){
-		return retXVal;
+	public double retYInitialMandelbrot(){
+		return firstY*(2.6) -1.3;
 	}
-	public double retYInitial(){
-		return firstY;
+	public double retYFinalMandelbrot(){
+		return testY*(2.6) - 1.3;
 	}
-	public double retYFinal(){
-		return testY;
+	public double retXInitialJulia(){
+		return firstX*(3.4) - 1.7;
 	}
-	public double retY(){
-		return retYVal;
+	public double retXFinalJulia(){
+		return testX*(3.4) -1.7;
 	}
-	
+	public double retYInitialJulia(){
+		return firstY*(2.0) - 1.0;
+	}
+	public double retYFinalJulia(){
+		return testY*(2.0) - 1.0;
+	}
+	public double retXInitialBurningShip(){
+		return firstX*(0.1) -1.8;
+	}
+	public double retXFinalBurningShip(){
+		return testX*(0.1) - 1.8;
+	}
+	public double retYInitialBurningShip(){
+		return firstY*(0.105) - 0.08;
+	}
+	public double retYFinalBurningShip(){
+		return testY*(0.105) - 0.08;
+	}
+	public double retXInitialMultibrot(){
+		return firstX*(2.0) -1;
+	}
+	public double retXFinalMultibrot(){
+		return testX*(2.0) -1;
+	}
+	public double retYInitialMultibrot(){
+		return firstY*(2.6) -1.3;
+	}
+	public double retYFinalMultibrot(){
+		return testY*(2.6) - 1.3;
+	}
 	/**
 	 * This gets the height of the region selected by the user.
 	 * @return the height of the region selected to make zoom in

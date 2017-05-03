@@ -355,35 +355,7 @@ public class GUI extends JFrame {
     * Acts as an on/off switch for the reset button.
     * @return a value of 1 to act as on.
     */
-    public int reset(){
-    	return ResetValue;
-    }
-    public double returnXInitial(){
-    	double initialXCoordinate = _mouse.retXInitial();
-    	double finalXCoordinate = _mouse.retXFinal();
-    	if(initialXCoordinate < finalXCoordinate){
-    		return initialXCoordinate;	
-    	}
-    	if(initialXCoordinate > finalXCoordinate){
-    		return finalXCoordinate;
-    	}
-    	else{
-    		return 0.0;
-    	}
-    }
-    public double returnYInitial(){
-    	double initialYCoordinate = _mouse.retYInitial();
-    	double finalYCoordinate = _mouse.retXFinal();
-    	if(initialYCoordinate < finalYCoordinate){
-    		return initialYCoordinate;
-    	}
-    	if(initialYCoordinate > finalYCoordinate){
-    		return finalYCoordinate;
-    	}
-    	else{
-    		return 0.0;
-    	}
-    }
+ 
     public double setXCoordinate(){
     	return xCoordinate;
     }
@@ -433,9 +405,9 @@ public class GUI extends JFrame {
     	if(startPic){
     	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
     	else{
-    		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
-    		System.out.println(_mouse.retXInitial() +" - "+ _mouse.retXFinal());
-    		System.out.println(_mouse.retYInitial() +" - "+ _mouse.retYFinal());
+    		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitialMandelbrot(), _mouse.retYInitialMandelbrot(), _mouse.retXFinalMandelbrot(), _mouse.retYFinalMandelbrot(), this.getEscapeDistance(), this.getEscapeTime());
+    		System.out.println(_mouse.retXInitialMandelbrot() +" - "+ _mouse.retXFinalMandelbrot());
+    		System.out.println(_mouse.retYInitialMandelbrot() +" - "+ _mouse.retYFinalMandelbrot());
 
     	}
 		updatePanel();
@@ -446,7 +418,7 @@ public class GUI extends JFrame {
     	this.escapeSteps = this.set.BurningShip_set(-1.8,-0.08,-1.7,0.025, 2, 255);
     	}
     	else{
-    		this.escapeSteps = set.BurningShip_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
+    		this.escapeSteps = set.BurningShip_set(_mouse.retXInitialBurningShip(), _mouse.retYInitialBurningShip(), _mouse.retXFinalBurningShip(), _mouse.retYFinalBurningShip(), this.getEscapeDistance(), this.getEscapeTime());
     	}
 		updatePanel();
     }
@@ -456,7 +428,7 @@ public class GUI extends JFrame {
     		this.escapeSteps=this.set.Multibrot_set(-1.0,-1.3,1.0,1.3,2,255);
     	}
     	else{
-    	this.escapeSteps=this.set.Multibrot_set(_mouse.retXInitial(), _mouse.retYInitial(), _mouse.retXFinal(), _mouse.retYFinal(), this.getEscapeDistance(), this.getEscapeTime());
+    	this.escapeSteps=this.set.Multibrot_set(_mouse.retXInitialMultibrot(), _mouse.retYInitialMultibrot(), _mouse.retXFinalMultibrot(), _mouse.retYFinalMultibrot(), this.getEscapeDistance(), this.getEscapeTime());
 		    	}
     	updatePanel();
     }
@@ -469,7 +441,7 @@ public class GUI extends JFrame {
     		this.escapeSteps=this.set.Julia_set(-1.7, -1.0, 1.7, 1.0, 2, 255);
     	}
     	else{
-    	this.escapeSteps = this.set.Julia_set(_mouse.retXInitial(),_mouse.retYInitial(),_mouse.retXFinal(),_mouse.retYFinal(),this.getEscapeDistance(),this.getEscapeTime());
+    	this.escapeSteps = this.set.Julia_set(_mouse.retXInitialJulia(),_mouse.retYInitialJulia(),_mouse.retXFinalJulia(),_mouse.retYFinalJulia(),this.getEscapeDistance(),this.getEscapeTime());
     	}
     	updatePanel();
     }

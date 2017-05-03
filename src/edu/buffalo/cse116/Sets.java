@@ -138,8 +138,8 @@ public class Sets extends SwingWorker{
 	 * @return grid
 	 */
 	public int[][] Mandelbrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
-			double w = (x2 - x) / 2048; // sets the range for the x coordinates
-			double h = (y2 - y) / 2048; // sets the range for the y coordinates
+			double w = Math.abs(x2 - x) / 2048; // sets the range for the x coordinates
+			double h = Math.abs(y2 - y) / 2048; // sets the range for the y coordinates
 			int[][] grid = new int[2048][2048];
 			for(int i = 0; i < 2048 ;i++){
 				for(int j = 0; j < 2048 ;j++){
@@ -159,8 +159,8 @@ public class Sets extends SwingWorker{
 	 */
 	public int[][] Julia_set(double x, double y, double x2, double y2,int escDist, int escTime){
 
-		double w = (x2 - x) / 2048; // sets the range for the x coordinates
-		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		double w = Math.abs(x2 - x) / 2048; // sets the range for the x coordinates
+		double h = Math.abs(y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
 		for(int i = 0; i < 2048 ;i++){
 			for(int j = 0; j < 2048 ;j++){
@@ -178,8 +178,8 @@ public class Sets extends SwingWorker{
 	 * @return
 	 */
 	public int[][] BurningShip_set(double x, double y, double x2, double y2, int escDist, int escTime){
-		double w = (x2 - x) / 2048; // sets the range for the x coordinates
-		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		double w = Math.abs(x2 - x) / 2048; // sets the range for the x coordinates
+		double h = Math.abs(y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
 		for(int i = 0; i < 2048 ;i++){
 			for(int j = 0; j < 2048 ;j++){
@@ -198,8 +198,8 @@ public class Sets extends SwingWorker{
 	 * @return
 	 */
 	public int[][] Multibrot_set(double x, double y, double x2, double y2, int escDist, int escTime){
-		double w = (x2 - x) / 2048; // sets the range for the x coordinates
-		double h = (y2 - y) / 2048; // sets the range for the y coordinates
+		double w = Math.abs(x2 - x) / 2048; // sets the range for the x coordinates
+		double h = Math.abs(y2 - y) / 2048; // sets the range for the y coordinates
 		int[][] grid = new int[2048][2048];
 		for(int i = 0; i < 2048 ;i++){
 			for(int j = 0; j < 2048 ;j++){
@@ -234,8 +234,7 @@ public class Sets extends SwingWorker{
 			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
 		}
 		escapeTime = passes;
-		return escapeTime;
-		
+		return escapeTime;	
 	}
 
 	@Override
