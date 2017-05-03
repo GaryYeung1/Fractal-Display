@@ -163,12 +163,12 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 */
 	public double width(){
 		if(firstX > testX){
-			double retVal = (firstX-testX)/512;
+			double retVal = (firstX-testX)/2048;
 			System.out.println(retVal);
 			return retVal;
 		}
 		else if (lastX> testX){
-			double retVal =  (lastX-testX)/512;
+			double retVal =  (lastX-testX)/2048;
 			System.out.println(retVal);
 			return retVal;
 		}
