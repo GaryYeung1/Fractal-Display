@@ -12,7 +12,7 @@ import java.awt.event.MouseMotionListener;
 public class MouseDragHandler implements MouseListener, MouseMotionListener {
 
 	private boolean _isMousePressed;
-	private double firstX, lastX, firstY, lastY, testX, testY, retYVal, retXVal;
+	private double firstX, lastX, firstY, lastY, testX, testY, xIMandelbrot, xFMandelbrot, xIJulia, xFJulia, xIBurningShip, xFBurningShip, xIMultibrot, xFMultibrot,yIMandelbrot, yFMandelbrot, yIJulia, yFJulia, yIBurningShip, yFBurningShip, yIMultibrot, yFMultibrot; 
 	/**
 	 * This class is used for the methods necessary to get the mouse actions needed 
 	 * to recalculate the fractal to zoom in.
@@ -25,8 +25,22 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		lastY = 0.0;
 		testX = 0.0;
 		testY = 0.0;
-		retYVal = 0.0;
-		retXVal = 0.0;
+		xIMandelbrot = -2.15;
+		xFMandelbrot = 0.6;
+		yIMandelbrot = -1.3;
+		yFMandelbrot = 1.3;
+		xIJulia = -1.7;
+		xFJulia = 1.7;
+		yIJulia = -1.0;
+		yFJulia = 1.0;
+		xIBurningShip = -1.8;
+		xFBurningShip = -1.7;
+		yIBurningShip = -0.08;
+		yFBurningShip = 0.025;
+		xIMultibrot = -1.0;
+		xFMultibrot = 1.0;
+		yIMultibrot = -1.3;
+		yFMultibrot = 1.3;
 	}
 	/**
 	 * The method starts when the button is pressed on a certain component and dragged.
@@ -89,7 +103,10 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		System.out.println("Aw, you stopped clicking.");
 	}
 	public double retXInitialMandelbrot(){
-		return firstX * (2.75) - 2.15;
+		double constant1 = xFMandelbrot - xIMandelbrot;
+		double constant2 = xIMandelbrot;
+		xIMandelbrot = firstX * (2.75) - 2.15;
+		return xIMandelbrot;
 	}
 	public double retXFinalMandelbrot(){
 		return testX * (2.75) - 2.15;
@@ -163,12 +180,12 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	 */
 	public double width(){
 		if(firstX > testX){
-			double retVal = (firstX-testX)/512;
+			double retVal = (firstX-testX)/2048;
 			System.out.println(retVal);
 			return retVal;
 		}
 		else if (lastX> testX){
-			double retVal =  (lastX-testX)/512;
+			double retVal =  (lastX-testX)/2048;
 			System.out.println(retVal);
 			return retVal;
 		}
