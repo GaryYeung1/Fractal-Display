@@ -103,55 +103,84 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		System.out.println("Aw, you stopped clicking.");
 	}
 	public double retXInitialMandelbrot(){
-		double constant1 = xFMandelbrot - xIMandelbrot;
-		double constant2 = xIMandelbrot;
-		xIMandelbrot = firstX * (constant1) - constant2;
+		double constant = xFMandelbrot - xIMandelbrot;
+		xIMandelbrot = firstX * (constant) - xIMandelbrot;
 		return xIMandelbrot;
 	}
 	public double retXFinalMandelbrot(){
-		return testX * (2.75) - 2.15;
+		double constant = xFMandelbrot - xIMandelbrot;
+		xFMandelbrot =  testX * (constant) - xIMandelbrot;
+		return xFMandelbrot;
 	}
 	public double retYInitialMandelbrot(){
-		return firstY*(2.6) -1.3;
+		double constant = yFMandelbrot - yIMandelbrot;
+		yIMandelbrot = firstY*(constant) - yIMandelbrot;
+		return yIMandelbrot;
 	}
 	public double retYFinalMandelbrot(){
-		return testY*(2.6) - 1.3;
+		double constant = yFMandelbrot - yIMandelbrot;
+		yFMandelbrot = testY*(constant) - yIMandelbrot;
+		return yFMandelbrot;
 	}
 	public double retXInitialJulia(){
-		return firstX*(3.4) - 1.7;
+		double constant = xFJulia - xIJulia;
+		xIJulia = firstX*(constant) - xIJulia;
+		return xIJulia;
 	}
 	public double retXFinalJulia(){
-		return testX*(3.4) -1.7;
+		double constant = xFJulia - xIJulia;
+		xFJulia = testX*(constant) - xIJulia;
+		return xFJulia;
 	}
 	public double retYInitialJulia(){
-		return firstY*(2.0) - 1.0;
+		double constant = yFJulia - yIJulia;
+		yIJulia = firstY*(constant) - xIJulia;
+		return yIJulia;
 	}
 	public double retYFinalJulia(){
-		return testY*(2.0) - 1.0;
+		double constant = yFJulia - yIJulia;
+		yFJulia = testY*(constant) - yIJulia;
+		return yFJulia;
 	}
 	public double retXInitialBurningShip(){
-		return firstX*(0.1) -1.8;
+		double constant = xFBurningShip - xIBurningShip;
+		xIBurningShip = firstX*(constant) - xIBurningShip;
+		return xIBurningShip;
 	}
 	public double retXFinalBurningShip(){
-		return testX*(0.1) - 1.8;
+		double constant = xFBurningShip - xIBurningShip;
+		xFBurningShip = testX*(constant) - xIBurningShip;
+		return xFBurningShip;
 	}
 	public double retYInitialBurningShip(){
-		return firstY*(0.105) - 0.08;
+		double constant = yFBurningShip - yIBurningShip;
+		yIBurningShip = firstY*(constant) - yIBurningShip;
+		return yIBurningShip;
 	}
 	public double retYFinalBurningShip(){
-		return testY*(0.105) - 0.08;
+		double constant = yFBurningShip - yIBurningShip;
+		yFBurningShip = testY*(constant) - yIBurningShip;
+		return yFBurningShip;
 	}
 	public double retXInitialMultibrot(){
-		return firstX*(2.0) -1;
+		double constant = xFMultibrot - xIMultibrot;
+		xIMultibrot = firstX*(constant) -xIMultibrot;
+		return xIMultibrot;
 	}
 	public double retXFinalMultibrot(){
-		return testX*(2.0) -1;
+		double constant = xFMultibrot - xIMultibrot;
+		xFMultibrot = testX*(constant) -xIMultibrot;
+		return xFMultibrot;
 	}
 	public double retYInitialMultibrot(){
-		return firstY*(2.6) -1.3;
+		double constant = yFMultibrot - yIMultibrot;
+		yIMultibrot = firstY*(constant) -yIMultibrot;
+		return yIMultibrot;
 	}
 	public double retYFinalMultibrot(){
-		return testY*(2.6) - 1.3;
+		double constant = yFMultibrot - yIMultibrot;
+		yFMultibrot = testY*(constant) - yIMultibrot;
+		return yFMultibrot;
 	}
 	/**
 	 * This gets the height of the region selected by the user.
