@@ -256,7 +256,7 @@ public class GUI extends JFrame {
 
         setJMenuBar(jMenuBar1);
         //sets the layout of everything in the bottom of the application
-        GridLayout layout = new GridLayout(2,1);
+        GridLayout layout = new GridLayout(2,1); 
         this.setLayout(layout);
         this.add(jPanel1);
         this.add(jLabel1);
