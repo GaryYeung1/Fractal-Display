@@ -4,7 +4,6 @@ package edu.buffalo.cse116;
 import java.awt.image.IndexColorModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.IndexColorModel;
 import java.util.*;
 
 import javax.swing.*;
@@ -15,10 +14,10 @@ import edu.buffalo.fractal.FractalPanel;
  * @author Yang Cai, Gary Yeung, Genessy Munoz
  */
 public class GUI extends JFrame {
-    private JTextField Escapedis,EscapeTime;
-    private JButton SetButton,SetTimeButton,Reset;
+    private JTextField Escapedis,EscapeTime,getWorkers;
+    private JButton SetButton,SetTimeButton,Reset,setWorkers;
     private JDialog jDialog1,jDialog2;
-    private JLabel jLabel1,jLabel2;
+    private JLabel jLabel1,jLabel2,workers;
     private JMenu jMenu2,FractalMenu,FileMenu,EditMenu,ColorMenu;
     private JMenuBar jMenuBar1,jMenuBar2;
     private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem,Exit;
@@ -63,13 +62,16 @@ public class GUI extends JFrame {
         jPanel1 = new FractalPanel();
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
-        // the user inputs the escapetime or escapedistance
+        workers = new JLabel();
+        // the user inputs the escapetime, number of Workers, or escapedistance
         Escapedis = new JTextField();
         EscapeTime = new JTextField();
+        getWorkers = new JTextField();
         // these set buttons collect the number in the jtextfield and reset resets the fractal
         SetButton = new JButton();
         SetTimeButton = new JButton();
         Reset = new JButton();
+        setWorkers = new JButton();
         //more menu components
         jMenuBar1 = new JMenuBar();
         jMenu2 = new JMenu();
@@ -129,17 +131,6 @@ public class GUI extends JFrame {
         // adds the mouseListener in the panel
         jPanel1.addMouseListener(_mouse);
         jPanel1.addMouseMotionListener(_mouse);
-        // I have no idea what this does
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
         //sets the instructions on the label and the action done in the jtextfield
         jLabel1.setText("Please enter an escape distance.");
 
@@ -265,52 +256,79 @@ public class GUI extends JFrame {
 
         setJMenuBar(jMenuBar1);
         //sets the layout of everything in the bottom of the application
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SetButton)
-                .addContainerGap(176, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SetTimeButton)
-                .addContainerGap(176, Short.MAX_VALUE)
-                .addComponent(Reset)
-                .addContainerGap(176,  Short.MAX_VALUE)
-                .addContainerGap(176, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SetButton)
-                    .addComponent(jLabel2)
-                    .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SetTimeButton)
-                    .addComponent(Reset))
-                .addContainerGap())
-        );
+        GridLayout layout = new GridLayout(2,1);
+        this.setLayout(layout);
+        this.add(jPanel1);
+        this.add(jLabel1);
+        this.add(Escapedis);
+        this.add(SetButton);
+        this.add(jLabel2);
+        this.add(EscapeTime);
+        this.add(SetTimeButton);
+        this.add(Reset);
+//        GroupLayout layout = new GroupLayout(getContentPane());
+//        getContentPane().setLayout(layout);
+//        layout.setHorizontalGroup(
+//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//            .addGroup(layout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jLabel1)
+//                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+//                .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+//                .addComponent(SetButton)
+//                .addContainerGap(176, Short.MAX_VALUE)
+//                .addComponent(jLabel2)
+//                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+//                .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+//                .addComponent(SetTimeButton)
+//                .addContainerGap(176, Short.MAX_VALUE)
+//                .addComponent(Reset)
+//                .addContainerGap(176,  Short.MAX_VALUE)
+//                .addContainerGap(176, Short.MAX_VALUE))
+//        );
+//        layout.setVerticalGroup(
+//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addGroup(layout.createSequentialGroup()
+//                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+//                    .addComponent(jLabel1)
+//                    .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(SetButton)
+//                    .addComponent(jLabel2)
+//                    .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(SetTimeButton)
+//                    .addComponent(Reset))
+//                .addContainerGap())
+//        );
 
         this.setSize(1024, 1024);
     }
     /** 
      * Returns the user input of the number of SwingWorkers
+     * @author Florebencia Fils-Aime
      * @return int
      */
     public int getNumOfWorkers(){
+    	String userInput;
+    	userInput = getWorkers.getText();
+    	try{
+    		numWorkers = Integer.parseInt(userInput);
+    		getWorkers.setText("");
+    		jLabel2.setText("Please enter an escape time.");
+    		if(numWorkers < 1 || numWorkers > 128){
+    			jLabel2.setText("Please enter a valid escape distance.");
+    			numWorkers = 128;
+    		}
+    	}
+    	catch(NumberFormatException e){
+    		jLabel2.setText("Please enter a valid escape time.");
+    		getWorkers.setText("");
+    	}
+    	startPic = false;
     	return numWorkers;
     }
 	/**
