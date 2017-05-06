@@ -170,6 +170,13 @@ public class GUI extends JFrame {
         		startPic=true;
         	}
         });
+        workers.setText("Please enter the number of workers you want.");
+        setWorkers.setText("Set");
+        setWorkers.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent evt){
+        		
+        	}
+        });
         // sets everything for the menu items and the menus
         jMenu2.setText("File");
 
@@ -268,6 +275,9 @@ public class GUI extends JFrame {
         jPanel2.add(jLabel2);
         jPanel2.add(EscapeTime);
         jPanel2.add(SetTimeButton);
+        jPanel2.add(workers);
+        jPanel2.add(getWorkers);
+        jPanel2.add(setWorkers);
         jPanel2.add(Reset);
         this.add(jPanel2);
 //        GroupLayout layout = new GroupLayout(getContentPane());
