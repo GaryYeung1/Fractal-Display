@@ -28,6 +28,8 @@ public class GUI extends JFrame {
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
 	private int _userEscapeDistance,_userEscapeTime, numWorkers;
+	private int mandX, mandY, mandX2, mandY2, juliaX, juliaY, juliaX2, juliaY2;
+	private int burnX, burnY, burnY2, burnX2, multiX, multiY, multiX2, multiY2;
 	private MouseDragHandler _mouse;
 	private double xCoordinate,yCoordinate;
 	private boolean startPic; // used for the if statements in the fractal actions
@@ -245,20 +247,24 @@ public class GUI extends JFrame {
 
         setJMenuBar(jMenuBar1);
         //sets the layout of everything in the bottom of the application
-        GridLayout layout = new GridLayout(1,1); 
+        GridLayout layout = new GridLayout(2,1); 
         this.setLayout(layout);
         this.add(jPanel1);
         jPanel2.add(jLabel1);
         jPanel2.add(jLabel1);
+        Escapedis.setPreferredSize(new Dimension(50,25));
         jPanel2.add(Escapedis);
         jPanel2.add(SetButton);
         jPanel2.add(jLabel2);
+        EscapeTime.setPreferredSize(new Dimension(50,25));
         jPanel2.add(EscapeTime);
         jPanel2.add(SetTimeButton);
         jPanel2.add(workers);
+        getWorkers.setPreferredSize(new Dimension(50,25));
         jPanel2.add(getWorkers);
         jPanel2.add(setWorkers);
         jPanel2.add(Reset);
+        jPanel2.setPreferredSize(new Dimension(1024,150));
         this.add(jPanel2);
 //        GroupLayout layout = new GroupLayout(getContentPane());
 //        getContentPane().setLayout(layout);
@@ -299,7 +305,7 @@ public class GUI extends JFrame {
 //                .addContainerGap())
 //        );
 
-        this.pack();
+        this.setSize(2048, 2048);;
     }
     /** 
      * Returns the user input of the number of SwingWorkers
