@@ -22,6 +22,7 @@ public class GUI extends JFrame {
     private JMenuBar jMenuBar1,jMenuBar2;
     private JMenuItem MandelbrotItem,JuliaItem,BurningShipItem,MultibrotItem,RedItem,BlueItem,GrayItem,GreenItem,Exit;
     private FractalPanel jPanel1;
+    private JPanel jPanel2;
     private Sets set;
     private final int numberOfColors = 50;
 	private IndexColorModel colorModel;
@@ -60,6 +61,7 @@ public class GUI extends JFrame {
         EditMenu = new JMenu();
         //the jPanel is the fractal panel and the labels give instructions
         jPanel1 = new FractalPanel();
+        jPanel2 = new JPanel();
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
         workers = new JLabel();
@@ -259,13 +261,15 @@ public class GUI extends JFrame {
         GridLayout layout = new GridLayout(2,1); 
         this.setLayout(layout);
         this.add(jPanel1);
-        this.add(jLabel1);
-        this.add(Escapedis);
-        this.add(SetButton);
-        this.add(jLabel2);
-        this.add(EscapeTime);
-        this.add(SetTimeButton);
-        this.add(Reset);
+        jPanel2.add(jLabel1);
+        jPanel2.add(jLabel1);
+        jPanel2.add(Escapedis);
+        jPanel2.add(SetButton);
+        jPanel2.add(jLabel2);
+        jPanel2.add(EscapeTime);
+        jPanel2.add(SetTimeButton);
+        jPanel2.add(Reset);
+        this.add(jPanel2);
 //        GroupLayout layout = new GroupLayout(getContentPane());
 //        getContentPane().setLayout(layout);
 //        layout.setHorizontalGroup(
