@@ -99,6 +99,16 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		testX = ((e.getX()*1.0722513))/2048.0;
 		testY = ((e.getY()*4.0156862745))/2048.0;
 		System.out.println("x range is " + firstX + " - " + testX + " y range is " + firstY + " - " + testY);
+		if(firstX > testX){
+			double filler = firstX;
+			firstX = testX;
+			testX = filler;
+		}
+		if(firstY > testY){
+			double filler = firstY;
+			firstY = testY;
+			testY = filler;
+		}
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
