@@ -97,28 +97,7 @@ public class GUI extends JFrame {
         _mouse = new MouseDragHandler();
         xCoordinate = 0.0;
         yCoordinate = 0.0; 
-        //I believe this creates the big space separating the fractal and the jlabels
-        GroupLayout jDialog1Layout = new GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-      //I believe this creates the big space separating the fractal and the jlabels
-        GroupLayout jDialog2Layout = new GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+
         //creates the file menu
         FileMenu.setText("File");
         jMenuBar2.add(FileMenu);
@@ -131,6 +110,7 @@ public class GUI extends JFrame {
         // adds the mouseListener in the panel
         jPanel1.addMouseListener(_mouse);
         jPanel1.addMouseMotionListener(_mouse);
+        
         //sets the instructions on the label and the action done in the jtextfield
         jLabel1.setText("Please enter an escape distance.");
 
@@ -256,7 +236,7 @@ public class GUI extends JFrame {
 
         setJMenuBar(jMenuBar1);
         //sets the layout of everything in the bottom of the application
-        GridLayout layout = new GridLayout(2,1); 
+        GridLayout layout = new GridLayout(1,1); 
         this.setLayout(layout);
         this.add(jPanel1);
         this.add(jLabel1);
@@ -305,7 +285,7 @@ public class GUI extends JFrame {
 //                .addContainerGap())
 //        );
 
-        this.setSize(1024, 1024);
+        this.pack();
     }
     /** 
      * Returns the user input of the number of SwingWorkers
@@ -443,6 +423,11 @@ public class GUI extends JFrame {
     	if(startPic){
     	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
     	else{
+    		Rectangle rect = jPanel1.getBounds();
+    		int width = rect.width;
+    		int height = rect.height;
+//    		double x2 = rect.getMaxX();
+//    		double y2 = rect.getMaxY();
     		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitialMandelbrot(), _mouse.retYInitialMandelbrot(), _mouse.retXFinalMandelbrot(), _mouse.retYFinalMandelbrot(), this.getEscapeDistance(), this.getEscapeTime());
     		System.out.println(_mouse.retXInitialMandelbrot() +" - "+ _mouse.retXFinalMandelbrot());
     		System.out.println(_mouse.retYInitialMandelbrot() +" - "+ _mouse.retYFinalMandelbrot());
