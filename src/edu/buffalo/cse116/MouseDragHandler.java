@@ -84,8 +84,8 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		_isMousePressed = true;
-		firstX = (e.getX())/2048.0;
-		firstY = (e.getY())/2048.0;
+		firstX = ((e.getX() * 1.0722513))/2048.0;
+		firstY = ((e.getY() * 4.0156862745))/2048.0;
 		System.out.println("You pressed at coordinate (" + firstX +", "+ firstY+").");
 	}
 	/**
@@ -96,90 +96,90 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		testX = (e.getX())/2048.0;
-		testY = (e.getY())/2048.0;
+		testX = ((e.getX()*1.0722513))/2048.0;
+		testY = ((e.getY()*4.0156862745))/2048.0;
 		System.out.println("x range is " + firstX + " - " + testX + " y range is " + firstY + " - " + testY);
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
 	public double retXInitialMandelbrot(){
 		double constant = xFMandelbrot - xIMandelbrot;
-		xIMandelbrot = firstX * (constant) - xIMandelbrot;
+		xIMandelbrot = firstX * (constant) + xIMandelbrot;
 		return xIMandelbrot;
 	}
 	public double retXFinalMandelbrot(){
 		double constant = xFMandelbrot - xIMandelbrot;
-		xFMandelbrot =  testX * (constant) - xIMandelbrot;
+		xFMandelbrot =  testX * (constant) + xIMandelbrot;
 		return xFMandelbrot;
 	}
 	public double retYInitialMandelbrot(){
 		double constant = yFMandelbrot - yIMandelbrot;
-		yIMandelbrot = firstY*(constant) - yIMandelbrot;
+		yIMandelbrot = firstY*(constant) + yIMandelbrot;
 		return yIMandelbrot;
 	}
 	public double retYFinalMandelbrot(){
 		double constant = yFMandelbrot - yIMandelbrot;
-		yFMandelbrot = testY*(constant) - yIMandelbrot;
+		yFMandelbrot = testY*(constant) + yIMandelbrot;
 		return yFMandelbrot;
 	}
 	public double retXInitialJulia(){
 		double constant = xFJulia - xIJulia;
-		xIJulia = firstX*(constant) - xIJulia;
+		xIJulia = firstX*(constant) + xIJulia;
 		return xIJulia;
 	}
 	public double retXFinalJulia(){
 		double constant = xFJulia - xIJulia;
-		xFJulia = testX*(constant) - xIJulia;
+		xFJulia = testX*(constant) + xIJulia;
 		return xFJulia;
 	}
 	public double retYInitialJulia(){
 		double constant = yFJulia - yIJulia;
-		yIJulia = firstY*(constant) - xIJulia;
+		yIJulia = firstY*(constant) + xIJulia;
 		return yIJulia;
 	}
 	public double retYFinalJulia(){
 		double constant = yFJulia - yIJulia;
-		yFJulia = testY*(constant) - yIJulia;
+		yFJulia = testY*(constant) + yIJulia;
 		return yFJulia;
 	}
 	public double retXInitialBurningShip(){
 		double constant = xFBurningShip - xIBurningShip;
-		xIBurningShip = firstX*(constant) - xIBurningShip;
+		xIBurningShip = firstX*(constant) + xIBurningShip;
 		return xIBurningShip;
 	}
 	public double retXFinalBurningShip(){
 		double constant = xFBurningShip - xIBurningShip;
-		xFBurningShip = testX*(constant) - xIBurningShip;
+		xFBurningShip = testX*(constant) + xIBurningShip;
 		return xFBurningShip;
 	}
 	public double retYInitialBurningShip(){
 		double constant = yFBurningShip - yIBurningShip;
-		yIBurningShip = firstY*(constant) - yIBurningShip;
+		yIBurningShip = firstY*(constant) + yIBurningShip;
 		return yIBurningShip;
 	}
 	public double retYFinalBurningShip(){
 		double constant = yFBurningShip - yIBurningShip;
-		yFBurningShip = testY*(constant) - yIBurningShip;
+		yFBurningShip = testY*(constant) + yIBurningShip;
 		return yFBurningShip;
 	}
 	public double retXInitialMultibrot(){
 		double constant = xFMultibrot - xIMultibrot;
-		xIMultibrot = firstX*(constant) -xIMultibrot;
+		xIMultibrot = firstX*(constant) + xIMultibrot;
 		return xIMultibrot;
 	}
 	public double retXFinalMultibrot(){
 		double constant = xFMultibrot - xIMultibrot;
-		xFMultibrot = testX*(constant) -xIMultibrot;
+		xFMultibrot = testX*(constant) + xIMultibrot;
 		return xFMultibrot;
 	}
 	public double retYInitialMultibrot(){
 		double constant = yFMultibrot - yIMultibrot;
-		yIMultibrot = firstY*(constant) -yIMultibrot;
+		yIMultibrot = firstY*(constant) + yIMultibrot;
 		return yIMultibrot;
 	}
 	public double retYFinalMultibrot(){
 		double constant = yFMultibrot - yIMultibrot;
-		yFMultibrot = testY*(constant) - yIMultibrot;
+		yFMultibrot = testY*(constant) + yIMultibrot;
 		return yFMultibrot;
 	}
 	/**
