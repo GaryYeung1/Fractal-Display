@@ -84,8 +84,8 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		_isMousePressed = true;
-		firstX = ((e.getX() * 1.0722513))/2048.0;
-		firstY = ((e.getY() * 4.0156862745))/2048.0;
+		firstX = ((e.getX() * (2048/1910)))/2048.0;
+		firstY = ((e.getY() * (2048/510)))/2048.0;
 		System.out.println("You pressed at coordinate (" + firstX +", "+ firstY+").");
 	}
 	/**
@@ -96,8 +96,8 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		testX = ((e.getX()*1.0722513))/2048.0;
-		testY = ((e.getY()*4.0156862745))/2048.0;
+		testX = ((e.getX()*(2048/1910)))/2048.0;
+		testY = ((e.getY()*(2048/510)))/2048.0;
 		System.out.println("x range is " + firstX + " - " + testX + " y range is " + firstY + " - " + testY);
 		if(firstX > testX){
 			double filler = firstX;
