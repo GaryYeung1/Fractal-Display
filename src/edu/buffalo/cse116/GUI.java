@@ -443,11 +443,6 @@ public class GUI extends JFrame {
     	if(startPic){
     	this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);}
     	else{
-    		Rectangle rect = jPanel1.getBounds();
-    		int width = rect.width;
-    		int height = rect.height;
-//    		double x2 = rect.getMaxX();
-//    		double y2 = rect.getMaxY();
     		this.escapeSteps = set.Mandelbrot_set(_mouse.retXInitialMandelbrot(), _mouse.retYInitialMandelbrot(), _mouse.retXFinalMandelbrot(), _mouse.retYFinalMandelbrot(), this.getEscapeDistance(), this.getEscapeTime());
     		System.out.println(_mouse.retXInitialMandelbrot() +" - "+ _mouse.retXFinalMandelbrot());
     		System.out.println(_mouse.retYInitialMandelbrot() +" - "+ _mouse.retYFinalMandelbrot());
