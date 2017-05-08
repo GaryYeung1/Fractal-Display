@@ -156,7 +156,9 @@ public class GUI extends JFrame {
         setWorkers.setText("Set");
         setWorkers.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		
+        		for(int i = 0; i < getNumOfWorkers(); i++){
+//        			SwingWorker worker = new SwingWorker();
+        		}
         	}
         });
         // sets everything for the menu items and the menus
@@ -318,14 +320,14 @@ public class GUI extends JFrame {
     	try{
     		numWorkers = Integer.parseInt(userInput);
     		getWorkers.setText("");
-    		jLabel2.setText("Please enter an escape time.");
+    		workers.setText("Please enter the desired number of swing workers.");
     		if(numWorkers < 1 || numWorkers > 128){
-    			jLabel2.setText("Please enter a valid escape distance.");
+    			workers.setText("Please enter a valid number of swing workers.");
     			numWorkers = 128;
     		}
     	}
     	catch(NumberFormatException e){
-    		jLabel2.setText("Please enter a valid escape time.");
+    		workers.setText("Please enter a valid number of swing workers.");
     		getWorkers.setText("");
     	}
     	startPic = false;
@@ -370,7 +372,7 @@ public class GUI extends JFrame {
     		EscapeTime.setText("");
     		jLabel2.setText("Please enter an escape time.");
     		if(_userEscapeTime <= 1 || _userEscapeTime > 255){
-    			jLabel2.setText("Please enter a valid escape distance.");
+    			jLabel2.setText("Please enter a valid escape time.");
     			_userEscapeTime = 255;
     		}
     	}
