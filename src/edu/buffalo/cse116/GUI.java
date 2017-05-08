@@ -144,7 +144,7 @@ public class GUI extends JFrame {
         	public void actionPerformed(ActionEvent evt){
         		SetTimeButtonActionPerformed(evt);
         	}
-        });
+        }); 
         //the button resets the fractal by making the startPic boolean true
         Reset.setText("Reset");
         Reset.addActionListener(new ActionListener(){
