@@ -144,7 +144,7 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 	}
 	public double retYInitialJulia(){
 		double constant = yFJulia - yIJulia;
-		yIJulia = firstY*(constant) + xIJulia;
+		yIJulia = firstY*(constant) + yIJulia;
 		return yIJulia;
 	}
 	public double retYFinalJulia(){
