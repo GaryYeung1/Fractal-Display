@@ -156,8 +156,10 @@ public class GUI extends JFrame {
         setWorkers.setText("Set");
         setWorkers.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		for(int i = 0; i < getNumOfWorkers(); i++){
-//        			SwingWorker worker = new SwingWorker();
+        		int desiredWorkers = getNumOfWorkers();
+        		SwingWorkerHandler[] workerArray = new SwingWorkerHandler[desiredWorkers];
+        		for(int i = 0; i < desiredWorkers; i++){
+        			workerArray[i] = new SwingWorkerHandler();
         		}
         	}
         });
