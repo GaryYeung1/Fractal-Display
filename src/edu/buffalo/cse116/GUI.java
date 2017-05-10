@@ -158,8 +158,11 @@ public class GUI extends JFrame {
         	public void actionPerformed(ActionEvent evt){
         		int desiredWorkers = getNumOfWorkers();
         		SwingWorkerHandler[] workerArray = new SwingWorkerHandler[desiredWorkers];
-        		for(int i = 0; i < desiredWorkers; i++){
-        			workerArray[i] = new SwingWorkerHandler();
+        		for(int i = 0; i <= desiredWorkers%2048; i++){
+        			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers) +1),2048/desiredWorkers+1);
+        		}
+        		for(int j = desiredWorkers%2048+1; j < desiredWorkers; j++){
+        			workerArray[j] = new SwingWorkerHandler(j*(2048/desiredWorkers), 2048/desiredWorkers);
         		}
         	}
         });
