@@ -12,12 +12,10 @@ public class Sets extends SwingWorker{
 	 * This is to create the sets. It is also the model class for our GUI.
 	 */
 	private GUI _gui; 
-	private OurScanner scan;
 	private int num;
 	private MouseDragHandler _mouse;
 	public Sets(GUI gui){
 		_gui = gui;
-		scan = new OurScanner();
 		_mouse = new MouseDragHandler();
 	}
 
@@ -198,31 +196,6 @@ public class Sets extends SwingWorker{
 	  		return grid;
 
   	}	
-	/**
-	 * This method will be used to change the escapeTime so that the fractal looks different
-	 * with each user input 
-	 * @author Florebencia Fils-Aime
-	 * @return an integer that equals the new escape time
-	 */
-	public int getNewEscapeTime(double x, double y){
-		int escapeDistance = _gui.getEscapeDistance();
-		int escapeTime;
-		double xCalc, yCalc;
-		xCalc = x;
-		yCalc = y;
-		double dist = Math.sqrt(Math.pow(xCalc, 2) + Math.pow(yCalc, 2));
-		int passes = 0;
-		while(escapeDistance> dist && passes< 255){
-			double xPrime = Math.pow(xCalc, 2) - Math.pow(yCalc, 2) + x;
-			double yPrime = 2 * xCalc * yCalc + y;
-			xCalc = xPrime;
-			yCalc = yPrime;
-			passes += 1; 
-			dist = Math.sqrt(Math.pow(xCalc,2) + Math.pow(yCalc,2)); 
-		}
-		escapeTime = passes;
-		return escapeTime;	
-	}
 
 	@Override
 	protected Object doInBackground() throws Exception {

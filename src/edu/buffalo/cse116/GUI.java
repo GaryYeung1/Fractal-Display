@@ -28,8 +28,6 @@ public class GUI extends JFrame {
 	private IndexColorModel colorModel;
 	private int[][] escapeSteps;
 	private int _userEscapeDistance,_userEscapeTime, numWorkers;
-	private int mandX, mandY, mandX2, mandY2, juliaX, juliaY, juliaX2, juliaY2;
-	private int burnX, burnY, burnY2, burnX2, multiX, multiY, multiX2, multiY2;
 	private MouseDragHandler _mouse;
 	private double xCoordinate,yCoordinate;
 	private boolean startPic; // used for the if statements in the fractal actions
@@ -154,6 +152,7 @@ public class GUI extends JFrame {
         });
         workers.setText("Please enter the number of workers you want.");
         setWorkers.setText("Set");
+        //helps to create the workers
         setWorkers.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		int desiredWorkers = getNumOfWorkers();
@@ -253,8 +252,9 @@ public class GUI extends JFrame {
         //sets the layout of everything in the bottom of the application
         GridLayout layout = new GridLayout(2,1); 
         this.setLayout(layout);
+        this.setPreferredSize(new Dimension(2048,2048));
         this.add(jPanel1);
-        jPanel2.add(jLabel1);
+        jLabel1.setPreferredSize(new Dimension(200,200));
         jPanel2.add(jLabel1);
         Escapedis.setPreferredSize(new Dimension(50,25));
         jPanel2.add(Escapedis);
