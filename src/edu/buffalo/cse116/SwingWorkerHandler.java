@@ -8,10 +8,15 @@ public class SwingWorkerHandler extends SwingWorker<WorkerResult,Void> {
 	private int[][] _grid;
 	private int _escapeTime; 
 	private int _workers; 
-	public SwingWorkerHandler(int[][] grid, int escapeTime, int workers){
+	private String fractal = "";
+	private int rowToStart = 0;
+	private int rowsToCreate = 0; 
+	
+	public SwingWorkerHandler(int i, int j, int[][] grid, int escapeTime){
 		_grid= grid;
 		_escapeTime = escapeTime;
-		_workers = workers;
+		rowToStart = i;
+		rowsToCreate = j;
 	}
 	//calculates in parallelism
 	//Calculating results should be split as equally as possible along the rows of the 
