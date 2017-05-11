@@ -7,6 +7,8 @@ import java.awt.event.*;
 import java.util.*;
 
 import javax.swing.*;
+
+import edu.buffalo.fractal.ComputePool;
 //:)
 import edu.buffalo.fractal.FractalPanel;
 /**
@@ -31,6 +33,7 @@ public class GUI extends JFrame {
 	private MouseDragHandler _mouse;
 	private double xCoordinate,yCoordinate;
 	private boolean startPic; // used for the if statements in the fractal actions
+	private ComputePool computePool;
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
@@ -40,7 +43,7 @@ public class GUI extends JFrame {
         initComponents();
         this.colorModel = ColorModelFactory.createRainbowColorModel(numberOfColors);		
 		this.escapeSteps = this.set.Mandelbrot_set(-2.15,-1.3,0.6,1.3,2,255);	
-		jPanel1.setSize(2048, 2048);
+//		jPanel1.setSize(2048, 2048);
 		updatePanel();
     }
 
@@ -51,6 +54,7 @@ public class GUI extends JFrame {
     @SuppressWarnings("unchecked")
 
     private void initComponents() {
+    	computePool = new ComputePool();
 
     	//these are the dialog boxes used to tell you what to place in the jtextfields
         jDialog1 = new JDialog();
@@ -157,12 +161,13 @@ public class GUI extends JFrame {
         	public void actionPerformed(ActionEvent evt){
         		int desiredWorkers = getNumOfWorkers();
         		SwingWorkerHandler[] workerArray = new SwingWorkerHandler[desiredWorkers];
-        		for(int i = 0; i <= desiredWorkers%2048; i++){
+        		for(int i = 0; i < desiredWorkers%2048; i++){
         			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers) +1),2048/desiredWorkers+1,escapeSteps,_userEscapeTime,numWorkers);
         		}
-        		for(int j = desiredWorkers%2048+1; j < desiredWorkers; j++){
+        		for(int j = desiredWorkers%2048; j < desiredWorkers; j++){
         			workerArray[j] = new SwingWorkerHandler(j*(2048/desiredWorkers), 2048/desiredWorkers,escapeSteps, _userEscapeTime,numWorkers);
         		}
+            	computePool.generateFractal(2048, workerArray);
         	}
         });
         // sets everything for the menu items and the menus
@@ -255,7 +260,8 @@ public class GUI extends JFrame {
         //sets the layout of everything in the bottom of the application
         GridLayout layout = new GridLayout(2,1); 
         this.setLayout(layout);
-        this.setPreferredSize(new Dimension(2048,2048));
+//        this.setPreferredSize(new Dimension(2048,2048));
+        jPanel1.setPreferredSize(new Dimension(2048,2048));
         this.add(jPanel1);
         jLabel1.setPreferredSize(new Dimension(200,200));
         jPanel2.add(jLabel1);
@@ -271,53 +277,15 @@ public class GUI extends JFrame {
         jPanel2.add(getWorkers);
         jPanel2.add(setWorkers);
         jPanel2.add(Reset);
-        jPanel2.setPreferredSize(new Dimension(1024,150));
+//        jPanel2.setPreferredSize(new Dimension(1024,150));
         this.add(jPanel2);
-//        GroupLayout layout = new GroupLayout(getContentPane());
-//        getContentPane().setLayout(layout);
-//        layout.setHorizontalGroup(
-//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-//            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//            .addGroup(layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(jLabel1)
-//                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-//                .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-//                .addComponent(SetButton)
-//                .addContainerGap(176, Short.MAX_VALUE)
-//                .addComponent(jLabel2)
-//                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-//                .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-//                .addComponent(SetTimeButton)
-//                .addContainerGap(176, Short.MAX_VALUE)
-//                .addComponent(Reset)
-//                .addContainerGap(176,  Short.MAX_VALUE)
-//                .addContainerGap(176, Short.MAX_VALUE))
-//        );
-//        layout.setVerticalGroup(
-//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-//            .addGroup(layout.createSequentialGroup()
-//                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-//                    .addComponent(jLabel1)
-//                    .addComponent(Escapedis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(SetButton)
-//                    .addComponent(jLabel2)
-//                    .addComponent(EscapeTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(SetTimeButton)
-//                    .addComponent(Reset))
-//                .addContainerGap())
-//        );
 
-        this.setSize(2048, 2048);;
+        this.pack();
     }
     /** 
      * Returns the user input of the number of SwingWorkers
      * @author Florebencia Fils-Aime
-     * @return int
+     * @return int collects the number of workers the user wants
      */
     public int getNumOfWorkers(){
     	String userInput;
@@ -328,7 +296,7 @@ public class GUI extends JFrame {
     		workers.setText("Please enter the desired number of swing workers.");
     		if(numWorkers < 1 || numWorkers > 128){
     			workers.setText("Please enter a valid number of swing workers.");
-    			numWorkers = 128;
+    			numWorkers = 4;
     		}
     	}
     	catch(NumberFormatException e){
@@ -366,7 +334,7 @@ public class GUI extends JFrame {
 	/**
 	 * Gets the value inputed by the user and sets it as the escape time for the fractals. If invalid input is entered, displays
 	 * message requesting for valid input.
-	 * @return userInputEscapeTime.
+	 * @return userInputEscapeTime. 
 	 * @author Gary Yeung
 	 */
     public int getEscapeTime(){
