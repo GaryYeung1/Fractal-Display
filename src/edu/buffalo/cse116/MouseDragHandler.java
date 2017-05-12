@@ -112,81 +112,145 @@ public class MouseDragHandler implements MouseListener, MouseMotionListener {
 		_isMousePressed= false;
 		System.out.println("Aw, you stopped clicking.");
 	}
+	/**
+	 * @author garyy
+	 * @return the initial x-coordinate used to calculate the Mandelbrot fractal.
+	 */
 	public double retXInitialMandelbrot(){
 		double constant = xFMandelbrot - xIMandelbrot;
 		xIMandelbrot = firstX * (constant) + xIMandelbrot;
 		return xIMandelbrot;
 	}
+	/**
+	 * @author garyy
+	 * @return the final x-coordinate used to calculate the Mandelbrot fractal.
+	 */
 	public double retXFinalMandelbrot(){
 		double constant = xFMandelbrot - xIMandelbrot;
 		xFMandelbrot =  testX * (constant) + xIMandelbrot;
 		return xFMandelbrot;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial y-coordinate used to calculate the Mandelbrot fractal.
+	 */
 	public double retYInitialMandelbrot(){
 		double constant = yFMandelbrot - yIMandelbrot;
 		yIMandelbrot = firstY*(constant) + yIMandelbrot;
 		return yIMandelbrot;
 	}
+	/**
+	 * @author garyy
+	 * @return the final y-coordinate used to calculate the Mandelbrot fractal.
+	 */
 	public double retYFinalMandelbrot(){
 		double constant = yFMandelbrot - yIMandelbrot;
 		yFMandelbrot = testY*(constant) + yIMandelbrot;
 		return yFMandelbrot;
 	}
+	/**
+	 * @author garyy
+	 * @return returns the initial x-coordinate for the Julia fractal.
+	 */
 	public double retXInitialJulia(){
 		double constant = xFJulia - xIJulia;
 		xIJulia = firstX*(constant) + xIJulia;
 		return xIJulia;
 	}
+	/**
+	 * @author garyy
+	 * @return returns the final x-coordinate for the Julia fractal.
+	 */
 	public double retXFinalJulia(){
 		double constant = xFJulia - xIJulia;
 		xFJulia = testX*(constant) + xIJulia;
 		return xFJulia;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial y-coordinate for the Julia fractal.
+	 */
 	public double retYInitialJulia(){
 		double constant = yFJulia - yIJulia;
 		yIJulia = firstY*(constant) + yIJulia;
 		return yIJulia;
 	}
+	/**
+	 * @author garyy
+	 * @return the final y-coordinate for the Julia fractal.
+	 */
 	public double retYFinalJulia(){
 		double constant = yFJulia - yIJulia;
 		yFJulia = testY*(constant) + yIJulia;
 		return yFJulia;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial x-coordinate for the Burningship fractal.
+	 */
 	public double retXInitialBurningShip(){
 		double constant = xFBurningShip - xIBurningShip;
 		xIBurningShip = firstX*(constant) + xIBurningShip;
 		return xIBurningShip;
 	}
+	/**
+	 * @author garyy
+	 * @return returns the final x-coordinate for the Burningship fractal.
+	 */
 	public double retXFinalBurningShip(){
 		double constant = xFBurningShip - xIBurningShip;
 		xFBurningShip = testX*(constant) + xIBurningShip;
 		return xFBurningShip;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial y-coordinate for the Burningship fractal.
+	 */
 	public double retYInitialBurningShip(){
 		double constant = yFBurningShip - yIBurningShip;
 		yIBurningShip = firstY*(constant) + yIBurningShip;
 		return yIBurningShip;
 	}
+	/**
+	 * @author garyy
+	 * @return the final y-coordinate for the Burningship fractal.
+	 */
 	public double retYFinalBurningShip(){
 		double constant = yFBurningShip - yIBurningShip;
 		yFBurningShip = testY*(constant) + yIBurningShip;
 		return yFBurningShip;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial x-coordinate for the Multibrot fractal.
+	 */
 	public double retXInitialMultibrot(){
 		double constant = xFMultibrot - xIMultibrot;
 		xIMultibrot = firstX*(constant) + xIMultibrot;
 		return xIMultibrot;
 	}
+	/**
+	 * @author garyy
+	 * @return returns the final x-coordinate for the Multibrot fractal.
+	 */
 	public double retXFinalMultibrot(){
 		double constant = xFMultibrot - xIMultibrot;
 		xFMultibrot = testX*(constant) + xIMultibrot;
 		return xFMultibrot;
 	}
+	/**
+	 * @author garyy
+	 * @return the initial y-coordinate for the Multibrot fractal.
+	 */
 	public double retYInitialMultibrot(){
 		double constant = yFMultibrot - yIMultibrot;
 		yIMultibrot = firstY*(constant) + yIMultibrot;
 		return yIMultibrot;
 	}
+	/**
+	 * @author garyy
+	 * @return the final y-coordinate for the Multibrot fractal.
+	 */
 	public double retYFinalMultibrot(){
 		double constant = yFMultibrot - yIMultibrot;
 		yFMultibrot = testY*(constant) + yIMultibrot;

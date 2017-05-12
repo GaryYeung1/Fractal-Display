@@ -34,6 +34,7 @@ public class GUI extends JFrame {
 	private double xCoordinate,yCoordinate;
 	private boolean startPic; // used for the if statements in the fractal actions
 	private ComputePool computePool;
+	private SwingWorkerHandler[] workerArray;
 	/**
 	 * This gives the basis of the ui. It has all the methods needed to run the program.
 	 * @author Yang Cai
@@ -55,6 +56,7 @@ public class GUI extends JFrame {
 
     private void initComponents() {
     	computePool = new ComputePool();
+    	workerArray = new SwingWorkerHandler[4];
 
     	//these are the dialog boxes used to tell you what to place in the jtextfields
         jDialog1 = new JDialog();
@@ -120,11 +122,7 @@ public class GUI extends JFrame {
         //sets the instructions on the label and the action done in the jtextfield
         jLabel1.setText("Please enter an escape distance.");
 
-        Escapedis.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                EscapedisActionPerformed(evt);
-            }
-        });
+
         //collects the the number put into the textfield
         SetButton.setText("Set");
         SetButton.addActionListener(new ActionListener() {
@@ -135,11 +133,6 @@ public class GUI extends JFrame {
       //sets the instructions on the label and the action done in the jtextfield
         jLabel2.setText("Please enter an escape time.");
         
-        EscapeTime.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent evt){
-        		EscapeTimeActionPerformed(evt);
-        	}
-        });
       //collects the the number put into the textfield
         SetTimeButton.setText("Set");
         SetTimeButton.addActionListener(new ActionListener(){
@@ -160,14 +153,7 @@ public class GUI extends JFrame {
         //helps to create the workers
         setWorkers.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
-        		int desiredWorkers = getNumOfWorkers();
-        		SwingWorkerHandler[] workerArray = new SwingWorkerHandler[desiredWorkers];
-        		for(int i = 0; i < desiredWorkers-1; i++){
-        			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers)),2048/desiredWorkers,escapeSteps,_userEscapeTime,numWorkers);
-        		}
-        			workerArray[desiredWorkers-1] = new SwingWorkerHandler((desiredWorkers-1)*(2048/desiredWorkers), (2048/desiredWorkers)+2048%desiredWorkers,escapeSteps, _userEscapeTime,numWorkers);
-        		
-            	computePool.generateFractal(2048, workerArray);
+        		SetWorkerButtonActionPerformed(evt);
         	}
         });
         // sets everything for the menu items and the menus
@@ -293,7 +279,7 @@ public class GUI extends JFrame {
     	try{
     		numWorkers = Integer.parseInt(userInput);
     		getWorkers.setText("");
-    		workers.setText("Please enter the desired number of swing workers.");
+    		workers.setText("Please enter the number of workers you want.");
     		if(numWorkers < 1 || numWorkers > 128){
     			workers.setText("Please enter a valid number of swing workers.");
     			numWorkers = 4;
@@ -305,6 +291,21 @@ public class GUI extends JFrame {
     	}
     	startPic = false;
     	return numWorkers;
+    }
+    /**
+     * @author garyy
+     * creates an array of swingworkers based on user-input.
+     * @return an array of swingworkers based on user-input.
+     */
+    public SwingWorkerHandler[] createSwingWorkerArray(){
+    	int desiredWorkers = getNumOfWorkers();
+    	workerArray = new SwingWorkerHandler[desiredWorkers];
+		for(int i = 0; i < desiredWorkers-1; i++){
+			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers)),2048/desiredWorkers,escapeSteps,_userEscapeTime,numWorkers);
+		}
+			workerArray[desiredWorkers-1] = new SwingWorkerHandler((desiredWorkers-1)*(2048/desiredWorkers), (2048/desiredWorkers)+2048%desiredWorkers,escapeSteps, _userEscapeTime,numWorkers);
+		
+    	return workerArray;
     }
 	/**
 	 * Gets the value inputed by the user and sets it as the escape distance for the fractals. If invalid input is entered, displays
@@ -386,9 +387,18 @@ public class GUI extends JFrame {
     	this.getEscapeDistance();
 		updatePanel();
     }
+    /**
+     * @author garyy
+     * creates an array of swing workers.
+     * @param evt
+     */
+    private void SetWorkerButtonActionPerformed(ActionEvent evt){
+    	this.createSwingWorkerArray();
+    	updatePanel();
+    }
     
     /**
-     * this gets the escapeTime needed to recalculate the fractal
+     * Gets the escapeTime needed to recalculate the fractal
      * @author garyy
      */
     private void SetTimeButtonActionPerformed(ActionEvent evt){
@@ -396,23 +406,9 @@ public class GUI extends JFrame {
     	updatePanel();
     }
     /**
-     * @author Genessy Munoz
-     * @param evt
-     */
-    private void EscapedisActionPerformed(ActionEvent evt) {
-    }
-    
-    /**
-     * @author garyy
-     */
-    private void EscapeTimeActionPerformed(ActionEvent evt){
-    	
-    }
-
-    /**
-     * @author Genessy Munoz
-     * @param evt
-     */
+	@author Florebencia
+     * Displays the Mandelbrot fractal.
+	**/
     private void MandelbrotItemActionPerformed(ActionEvent evt) {
     	
     	if(startPic){
@@ -423,9 +419,14 @@ public class GUI extends JFrame {
     		System.out.println(_mouse.retYInitialMandelbrot() +" - "+ _mouse.retYFinalMandelbrot());
 
     	}
+    	computePool.generateFractal(2048, workerArray);
 		updatePanel();
     }
-
+	/**
+	 * @author Florebencia
+     * Displays the Burningship fractal.
+	 * @param evt
+	 */
     private void BurningShipItemActionPerformed(ActionEvent evt) {
     	if(startPic){
     	this.escapeSteps = this.set.BurningShip_set(-1.8,-0.08,-1.7,0.025, 2, 255);
@@ -433,9 +434,14 @@ public class GUI extends JFrame {
     	else{
     		this.escapeSteps = set.BurningShip_set(_mouse.retXInitialBurningShip(), _mouse.retYInitialBurningShip(), _mouse.retXFinalBurningShip(), _mouse.retYFinalBurningShip(), this.getEscapeDistance(), this.getEscapeTime());
     	}
+    	computePool.generateFractal(2048, workerArray);
 		updatePanel();
     }
-    
+    /**
+     * @author Florebencia
+     * Displays the Multibrot fractal.
+     * @param evt
+     */
     private void MultibrotItemActionPerformed(ActionEvent evt) {
     	if(startPic){
     		this.escapeSteps=this.set.Multibrot_set(-1.0,-1.3,1.0,1.3,2,255);
@@ -443,10 +449,12 @@ public class GUI extends JFrame {
     	else{
     	this.escapeSteps=this.set.Multibrot_set(_mouse.retXInitialMultibrot(), _mouse.retYInitialMultibrot(), _mouse.retXFinalMultibrot(), _mouse.retYFinalMultibrot(), this.getEscapeDistance(), this.getEscapeTime());
 		    	}
+    	computePool.generateFractal(2048, workerArray);
     	updatePanel();
     }
     /**
-     * @author Genessy Munoz
+     * @author Florebencia
+     * Displays the Julia fractal.
      * @param evt
      */
     private void JuliaItemActionPerformed(ActionEvent evt) {
@@ -456,6 +464,7 @@ public class GUI extends JFrame {
     	else{
     	this.escapeSteps = this.set.Julia_set(_mouse.retXInitialJulia(),_mouse.retYInitialJulia(),_mouse.retXFinalJulia(),_mouse.retYFinalJulia(),this.getEscapeDistance(),this.getEscapeTime());
     	}
+    	computePool.generateFractal(2048, workerArray);
     	updatePanel();
     }
 
