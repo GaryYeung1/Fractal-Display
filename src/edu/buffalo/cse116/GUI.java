@@ -152,6 +152,7 @@ public class GUI extends JFrame {
         Reset.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		startPic=true;
+        		computePool.clearPool();
         	}
         });
         workers.setText("Please enter the number of workers you want.");
@@ -161,12 +162,11 @@ public class GUI extends JFrame {
         	public void actionPerformed(ActionEvent evt){
         		int desiredWorkers = getNumOfWorkers();
         		SwingWorkerHandler[] workerArray = new SwingWorkerHandler[desiredWorkers];
-        		for(int i = 0; i < desiredWorkers%2048; i++){
-        			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers) +1),2048/desiredWorkers+1,escapeSteps,_userEscapeTime,numWorkers);
+        		for(int i = 0; i < desiredWorkers-1; i++){
+        			workerArray[i] = new SwingWorkerHandler(i*((2048/desiredWorkers)),2048/desiredWorkers,escapeSteps,_userEscapeTime,numWorkers);
         		}
-        		for(int j = desiredWorkers%2048; j < desiredWorkers; j++){
-        			workerArray[j] = new SwingWorkerHandler(j*(2048/desiredWorkers), 2048/desiredWorkers,escapeSteps, _userEscapeTime,numWorkers);
-        		}
+        			workerArray[desiredWorkers-1] = new SwingWorkerHandler((desiredWorkers-1)*(2048/desiredWorkers), (2048/desiredWorkers)+2048%desiredWorkers,escapeSteps, _userEscapeTime,numWorkers);
+        		
             	computePool.generateFractal(2048, workerArray);
         	}
         });
@@ -504,5 +504,6 @@ public class GUI extends JFrame {
 	private void updatePanel(){
 		this.jPanel1.setIndexColorModel(this.colorModel);
 		this.jPanel1.updateImage(this.escapeSteps);
+		computePool.changePanel(jPanel1);
 	}
 }

@@ -41,7 +41,7 @@ public class SwingWorkerHandler extends SwingWorker<WorkerResult,Void> {
 		int rows = 2048/_workers;
 		int[][] workGrid = new int[rows][2048];
 		for(int i = 0; i<rows;i++){
-			for(int j = 0; j<2048; i++){
+			for(int j = 0; j<2048; j++){
 			workGrid[i][j]= _grid[rowToStart+i][j];
 			System.out.println("Hello, I am doing "+ (rowToStart + i) +"th row");}
 		}
