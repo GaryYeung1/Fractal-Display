@@ -7,7 +7,7 @@ import javax.swing.SwingWorker;
 
 import edu.buffalo.cse116.*;
 
-public class Sets extends SwingWorker{
+public class Sets {
 	/**
 	 * This is to create the sets. It is also the model class for our GUI.
 	 */
@@ -197,10 +197,5 @@ public class Sets extends SwingWorker{
 
   	}	
 
-	@Override
-	protected Object doInBackground() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

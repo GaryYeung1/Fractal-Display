@@ -1,0 +1,5 @@
+To change the number of threads you must put the number of workers you want into the jtextfield.
+The methods that collect the number of workers from the user are in the gui class:
+*getNumOfWorkers
+*createSwingWorkerArray
+

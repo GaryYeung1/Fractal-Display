@@ -1,10 +1,16 @@
 To run our program you must click on the main class and run it as a java application
-With the jtextfield and set button you must put in the escape distance and escapetime
-to actually change the fractal.
-You must reload the fractal by clicking on the menu bar containing the fractal
+With the jtextfield and set button you must put in the escape distance, number of workers
+and escape time to actually change the fractal. You must also drag the mouse to where you want 
+to zoom in and reload the fractal.
+The reset button changes back to the fractal you initially started with. 
+You must reload the fractal by clicking on the menu bar containing the fractal. So after you 
+put in the escape time, escape distance, and number of workers, go to fractal and click on the 
+fractal you are currently on.   
 The multibrot set takes a while to load so please wait patiently.
 The mouseDragListener class creates a mouse listener and a mouse motion listener. It gets the 
 coordinates of the mouse and attemps to show the user where the mouse is dragging. It will 
-tell you it's coordinates in the console.
+tell you it's coordinates in the console. It also helps you to zoom in.
 
+also ignore the our scanner class, we have it in here because the last time we didn't submit it 
+our code crashed. :)
 Thank you.

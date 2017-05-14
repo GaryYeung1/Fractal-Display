@@ -1,0 +1,12 @@
+Here are the methods that verify that the program generates a 2048 x 2048 pixel fractal in the 
+sets (our model) class:
+*Mandelbrot_set
+*Julia_set
+*BurningShip_set
+*Multibrot_set
+
+In the gui class, those sets methods are used in:
+*MandelbrotItemActionPerformed
+*BurningShipItemActionPerformed
+*MultibrotItemActionPerformed
+*JuliaItemActionPerformed

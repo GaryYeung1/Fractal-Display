@@ -14,11 +14,6 @@ public class FractalTest2 {
 	private GUI _gui;
 	
 	public FractalTest2(){
-		
-	}
-	@Test
-	public void killme(){
-		assertEquals(1,1);
 	}
 	/**
 	 * This sees if the julia set method returns a fractal of int[2048][2048]
